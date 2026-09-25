@@ -12,9 +12,9 @@ window.EYEHUB_CONFIG = {
   // 3. Account -> General -> copy the Public Key
   // Paste the three values below. Until all three are real, the form runs in demo mode (nothing is sent).
   emailjs: {
-    publicKey: 'YOUR_PUBLIC_KEY',
-    serviceId: 'YOUR_SERVICE_ID',
-    templateId: 'YOUR_TEMPLATE_ID',
+    publicKey: 'dTQbp8j8tt5nCs9jz',
+    serviceId: 'service_07qoduv',
+    templateId: 'template_bnp3yyk',
     autoReplyTemplateId: '',   // optional: a second template that emails the visitor a "we've got it" note
   },
 

@@ -1,0 +1,8 @@
+# local tooling
+.claude/
+# agency-only notes (pitch notes, research brief): kept out of the public repo
+notes/
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
