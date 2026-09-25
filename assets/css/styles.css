@@ -1026,3 +1026,5 @@ h1.eyebrow { font-size: 12px; line-height: 1.5; }
   .privacy { font-size: 0.74rem; }
 }
 @media (max-width: 640px) { .success .summary div { flex-direction: column; gap: 2px; padding: 8px 0; } .success .summary div + div { border-top: 1px solid rgba(39, 43, 39, 0.08); } .success h4 { font-size: 1.22rem; } }
+/* very narrow phones (320px): keep the step labels and hints on one line */
+@media (max-width: 360px) { .steps { gap: 6px; } .step-ind { font-size: 0.78rem; gap: 7px; padding: 9px 8px; } .step-ind .n { width: 22px; height: 22px; font-size: 11px; } .field-label { font-size: 0.82rem; } .field-label .hint { font-size: 0.78rem; } .booking-head h2 { font-size: 1.08rem; } }
