@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /emailjs-templates/
+
+Sitemap: https://laservisionsurgery.net.au/sitemap.xml

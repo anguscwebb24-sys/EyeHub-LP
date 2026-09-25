@@ -110,6 +110,15 @@ Add `?p=glasses`, `?p=contacts`, `?p=both` or `?p=readers` to the landing URL of
 `utm_content=` with the same values) and the page pre-answers the first question of the tuner, so a
 "reading glasses" ad lands on a page already tuned to reading glasses.
 
+## SEO
+
+The page is indexable (`index, follow`, canonical https://laservisionsurgery.net.au/) with structured data
+(MedicalClinic, Physician, FAQPage), `robots.txt` and `sitemap.xml`. After the domain is live: add the site in
+Google Search Console (Domain property, DNS TXT verification), submit `sitemap.xml` and request indexing. The
+keyword H1 is the small line above the headline; the headline itself is a styled paragraph, so change copy there
+without breaking the heading structure. Update `<lastmod>` in `sitemap.xml` when the page changes materially.
+The wider plan (links, directories, press) is in `notes/SEO-PLAN.md`.
+
 ## Tracking
 
 - UTM parameters and `fbclid` / `gclid` are captured and sent in the email as `lead_source`.
