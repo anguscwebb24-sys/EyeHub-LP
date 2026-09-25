@@ -18,7 +18,7 @@
     availability: {
       daysAhead: 10, startFromTomorrow: true, weekdays: [1, 2, 3, 4, 5],
       slots: { morning: ['8:30', '9:00', '9:30', '10:00', '10:30', '11:00', '11:30'], afternoon: ['12:30', '1:00', '1:30', '2:00', '2:30', '3:00', '3:30', '4:00'] },
-      mockBookedRatio: 0.22, closedDates: [],
+      heldBackRatio: 0.3, closedDates: [],
     },
   };
   // Everything editable lives in assets/js/config.js (window.EYEHUB_CONFIG); the defaults above are fallbacks.
@@ -83,15 +83,21 @@
     return out;
   }
 
-  // Deterministic "not offered" pattern for the DEMO only. Always false once real EmailJS keys are set.
-  function isTaken(dateKey, time) {
-    if (isConfigured()) return false;
-    // FNV-1a with a final avalanche, so the greyed-out pattern is evenly spread across days
+  // Times held back from online booking. Reception can still offer them by phone, and the widget says so under the
+  // times, so nothing here claims a time is "booked". Deterministic per day and time: a visitor sees the same pattern
+  // on every visit and both widgets on the page agree.
+  function isHeld(dateKey, slotIdx) {
+    const a = CONFIG.availability;
+    const base = typeof a.heldBackRatio === 'number' ? a.heldBackRatio : 0;
+    if (!base) return false;
+    const ratio = Math.min(0.55, base); // the same share on every day; values above 0.55 are treated as 0.55
+    // held times come in 30-minute pairs, the way appointments sit in a diary, rather than a checkerboard
+    // FNV-1a with a final avalanche, so the pattern is evenly spread across days
     let h = 2166136261;
-    const s = dateKey + '|' + time;
+    const s = dateKey + '|' + Math.floor(slotIdx / 2);
     for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
     h ^= h >>> 15; h = Math.imul(h, 2246822519); h ^= h >>> 13; h >>>= 0;
-    return (h % 1000) / 1000 < CONFIG.availability.mockBookedRatio;
+    return (h % 1000) / 1000 < ratio;
   }
 
   function to24(t, period) {
@@ -151,8 +157,9 @@
         <div class="slots-wrap">
           <div class="field-label"><span id="${uid}-tl">Choose a time</span><span class="hint" data-avail aria-live="polite"></span></div>
           <div data-slots role="group" aria-labelledby="${uid}-tl"></div>
+          <p class="slots-call">Greyed times are not offered online. If none of these suit, call <a href="tel:0752208990">${CONFIG.clinicPhone}</a> and we will work around you.</p>
         </div>
-        <p class="tz-note">${I.clock}<span>All times are Queensland time (AEST). Your time is a request until our team confirms it.${isConfigured() ? '' : ' <span class="demo-tag">Sample availability shown.</span>'}</span></p>
+        <p class="tz-note">${I.clock}<span>All times are Queensland time (AEST). Your time is a request until our team confirms it.${isConfigured() ? '' : ' <span class="demo-tag">Demo mode: requests are not sent.</span>'}</span></p>
         <div class="booking-actions">
           <button type="button" class="btn btn-primary btn-block" data-next disabled><span class="lbl">Continue</span>${I.arrow}</button>
         </div>
@@ -247,19 +254,20 @@
 
     function renderSlots() {
       const groups = CONFIG.availability.slots;
-      let free = 0, html = '';
+      let free = 0, html = '', slotIdx = 0;
       for (const period of ['morning', 'afternoon']) {
         html += `<div class="slot-group"><p class="slot-title">${period}</p><div class="slots">`;
         for (const t of groups[period]) {
-          const taken = isTaken(state.day, t);
-          if (!taken) free++;
+          const held = isHeld(state.day, slotIdx++);
+          if (!held) free++;
           const sel = state.time === t && state.period === period;
-          html += `<button type="button" class="slot${taken ? ' taken' : ''}${sel ? ' selected' : ''}" data-t="${t}" data-p="${period}" aria-pressed="${sel}" ${taken ? 'disabled title="Not offered"' : ''}>${labelTime(t, period)}</button>`;
+          const label = labelTime(t, period);
+          html += `<button type="button" class="slot${held ? ' held' : ''}${sel ? ' selected' : ''}" data-t="${t}" data-p="${period}" ${held ? `disabled aria-label="${label}, not offered online"` : `aria-pressed="${sel}"`}>${label}</button>`;
         }
         html += '</div></div>';
       }
-      slotsEl.innerHTML = free ? html : '<div class="slots-empty">No times offered on this day. Try another day.</div>';
-      availEl.textContent = free ? `${free} times to choose from` : '';
+      slotsEl.innerHTML = free ? html : '<div class="slots-empty">No online times on this day. Try another day, or call us.</div>';
+      availEl.textContent = free ? `${free} ${free === 1 ? 'time' : 'times'} to choose from` : '';
     }
 
     function selectDay(key) {
@@ -277,7 +285,7 @@
     requestAnimationFrame(daysEdge);
     slotsEl.addEventListener('click', e => {
       const s = e.target.closest('.slot');
-      if (!s || s.classList.contains('taken')) return;
+      if (!s || s.classList.contains('held')) return;
       state.time = s.dataset.t; state.period = s.dataset.p;
       $$('.slot', root).forEach(x => { x.classList.toggle('selected', x === s); x.setAttribute('aria-pressed', x === s); });
       nextBtn.disabled = false;
@@ -515,9 +523,17 @@
       // touch-action: pan-y on the container means a vertical swipe scrolls the page and a horizontal drag tracks the finger
       const fromX = x => { const r = c.getBoundingClientRect(); const v = Math.min(98, Math.max(2, (x - r.left) / r.width * 100)); range.value = v; set(v); };
       let drag = false;
-      c.addEventListener('pointerdown', e => { drag = true; stop(); if (e.pointerType === 'mouse') { c.setPointerCapture(e.pointerId); fromX(e.clientX); } });
+      // a native image drag would cancel the pointer sequence mid-swipe
+      c.addEventListener('dragstart', e => e.preventDefault());
+      c.addEventListener('pointerdown', e => {
+        if (e.button !== undefined && e.button !== 0) return;
+        drag = true; stop();
+        try { c.setPointerCapture(e.pointerId); } catch (err) { /* older browsers */ }
+        // a mouse jumps the handle to the click; a finger waits for the first horizontal move, so a vertical swipe still scrolls
+        if (e.pointerType === 'mouse') fromX(e.clientX);
+      });
       c.addEventListener('pointermove', e => { if (drag) fromX(e.clientX); });
-      ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => c.addEventListener(ev, () => { drag = false; }));
+      ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(ev => c.addEventListener(ev, () => { drag = false; }));
       if (!REDUCED && 'IntersectionObserver' in window) {
         const io = new IntersectionObserver(en => { cancelAnimationFrame(raf); if (en[0].isIntersecting && !touched) tick(); }, { threshold: 0.4 });
         io.observe(c);
@@ -744,6 +760,32 @@
     }));
   }
 
+  function initReviews() {
+    $$('[data-reviews]').forEach(track => {
+      const wrap = track.closest('.quotes-wrap');
+      const prev = $('[data-qprev]', wrap), next = $('[data-qnext]', wrap), count = $('[data-count]', wrap);
+      if (!prev || !next) return;
+      const cards = $$('.quote-card', track);
+      const gap = () => parseFloat(getComputedStyle(track).gap) || 16;
+      const step = () => (cards[0] ? cards[0].getBoundingClientRect().width : track.clientWidth) + gap();
+      const update = () => {
+        const max = track.scrollWidth - track.clientWidth;
+        prev.disabled = track.scrollLeft <= 2;
+        next.disabled = track.scrollLeft >= max - 2;
+        if (count && cards.length) {
+          const first = Math.min(cards.length, Math.round(track.scrollLeft / step()) + 1);
+          count.textContent = `${first} of ${cards.length}`;
+        }
+      };
+      const by = dir => { track.scrollBy({ left: dir * step(), behavior: REDUCED ? 'auto' : 'smooth' }); setTimeout(update, 500); };
+      prev.addEventListener('click', () => by(-1));
+      next.addEventListener('click', () => by(1));
+      track.addEventListener('scroll', update, { passive: true });
+      addEventListener('resize', update);
+      update();
+    });
+  }
+
   function initStickyBar() {
     const bar = $('.sticky-bar');
     const hero = $('#book');
@@ -774,6 +816,7 @@
     initTuner(widgets, pains, matcher);
     initFaq();
     initVideos();
+    initReviews();
     initCtas();
     initStickyBar();
     const y = $('#year'); if (y) y.textContent = new Date().getFullYear();

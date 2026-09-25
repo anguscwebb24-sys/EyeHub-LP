@@ -265,8 +265,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 .slot { padding: 10px 6px; border-radius: var(--r-sm); border: 1.5px solid var(--line); background: #fff; font-size: 0.92rem; font-weight: 600; letter-spacing: -0.01em; transition: all 0.22s var(--ease); position: relative; }
 .slot:hover { border-color: var(--ink); transform: translateY(-1px); }
 .slot.selected { background: var(--rust); border-color: var(--rust); color: #fff; box-shadow: 0 8px 20px rgba(141, 81, 56,0.28); }
-.slot.taken { color: rgba(39,43,39,0.3); border-style: dashed; cursor: not-allowed; background: transparent; text-decoration: line-through; }
-.slot.taken:hover { transform: none; border-color: var(--line); }
+.slot.held { color: rgba(39,43,39,0.5); border-style: dashed; border-color: var(--line-strong); cursor: not-allowed; background: transparent; }
+.slot.held:hover, .slot.held:active { transform: none; border-color: var(--line-strong); }
+@media (max-width: 360px) { .field-label { flex-wrap: wrap; gap: 2px 8px; } }
+.slots-call { margin: 4px 0 0; font-size: 0.82rem; line-height: 1.5; color: var(--ink-mute); }
+.slots-call a { color: var(--rust); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
 .slots-empty { padding: 20px; border-radius: var(--r-sm); background: rgba(39,43,39,0.04); color: var(--ink-mute); font-size: 0.92rem; text-align: center; }
 .tz-note { margin-top: 12px; font-size: 0.8rem; color: var(--ink-mute); display: flex; align-items: center; gap: 6px; }
 .tz-note svg { width: 14px; height: 14px; }
@@ -1028,3 +1031,31 @@ h1.eyebrow { font-size: 12px; line-height: 1.5; }
 @media (max-width: 640px) { .success .summary div { flex-direction: column; gap: 2px; padding: 8px 0; } .success .summary div + div { border-top: 1px solid rgba(39, 43, 39, 0.08); } .success h4 { font-size: 1.22rem; } }
 /* very narrow phones (320px): keep the step labels and hints on one line */
 @media (max-width: 360px) { .steps { gap: 6px; } .step-ind { font-size: 0.78rem; gap: 7px; padding: 9px 8px; } .step-ind .n { width: 22px; height: 22px; font-size: 11px; } .field-label { font-size: 0.82rem; } .field-label .hint { font-size: 0.78rem; } .booking-head h2 { font-size: 1.08rem; } }
+
+/* ---------- Compare slider: images must never start a native drag, and every pointer event lands on the container ---------- */
+.compare img, .compare .handle, .compare .tag { pointer-events: none; -webkit-user-drag: none; user-drag: none; }
+.videos[hidden] { display: none; }
+
+/* ---------- Reviews strip: scrolls sideways at every width, snaps to cards, arrows below ---------- */
+.quotes-wrap { position: relative; }
+.quotes, .quotes[data-reviews] { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 4px 14px; margin: 0 -4px; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+.quotes::-webkit-scrollbar { display: none; }
+.quotes:focus-visible { outline: 3px solid var(--forest); outline-offset: 4px; border-radius: var(--r-md); }
+.quote-card { flex: 0 0 calc((100% - 32px) / 3); scroll-snap-align: start; min-width: 0; }
+.quote-card blockquote { text-wrap: pretty; }
+@media (max-width: 1100px) { .quotes { grid-template-columns: none; } .quote-card { flex-basis: calc((100% - 16px) / 2); } }
+@media (max-width: 640px) { .quotes { gap: 12px; margin: 0 -16px; padding: 4px 16px 14px; scroll-padding-left: 16px; } .quote-card { flex-basis: 84%; } }
+.quotes-nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 12px; }
+.qnav { width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--line-strong); background: var(--white); display: grid; place-items: center; color: var(--ink); transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease), opacity 0.25s var(--ease); -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+.qnav svg { width: 18px; height: 18px; }
+.qnav[data-qprev] svg { transform: rotate(180deg); }
+.qnav:hover { background: var(--forest); border-color: var(--forest); color: var(--cream); }
+.qnav[disabled] { opacity: 0.3; pointer-events: none; }
+.qcount { min-width: 64px; text-align: center; font-size: 0.85rem; font-weight: 600; color: var(--ink-mute); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; }
+.quotes-more { display: block; text-align: center; margin-top: 14px; font-size: 0.92rem; font-weight: 600; color: var(--rust); text-decoration: underline; text-underline-offset: 3px; }
+.quote-card .src { display: inline-flex; align-items: center; gap: 6px; }
+/* 320px phones: three columns of times, so the fourth column can never spill past the card edge */
+@media (max-width: 360px) { .slots { grid-template-columns: repeat(3, 1fr); gap: 6px; } .slot { font-size: 0.84rem; padding: 9px 4px; } }
+.quotes-links { text-align: center; margin-top: 16px; font-size: 0.92rem; }
+.quotes-links a { font-weight: 600; color: var(--rust); text-decoration: underline; text-underline-offset: 3px; }
+.quotes-links .dot { margin: 0 10px; color: var(--ink-mute); }

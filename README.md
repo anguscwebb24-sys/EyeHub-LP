@@ -81,7 +81,7 @@ returning visitors never get stale styling.
    In EmailJS, **Email History** shows every request and its status.
 
 Until all three keys are real the widget runs in **demo mode**: the submission is simulated, the lead is printed
-to the browser console, and some times are shown greyed-out as sample availability. All of that switches off
+to the browser console. All of that switches off
 automatically once the keys are in.
 
 Recommended: the $9/month EmailJS Personal plan, so you can restrict the keys to your domain (Account → Security
@@ -101,7 +101,7 @@ ticked), `lead_source` (UTM parameters and Facebook click id from the ad), `page
 
 `availability` in `config.js`: clinic days ahead (10), `weekdays` (currently Monday, Wednesday and Friday), `slots` (15-minute times, 9:30am to 4:00pm AEST), a
 `closedDates` list for public holidays (**refresh it every year**; QLD holidays are listed through May 2027) and
-`mockBookedRatio` for the demo effect. Queensland has no daylight saving; all times are labelled AEST. Days and times are both
+`heldBackRatio` (share of each day's times held back from online booking and shown greyed out as "not offered online" in 30-minute pairs; reception can still book them by phone, and the widget says so under the times). Queensland has no daylight saving; all times are labelled AEST. Days and times are both
 in `config.js`.
 
 ## Ad message match
@@ -123,8 +123,9 @@ The wider plan (links, directories, press) is in `notes/SEO-PLAN.md`.
 
 - UTM parameters and `fbclid` / `gclid` are captured and sent in the email as `lead_source`.
 - On a successful submission the page calls `fbq('track', 'Lead')` if the Meta Pixel is installed, and
-  `gtag('event', 'generate_lead')` if GA4 is present. Add the pixel snippet in `<head>` (there is a comment
-  marking the spot).
+  `gtag('event', 'generate_lead')` if GA4 is present. Paste the Search Console verification tag, the Google tag,
+  the Meta Pixel and Microsoft Clarity into the marked TRACKING block at the end of `<head>` in `index.html`.
+- Video tiles in **Patient stories** are hidden (`<div class="videos" hidden>`) until the clinic's videos arrive.
 
 ## Placeholders to replace before launch
 

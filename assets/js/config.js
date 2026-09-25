@@ -31,8 +31,9 @@ window.EYEHUB_CONFIG = {
     },
     // Public holidays and clinic closures (YYYY-MM-DD). Refresh every year.
     closedDates: ['2026-10-05', '2026-12-25', '2026-12-28', '2027-01-01', '2027-01-26', '2027-03-26', '2027-03-29', '2027-04-26', '2027-05-03'],
-    // Demo only: share of greyed-out "not offered" times shown while EmailJS keys are placeholders.
-    // Ignored automatically once real keys are entered.
-    mockBookedRatio: 0.22,
+    // Share of each day's times held back from the online form, shown greyed out as "not offered online".
+    // Reception can still book those times by phone, and the widget says so under the times. Held times come
+    // in 30-minute pairs. Set to 0 to offer every time online; values above 0.55 are treated as 0.55.
+    heldBackRatio: 0.3,
   },
 };
