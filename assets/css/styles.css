@@ -222,9 +222,12 @@ ul { margin: 0; padding: 0; list-style: none; }
   30% { box-shadow: var(--shadow-lg), 0 0 0 10px rgba(141, 81, 56,0.22); }
   100% { box-shadow: var(--shadow-lg), 0 0 0 1px rgba(39,43,39,0.05); }
 }
-.booking-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+.booking-head { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "h pill" "p p"; align-items: start; column-gap: 14px; row-gap: 5px; margin-bottom: 16px; }
+.booking-head h2, .booking-head h3 { grid-area: h; }
+.booking-head .free-pill { grid-area: pill; }
+.booking-head p { grid-area: p; }
 .booking-head h2, .booking-head h3 { margin: 0; font-size: 1.28rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
-.booking-head p { color: var(--ink-mute); font-size: 0.92rem; margin-top: 5px; }
+.booking-head p { color: var(--ink-mute); font-size: 0.92rem; margin: 0; }
 .free-pill { flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: var(--r-pill); background: rgba(57,76,57,0.09); color: var(--forest); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 .free-pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--forest); box-shadow: 0 0 0 0 rgba(57,76,57,0.5); animation: ping 2s infinite; }
 @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(57,76,57,0.45); } 70% { box-shadow: 0 0 0 8px rgba(57,76,57,0); } 100% { box-shadow: 0 0 0 0 rgba(57,76,57,0); } }
@@ -982,3 +985,44 @@ h1.eyebrow { font-size: 12px; line-height: 1.5; }
 .slots { gap: 6px; }
 .slot { padding: 9px 4px; font-size: 0.88rem; }
 @media (max-width: 640px) { .slots { grid-template-columns: repeat(4, 1fr); } .slot { padding: 9px 2px; font-size: 0.82rem; } }
+
+/* =========================================================
+   v6: mobile polish (headline overhang, day chips, touch feel, form flow)
+   ========================================================= */
+/* the blur entrance ends with no filter at all: a lingering blur(0) clipped the italic overhang of "without" */
+@keyframes unblur { to { opacity: 1; filter: none; transform: none; } }
+.h1 .w { padding: 0 0.05em; margin: 0 -0.05em; }
+.h1 .em .w { padding-right: 0.16em; margin-right: -0.16em; }
+
+/* touch feel: no grey tap flash, no 300ms delay, a small press instead of a hover lift */
+.btn, .day, .slot, .choice, .hassle, .tune-opt, .persona-tab, .match-chip, .faq-q, .phone-link, .sticky-bar a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+@media (hover: none) {
+  .day:hover, .slot:hover, .choice:hover { transform: none; border-color: var(--line); }
+  .day.selected:hover, .slot.selected:hover { border-color: var(--forest); }
+  .choice.selected:hover { border-color: var(--charcoal); }
+  .day:active, .slot:active, .choice:active { transform: scale(0.96); transition-duration: 0.08s; }
+  .btn:hover { transform: none; }
+}
+
+/* day strip on phones: edge to edge inside the card, roomier chips, a soft fade that hints at more days */
+.days-wrap { position: relative; }
+@media (max-width: 640px) {
+  .days-wrap { margin: 0 -16px; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 40px), rgba(0, 0, 0, 0.12)); mask-image: linear-gradient(90deg, #000 calc(100% - 40px), rgba(0, 0, 0, 0.12)); }
+  .days-wrap.at-end { -webkit-mask-image: none; mask-image: none; }
+  .days { gap: 8px; padding: 4px 16px 12px; scroll-padding-left: 16px; scroll-snap-type: x proximity; scrollbar-width: none; }
+  .days::-webkit-scrollbar { display: none; }
+  .day { width: 66px; padding: 11px 4px 10px; border-radius: 15px; }
+  .day small { font-size: 10.5px; letter-spacing: 0.06em; }
+  .day b { font-size: 1.32rem; margin: 4px 0 2px; }
+  .day em { font-size: 11px; }
+  .slot { min-height: 42px; }
+  .booking-head p { font-size: 0.86rem; }
+  .booking-head .free-pill { padding: 6px 10px; font-size: 11px; }
+  .chosen { padding: 12px 12px; }
+  .chosen .txt b { font-size: 0.94rem; }
+  .form-grid { gap: 10px; }
+  .input { font-size: 16px; } /* 16px or larger: iOS will not zoom the page when a field is focused */
+  .booking-actions .btn-lg { padding: 18px 20px; font-size: 1rem; }
+  .privacy { font-size: 0.74rem; }
+}
+@media (max-width: 640px) { .success .summary div { flex-direction: column; gap: 2px; padding: 8px 0; } .success .summary div + div { border-top: 1px solid rgba(39, 43, 39, 0.08); } .success h4 { font-size: 1.22rem; } }

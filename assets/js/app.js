@@ -30,6 +30,7 @@
   };
 
   const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches || new URLSearchParams(location.search).has('nofx');
+  const TOUCH = matchMedia('(hover: none) and (pointer: coarse)').matches;
   if (REDUCED) document.documentElement.classList.add('nofx');
 
   const $ = (sel, root) => (root || document).querySelector(sel);
@@ -133,11 +134,9 @@
 
     root.innerHTML = `
       <div class="booking-head">
-        <div>
-          <h2>Book your free online assessment</h2>
-          <p>Takes about a minute · confirmed within one business day</p>
-        </div>
+        <h2>Book your free online assessment</h2>
         <span class="free-pill">Free</span>
+        <p>Takes about a minute · confirmed within one business day</p>
       </div>
       <div class="steps" aria-hidden="true">
         <div class="step-ind active" data-step="1"><span class="n">1</span> Pick a time</div>
@@ -146,9 +145,9 @@
 
       <div class="pane active" data-pane="1">
         <div class="field-label"><span id="${uid}-dl">Choose a day</span><span class="hint">${dayHint()}</span></div>
-        <div class="days" role="group" aria-labelledby="${uid}-dl">
+        <div class="days-wrap"><div class="days" role="group" aria-labelledby="${uid}-dl">
           ${days.map((d, i) => `<button type="button" class="day${i === 0 ? ' selected' : ''}" aria-pressed="${i === 0}" aria-label="${d.dowLong} ${d.day} ${d.monLong}" data-key="${d.key}"><small>${d.dow}</small><b>${d.day}</b><em>${d.mon}</em></button>`).join('')}
-        </div>
+        </div></div>
         <div class="slots-wrap">
           <div class="field-label"><span id="${uid}-tl">Choose a time</span><span class="hint" data-avail aria-live="polite"></span></div>
           <div data-slots role="group" aria-labelledby="${uid}-tl"></div>
@@ -167,10 +166,10 @@
         </div>
         <form class="bk-form" novalidate>
           <div class="form-grid">
-            ${field('first_name', 'fn', 'First name', 'text', 'given-name', '', 'Please enter your first name', false)}
-            ${field('last_name', 'ln', 'Last name', 'text', 'family-name', '', 'Please enter your last name', false)}
-            ${field('phone', 'ph', 'Mobile number', 'tel', 'tel', 'inputmode="tel"', 'Please enter an Australian mobile number, e.g. 0412 345 678', true)}
-            ${field('email', 'em', 'Email address', 'email', 'email', 'inputmode="email"', 'Please check your email address', true)}
+            ${field('first_name', 'fn', 'First name', 'text', 'given-name', 'enterkeyhint="next"', 'Please enter your first name', false)}
+            ${field('last_name', 'ln', 'Last name', 'text', 'family-name', 'enterkeyhint="next"', 'Please enter your last name', false)}
+            ${field('phone', 'ph', 'Mobile number', 'tel', 'tel', 'inputmode="tel" enterkeyhint="next"', 'Please enter an Australian mobile number, e.g. 0412 345 678', true)}
+            ${field('email', 'em', 'Email address', 'email', 'email', 'inputmode="email" enterkeyhint="done"', 'Please check your email address', true)}
             <div class="full">
               <div class="field-label"><span id="${uid}-al">What best describes you?</span><span class="hint">Optional</span></div>
               <div class="choice-row" data-about role="group" aria-labelledby="${uid}-al">
@@ -236,8 +235,13 @@
         $('[data-chosen-main]', root).textContent = `${d.dowLong} ${d.day} ${d.monLong}, ${labelTime(state.time, state.period)}`;
         $('[data-chosen-sub]', root).textContent = 'Free online suitability assessment · 15 min';
       }
-      // move focus deliberately so keyboard and screen reader users are never stranded on a hidden pane
-      const target = step === 1 ? $('.day.selected', root) : step === 2 ? $('input[name=first_name]', root) : $('.success h4', root);
+      // bring the top of the card back into view, so a phone user never lands halfway down the new pane
+      const headerH = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 64) + 12;
+      const top = root.getBoundingClientRect().top;
+      if (top < headerH || top > innerHeight * 0.5) window.scrollTo({ top: scrollY + top - headerH, behavior: REDUCED ? 'auto' : 'smooth' });
+      // move focus deliberately so keyboard and screen reader users are never stranded on a hidden pane.
+      // On a touch screen the first input is not focused automatically: the keyboard would cover the chosen time.
+      const target = step === 1 ? $('.day.selected', root) : step === 2 ? (TOUCH ? null : $('input[name=first_name]', root)) : $('.success h4', root);
       if (target) setTimeout(() => target.focus({ preventScroll: true }), REDUCED ? 0 : 350);
     }
 
@@ -262,16 +266,23 @@
       state.day = key; state.time = null; state.period = null;
       $$('.day', root).forEach(b => { const on = b.dataset.key === key; b.classList.toggle('selected', on); b.setAttribute('aria-pressed', on); });
       nextBtn.disabled = true;
+      $('.lbl', nextBtn).textContent = 'Continue';
       renderSlots();
     }
 
     $$('.day', root).forEach(b => b.addEventListener('click', () => selectDay(b.dataset.key)));
+    const daysEl = $('.days', root), daysWrap = $('.days-wrap', root);
+    const daysEdge = () => daysWrap.classList.toggle('at-end', daysEl.scrollLeft + daysEl.clientWidth >= daysEl.scrollWidth - 4);
+    daysEl.addEventListener('scroll', daysEdge, { passive: true });
+    requestAnimationFrame(daysEdge);
     slotsEl.addEventListener('click', e => {
       const s = e.target.closest('.slot');
       if (!s || s.classList.contains('taken')) return;
       state.time = s.dataset.t; state.period = s.dataset.p;
       $$('.slot', root).forEach(x => { x.classList.toggle('selected', x === s); x.setAttribute('aria-pressed', x === s); });
       nextBtn.disabled = false;
+      $('.lbl', nextBtn).textContent = `Continue with ${labelTime(state.time, state.period)}`;
+      if (innerWidth <= 640) setTimeout(() => nextBtn.scrollIntoView({ block: 'nearest', behavior: REDUCED ? 'auto' : 'smooth' }), 120);
     });
     nextBtn.addEventListener('click', () => { go(2); if (isConfigured()) loadEmailJs().catch(() => {}); });
     backBtn.addEventListener('click', () => { if (!sending) go(1); });
@@ -303,9 +314,13 @@
       }
       return ok;
     }
-    $$('.input', form).forEach(inp => {
+    $$('.input', form).forEach((inp, i, all) => {
       inp.addEventListener('blur', () => validate(inp, true));
       inp.addEventListener('input', () => validate(inp, false));
+      inp.addEventListener('keydown', e => {
+        if (e.key !== 'Enter' || inp.getAttribute('enterkeyhint') !== 'next') return;
+        e.preventDefault(); validate(inp, true); (all[i + 1] || inp).focus();
+      });
     });
 
     form.addEventListener('submit', async e => {
