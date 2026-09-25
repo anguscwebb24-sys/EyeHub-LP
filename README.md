@@ -99,10 +99,10 @@ ticked), `lead_source` (UTM parameters and Facebook click id from the ad), `page
 
 ## Availability shown in the widget
 
-`availability` in `config.js`: business days ahead (10), weekdays only, times 8:30am to 4:00pm AEST, a
+`availability` in `config.js`: clinic days ahead (10), `weekdays` (currently Monday, Wednesday and Friday), `slots` (15-minute times, 9:30am to 4:00pm AEST), a
 `closedDates` list for public holidays (**refresh it every year**; QLD holidays are listed through May 2027) and
-`mockBookedRatio` for the demo effect. Queensland has no daylight saving; all times are labelled AEST. To change
-the times offered, edit `slots` in `app.js` (DEFAULTS at the top).
+`mockBookedRatio` for the demo effect. Queensland has no daylight saving; all times are labelled AEST. Days and times are both
+in `config.js`.
 
 ## Ad message match
 

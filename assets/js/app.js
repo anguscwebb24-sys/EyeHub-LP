@@ -59,6 +59,13 @@
   const pad = n => String(n).padStart(2, '0');
   const iso = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 
+  const dayHint = () => {
+    const w = CONFIG.availability.weekdays;
+    if (w.length === 5 && [1, 2, 3, 4, 5].every(d => w.includes(d))) return "Mon to Fri";
+    const names = w.map(d => DOW[d]);
+    return names.length > 1 ? names.slice(0, -1).join(", ") + " & " + names[names.length - 1] : names[0];
+  };
+
   function businessDays() {
     const out = [];
     const d = new Date();
@@ -138,7 +145,7 @@
       </div>
 
       <div class="pane active" data-pane="1">
-        <div class="field-label"><span id="${uid}-dl">Choose a day</span><span class="hint">Mon to Fri</span></div>
+        <div class="field-label"><span id="${uid}-dl">Choose a day</span><span class="hint">${dayHint()}</span></div>
         <div class="days" role="group" aria-labelledby="${uid}-dl">
           ${days.map((d, i) => `<button type="button" class="day${i === 0 ? ' selected' : ''}" aria-pressed="${i === 0}" aria-label="${d.dowLong} ${d.day} ${d.monLong}" data-key="${d.key}"><small>${d.dow}</small><b>${d.day}</b><em>${d.mon}</em></button>`).join('')}
         </div>
