@@ -1,0 +1,33 @@
+EMAILJS TEMPLATE 2 (optional): auto-reply to the visitor
+Paste into EmailJS > Email Templates > Create New Template, then put its Template ID into
+assets/js/config.js as autoReplyTemplateId.
+
+Settings panel
+  To Email:    {{email}}
+  From Name:   EyeHub
+  From Email:  leave "Use Default Email Address" ticked
+  Reply To:    admin@eyehub.net.au
+
+Subject
+  We have your request, {{first_name}}. EyeHub free online assessment
+
+Content
+------------------------------------------------------------
+Hi {{first_name}},
+
+Thanks for requesting a free online laser vision suitability assessment with EyeHub.
+
+Requested: {{preferred_date}} at {{preferred_time}} (Queensland time)
+
+Our team will call or SMS you on {{phone}} within one business day to confirm the time and send the call details. If that time no longer suits, just reply to this email or call 07 5220 8990.
+
+The assessment is free and there is no obligation. It is a preliminary screening only and does not replace an in-clinic examination.
+
+EyeHub
+Sunshine Coast and Noosa
+eyehub.net.au
+------------------------------------------------------------
+
+Note: on the EmailJS free plan the auto-reply uses the second of the two template slots and one extra
+request per booking (200 requests a month in total). The $9/month Personal plan removes both limits and adds
+domain allow-listing.

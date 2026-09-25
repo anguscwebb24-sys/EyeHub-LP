@@ -1,0 +1,37 @@
+EMAILJS TEMPLATE 1: clinic notification
+Paste into EmailJS > Email Templates > Create New Template.
+
+Settings panel (right-hand side of the template editor)
+  To Email:    admin@eyehub.net.au            (add a second address comma-separated if reception wants a copy)
+  From Name:   EyeHub Website
+  From Email:  leave "Use Default Email Address" ticked
+  Reply To:    {{email}}                      (so reception can hit Reply and it goes straight to the patient)
+
+Subject
+  New free assessment request: {{first_name}} {{last_name}}, {{preferred_datetime}}
+
+Content (plain text is fine)
+------------------------------------------------------------
+A new FREE online laser vision suitability assessment has been requested from the Facebook landing page.
+
+Name:            {{first_name}} {{last_name}}
+Mobile:          {{phone}}
+Email:           {{email}}
+
+Preferred date:  {{preferred_date}}
+Preferred time:  {{preferred_time}}
+
+Wears:           {{about}}
+Page tuned to:   {{tuned}}
+Ticked on page:  {{pain_points}}
+
+Ad / source:     {{lead_source}}
+Submitted:       {{submitted_at}}
+Page:            {{page_url}}
+
+ACTION: book the time in the practice software and confirm with the patient by phone or SMS within one business day.
+------------------------------------------------------------
+
+Variables the page sends (case-sensitive):
+  first_name, last_name, phone, email, preferred_date, preferred_time, preferred_datetime,
+  about, tuned, pain_points, lead_source, page_url, submitted_at
