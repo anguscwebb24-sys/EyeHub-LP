@@ -52,7 +52,7 @@ notes/                      agency notes (research brief, pitch notes). Ignored 
 Every later change is just a commit and push. GitHub Pages caches files for about 10 minutes.
 
 **Before you make it live:** the two `og:` tags in `index.html` already point at `https://laservisionsurgery.net.au/`;
-change them if the domain differs. Bump the `?v=10` on the CSS and JS links whenever you change those files, so
+change them if the domain differs. Bump the `?v=12` on the CSS and JS links whenever you change those files, so
 returning visitors never get stale styling.
 
 ## 2. Wire up EmailJS (about 10 minutes)
