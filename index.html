@@ -32,10 +32,10 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" as="image" href="assets/img/hero-texture.webp" media="(min-width: 981px)">
   <link rel="preload" as="image" href="assets/img/hero-texture-mobile.webp" media="(max-width: 980px)">
-  <link rel="stylesheet" href="assets/css/styles.css?v=18">
+  <link rel="stylesheet" href="assets/css/styles.css?v=19">
   <!-- Your settings (EmailJS keys, phone number, availability) live in assets/js/config.js -->
-  <script src="assets/js/config.js?v=18" defer></script>
-  <script src="assets/js/app.js?v=18" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="assets/js/config.js?v=19" defer></script>
+  <script src="assets/js/app.js?v=19" defer onerror="document.documentElement.classList.remove('js')"></script>
   <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -850,6 +850,46 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
     </div>
   </div>
 
+
+  <!-- privacy notice (opened by any [data-privacy] link) -->
+  <div class="modal privacy-modal" id="privacy-modal" hidden>
+    <div class="modal-bg" data-pclose></div>
+    <div class="modal-box modal-doc" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+      <button type="button" class="modal-x" data-pclose aria-label="Close">×</button>
+      <div class="doc">
+        <span class="eyebrow">EyeHub Laser Vision Specialists</span>
+        <h2 id="privacy-title">Privacy Notice and Consent</h2>
+        <p class="doc-lead">Everything you tell us through this page is confidential. This notice explains what we collect, why we collect it and how it is protected.</p>
+
+        <h3>Who we are</h3>
+        <p>EyeHub Laser Vision Specialists ("EyeHub", "we") is a private-sector healthcare provider located at Unit 1, Building A, 23 Elsa Wilson Drive, Buderim, Queensland 4556. As a private-sector healthcare provider, EyeHub is subject to the Australian Privacy Principles set out in the Privacy Act 1988 (Cth). These govern how we collect, handle, use, disclose and store personal information collected from our patients and from people who enquire with us.</p>
+
+        <h3>What we collect on this page</h3>
+        <p>When you request a free online suitability assessment we collect your name, mobile number, email address and date of birth, your preferred day and time, and any answers you choose to give about your glasses, contact lenses and eyesight. We also record the advertisement or link that brought you to this page and the time of your request. The answers about your eyesight are optional; they help our team prepare for your call.</p>
+
+        <h3>Why we collect it</h3>
+        <p>We use this information only to contact you, confirm your assessment time, conduct the assessment and, if you choose to proceed, to open your patient record. We do not use it for any other purpose. We do not add you to a marketing list, and we do not sell your information or share it with advertisers.</p>
+
+        <h3>Confidentiality</h3>
+        <p>All information you provide is treated as confidential. It is available only to the EyeHub team members who need it to arrange and conduct your assessment, and it is stored in our secure practice systems. Information about your eyesight is health information, which the Privacy Act treats as sensitive information. We collect it only with your consent and use it only for the purpose described above.</p>
+
+        <h3>How your request reaches us</h3>
+        <p>Your request is delivered to our reception team through EmailJS, a secure third-party form delivery service, and may be recorded in the customer management software we use to manage enquiries. These providers process the information on our behalf and are not permitted to use it for their own purposes.</p>
+
+        <h3>Sharing with other health professionals</h3>
+        <p>If you proceed to a consultation, we may need to disclose relevant medical details to other healthcare professionals, such as your optometrist or general practitioner, to obtain an accurate diagnosis or treatment options. We do so only where it is needed for your care or where the law requires it.</p>
+
+        <h3>Your rights</h3>
+        <p>You may ask us at any time to see or correct the information we hold about you, or to delete an enquiry that did not proceed. Call us on <a href="tel:0752208990">07 5220 8990</a> or email <a href="mailto:admin@eyehub.net.au">admin@eyehub.net.au</a>. If you have a concern about how we have handled your information, please raise it with us first. You may also contact the Office of the Australian Information Commissioner.</p>
+
+        <h3>Your consent</h3>
+        <p>By sending a request through this page you consent to EyeHub collecting and using the information described above to arrange and conduct your free online assessment.</p>
+
+        <p class="doc-foot">This notice applies to this page. EyeHub's general terms, including its privacy policy and consent to share information, are published at <a href="https://eyehub.net.au/terms-conditions/" target="_blank" rel="noopener">eyehub.net.au/terms-conditions</a>. Last updated 28 September 2026.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- ================= PRICING ================= -->
   <section class="section on-white" id="pricing">
     <div class="container">
@@ -1037,7 +1077,7 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
       </div>
       <div class="footer-bottom">
         <span>© <span id="year">2026</span> EyeHub · Sunshine Coast &amp; Noosa, Queensland</span>
-        <span><a href="https://eyehub.net.au/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a> · <a href="https://eyehub.net.au" target="_blank" rel="noopener">eyehub.net.au</a></span>
+        <span><a href="https://eyehub.net.au/terms-conditions/" data-privacy>Privacy Notice</a> · <a href="https://eyehub.net.au/terms-conditions/" target="_blank" rel="noopener">Terms</a> · <a href="https://eyehub.net.au" target="_blank" rel="noopener">eyehub.net.au</a></span>
       </div>
     </div>
   </footer>

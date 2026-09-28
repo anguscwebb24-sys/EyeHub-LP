@@ -17,6 +17,7 @@ A new FREE online laser vision suitability assessment has been requested from th
 Name:            {{first_name}} {{last_name}}
 Mobile:          {{phone}}
 Email:           {{email}}
+Date of birth:   {{date_of_birth}}
 
 Preferred date:  {{preferred_date}}
 Preferred time:  {{preferred_time}}
@@ -33,5 +34,5 @@ ACTION: book the time in the practice software and confirm with the patient by p
 ------------------------------------------------------------
 
 Variables the page sends (case-sensitive):
-  first_name, last_name, phone, email, preferred_date, preferred_time, preferred_datetime,
+  first_name, last_name, phone, email, date_of_birth, preferred_date, preferred_time, preferred_datetime,
   about, tuned, pain_points, lead_source, page_url, submitted_at

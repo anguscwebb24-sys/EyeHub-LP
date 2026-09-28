@@ -176,7 +176,8 @@
             ${field('first_name', 'fn', 'First name', 'text', 'given-name', 'enterkeyhint="next"', 'Please enter your first name', false)}
             ${field('last_name', 'ln', 'Last name', 'text', 'family-name', 'enterkeyhint="next"', 'Please enter your last name', false)}
             ${field('phone', 'ph', 'Mobile number', 'tel', 'tel', 'inputmode="tel" enterkeyhint="next"', 'Please enter an Australian mobile number, e.g. 0412 345 678', true)}
-            ${field('email', 'em', 'Email address', 'email', 'email', 'inputmode="email" enterkeyhint="done"', 'Please check your email address', true)}
+            ${field('email', 'em', 'Email address', 'email', 'email', 'inputmode="email" enterkeyhint="next"', 'Please check your email address', true)}
+            ${field('dob', 'dob', 'Date of birth (DD/MM/YYYY)', 'text', 'bday', 'inputmode="numeric" enterkeyhint="done" maxlength="10"', 'Please enter your date of birth as DD/MM/YYYY. The assessment is for adults 18 and over.', true)}
             <div class="full">
               <div class="field-label"><span id="${uid}-al">What best describes you?</span><span class="hint">Optional</span></div>
               <div class="choice-row" data-about role="group" aria-labelledby="${uid}-al">
@@ -192,7 +193,7 @@
           <div class="booking-actions">
             <button type="submit" class="btn btn-primary btn-block btn-lg"><span class="lbl">Book my free online assessment</span><span class="spin"></span>${I.arrow}</button>
           </div>
-          <p class="privacy">${I.lock} We collect your name, mobile, email and optional answer only to arrange your assessment. Your request reaches EyeHub through EmailJS, a third-party form service, and is handled under EyeHub's <a href="https://eyehub.net.au/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>. No marketing list.</p>
+          <p class="privacy">${I.lock} Everything you tell us is confidential. We collect your name, mobile, email, date of birth and answers only to arrange your assessment, and handle them under the Privacy Act 1988 and EyeHub's <a href="https://eyehub.net.au/terms-conditions/" data-privacy>Privacy Notice</a>. No marketing list.</p>
         </form>
       </div>
 
@@ -311,7 +312,20 @@
       last_name: v => v.trim().length >= 2,
       phone: v => /^(?:\+?61|0)4\d{8}$/.test(digits(v)) || /^(?:\+?61|0)[2378]\d{8}$/.test(digits(v)),
       email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+      dob: v => {
+        const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(v.trim());
+        if (!m) return false;
+        const d = new Date(+m[3], +m[2] - 1, +m[1]);
+        if (d.getFullYear() !== +m[3] || d.getMonth() !== +m[2] - 1 || d.getDate() !== +m[1]) return false;
+        const age = (Date.now() - d.getTime()) / 31557600000;
+        return age >= 18 && age <= 110;
+      },
     };
+    // date of birth: digits only, slashes added as you type (works with the numeric keyboard on phones)
+    form.dob.addEventListener('input', () => {
+      const d = form.dob.value.replace(/\D/g, '').slice(0, 8);
+      form.dob.value = d.length > 4 ? `${d.slice(0, 2)}/${d.slice(2, 4)}/${d.slice(4)}` : d.length > 2 ? `${d.slice(0, 2)}/${d.slice(2)}` : d;
+    });
     function validate(input, show) {
       const ok = validators[input.name](input.value);
       const wrap = input.closest('.input-wrap');
@@ -351,6 +365,7 @@
         last_name: form.last_name.value.trim(),
         phone: form.phone.value.trim(),
         email: form.email.value.trim(),
+        date_of_birth: form.dob.value.trim(),
         preferred_date: `${d.dowLong} ${d.day} ${d.monLong} ${d.date.getFullYear()}`,
         preferred_time: labelTime(state.time, state.period) + ' AEST',
         preferred_datetime: when,
@@ -786,6 +801,30 @@
     });
   }
 
+  function initPrivacy() {
+    const modal = $('#privacy-modal');
+    if (!modal) return;
+    let opener = null;
+    const open = from => { opener = from; modal.hidden = false; document.body.style.overflow = 'hidden'; $('.modal-x', modal).focus(); };
+    const close = () => { modal.hidden = true; document.body.style.overflow = ''; if (opener) opener.focus(); };
+    // delegated, so links inside the booking widgets (mounted later) work too; without JS the link opens EyeHub's terms page
+    document.addEventListener('click', e => {
+      const a = e.target.closest('[data-privacy]');
+      if (!a) return;
+      e.preventDefault(); open(a);
+    });
+    $$('[data-pclose]', modal).forEach(c => c.addEventListener('click', close));
+    document.addEventListener('keydown', e => {
+      if (modal.hidden) return;
+      if (e.key === 'Escape') { close(); return; }
+      if (e.key !== 'Tab') return;
+      const f = $$('button, [href]', $('.modal-box', modal));
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  }
+
   function initStickyBar() {
     const bar = $('.sticky-bar');
     const hero = $('#book');
@@ -817,6 +856,7 @@
     initFaq();
     initVideos();
     initReviews();
+    initPrivacy();
     initCtas();
     initStickyBar();
     const y = $('#year'); if (y) y.textContent = new Date().getFullYear();

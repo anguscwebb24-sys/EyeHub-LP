@@ -93,7 +93,7 @@ clinic phone number rather than a false success. Submissions are guarded against
 
 ## 3. What the email contains
 
-`first_name`, `last_name`, `phone`, `email`, `preferred_date`, `preferred_time`, `preferred_datetime`, `about`
+`first_name`, `last_name`, `phone`, `email`, `date_of_birth` (DD/MM/YYYY, adults 18 and over), `preferred_date`, `preferred_time`, `preferred_datetime`, `about`
 (what they wear), `tuned` (their two answers from the top of the page), `pain_points` (the annoyances they
 ticked), `lead_source` (UTM parameters and Facebook click id from the ad), `page_url`, `submitted_at`.
 
@@ -135,8 +135,9 @@ The wider plan (links, directories, press) is in `notes/SEO-PLAN.md`.
 - Add Dr Moorthy's Ahpra registration number to the footer practitioner line.
 - Confirm with the client: enhancement-within-12-months wording, and dated substantiation for "Queensland's
   first" / "only clinic in Queensland" (re-check every 90 days while ads run).
-- Privacy Policy link points to eyehub.net.au/privacy-policy/. The policy should mention that booking requests
-  are transmitted via EmailJS.
+- The Privacy Notice is a pop-up on the page (the `#privacy-modal` block in `index.html`); every "Privacy Notice"
+  link opens it. It names EmailJS and "customer management software" as processors. Have the clinic or its adviser
+  read it before launch. eyehub.net.au/privacy-policy/ does not exist (404); links go to eyehub.net.au/terms-conditions/.
 - Test inside the Facebook and Instagram in-app browsers (the calendar button switches to a Google Calendar link
   there, because those browsers ignore file downloads).
 
