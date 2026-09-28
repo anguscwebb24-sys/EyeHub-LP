@@ -14,7 +14,7 @@ assets/css/styles.css       styling (design tokens pulled from eyehub.net.au), l
 assets/js/config.js         YOUR SETTINGS: EmailJS keys, phone number, availability  <-- the only file to edit
 assets/js/app.js            booking widget, tuner, annoyances, calculator, FAQ, video modal
 assets/img/                 brand assets (logo, Dr Moorthy, ZEISS suite, lifestyle photos, association logos)
-emailjs-templates/          two ready-to-paste EmailJS email templates
+emailjs-templates/          ready-to-paste EmailJS templates (clinic-notification.html is the designed one in use)
 notes/                      agency notes (research brief, pitch notes). Ignored by git, never published.
 .nojekyll                   tells GitHub Pages to serve the files exactly as they are
 ```
