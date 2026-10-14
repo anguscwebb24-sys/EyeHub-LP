@@ -1079,3 +1079,10 @@ h1.eyebrow { font-size: 12px; line-height: 1.5; }
   .doc { padding: 0 20px 36px; }
   .doc h2 { font-size: 1.35rem; }
 }
+
+/* ---------- Required choice row (preferred clinic) ---------- */
+.choice-wrap .err { margin-top: 8px; }
+.choice-wrap.has-error .err { display: block; }
+.choice-wrap.has-error .choice:not(.selected) { border-color: #b8432e; }
+.footer-contact { flex-wrap: wrap; }
+.footer-contact .loc { max-width: 100%; white-space: normal; }

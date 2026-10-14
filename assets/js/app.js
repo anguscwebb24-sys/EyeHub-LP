@@ -126,7 +126,7 @@
      --------------------------------------------------------- */
   function mountBooking(root, idx) {
     const days = businessDays();
-    const state = { day: null, time: null, period: null, about: null };
+    const state = { day: null, time: null, period: null, about: null, clinic: null };
     const uid = `bk${idx}`;
     let sending = false;
     let aboutTouched = false; // once the visitor picks an answer themselves, the page never overrides it
@@ -178,6 +178,15 @@
             ${field('phone', 'ph', 'Mobile number', 'tel', 'tel', 'inputmode="tel" enterkeyhint="next"', 'Please enter an Australian mobile number, e.g. 0412 345 678', true)}
             ${field('email', 'em', 'Email address', 'email', 'email', 'inputmode="email" enterkeyhint="next"', 'Please check your email address', true)}
             ${field('dob', 'dob', 'Date of birth (DD/MM/YYYY)', 'text', 'bday', 'inputmode="numeric" enterkeyhint="done" maxlength="10"', 'Please enter your date of birth as DD/MM/YYYY. The assessment is for adults 18 and over.', true)}
+            <div class="full choice-wrap">
+              <div class="field-label"><span id="${uid}-cl">Preferred clinic</span><span class="hint">Required</span></div>
+              <div class="choice-row" data-clinic role="group" aria-labelledby="${uid}-cl" aria-describedby="${uid}-cl-err">
+                <button type="button" class="choice" aria-pressed="false" data-val="Buderim">Buderim</button>
+                <button type="button" class="choice" aria-pressed="false" data-val="Noosaville">Noosaville</button>
+                <button type="button" class="choice" aria-pressed="false" data-val="Either">Either</button>
+              </div>
+              <span class="err" id="${uid}-cl-err">Please choose the clinic you would prefer</span>
+            </div>
             <div class="full">
               <div class="field-label"><span id="${uid}-al">What best describes you?</span><span class="hint">Optional</span></div>
               <div class="choice-row" data-about role="group" aria-labelledby="${uid}-al">
@@ -300,9 +309,18 @@
       if (!c) return;
       aboutTouched = true;
       const on = !c.classList.contains('selected');
-      $$('.choice', root).forEach(x => { x.classList.remove('selected'); x.setAttribute('aria-pressed', 'false'); });
+      $$('[data-about] .choice', root).forEach(x => { x.classList.remove('selected'); x.setAttribute('aria-pressed', 'false'); });
       if (on) { c.classList.add('selected'); c.setAttribute('aria-pressed', 'true'); }
       state.about = on ? c.dataset.val : null;
+    });
+
+    const clinicRow = $('[data-clinic]', root);
+    clinicRow.addEventListener('click', e => {
+      const c = e.target.closest('.choice');
+      if (!c) return;
+      $$('.choice', clinicRow).forEach(x => { x.classList.toggle('selected', x === c); x.setAttribute('aria-pressed', x === c); });
+      state.clinic = c.dataset.val;
+      clinicRow.parentElement.classList.remove('has-error');
     });
 
     // Live validation
@@ -352,6 +370,12 @@
       const inputs = $$('.input', form);
       const allOk = inputs.map(i => validate(i, true)).every(Boolean);
       if (!allOk) { inputs.find(i => i.classList.contains('invalid')).focus(); return; }
+      if (!state.clinic) {
+        clinicRow.parentElement.classList.add('has-error');
+        clinicRow.scrollIntoView({ block: 'center', behavior: REDUCED ? 'auto' : 'smooth' });
+        $('.choice', clinicRow).focus({ preventScroll: true });
+        return;
+      }
       if (form.bk_hp_x7.value) { // honeypot: a bot does not care about the message, a real person gets the phone number
         msg.className = 'form-msg error';
         msg.innerHTML = `Something went wrong and your request did not send. Please call us on <a href="tel:0752208990"><b>${CONFIG.clinicPhone}</b></a> and we will book you in over the phone.`;
@@ -366,6 +390,7 @@
         phone: form.phone.value.trim(),
         email: form.email.value.trim(),
         date_of_birth: form.dob.value.trim(),
+        preferred_clinic: state.clinic,
         preferred_date: `${d.dowLong} ${d.day} ${d.monLong} ${d.date.getFullYear()}`,
         preferred_time: labelTime(state.time, state.period) + ' AEST',
         preferred_datetime: when,
@@ -412,7 +437,7 @@
       // pre-select "What best describes you?" from what the visitor ticked further up the page
       setAbout(val) {
         if (aboutTouched) return;
-        $$('.choice', root).forEach(x => { const on = x.dataset.val === val; x.classList.toggle('selected', on); x.setAttribute('aria-pressed', on); });
+        $$('[data-about] .choice', root).forEach(x => { const on = x.dataset.val === val; x.classList.toggle('selected', on); x.setAttribute('aria-pressed', on); });
         state.about = val;
       },
     };

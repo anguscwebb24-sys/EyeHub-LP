@@ -32,10 +32,10 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" as="image" href="assets/img/hero-texture.webp" media="(min-width: 981px)">
   <link rel="preload" as="image" href="assets/img/hero-texture-mobile.webp" media="(max-width: 980px)">
-  <link rel="stylesheet" href="assets/css/styles.css?v=19">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20">
   <!-- Your settings (EmailJS keys, phone number, availability) live in assets/js/config.js -->
-  <script src="assets/js/config.js?v=19" defer></script>
-  <script src="assets/js/app.js?v=19" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="assets/js/config.js?v=20" defer></script>
+  <script src="assets/js/app.js?v=20" defer onerror="document.documentElement.classList.remove('js')"></script>
   <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -53,8 +53,10 @@
    "medicalSpecialty": "Ophthalmologic",
    "address": {
     "@type": "PostalAddress",
+    "streetAddress": "Unit 1, Building A, 23 Elsa Wilson Drive",
     "addressLocality": "Buderim",
     "addressRegion": "QLD",
+    "postalCode": "4556",
     "addressCountry": "AU"
    },
    "areaServed": [
@@ -85,10 +87,6 @@
     {
      "@type": "City",
      "name": "Nambour"
-    },
-    {
-     "@type": "City",
-     "name": "Gympie"
     }
    ],
    "founder": {
@@ -102,7 +100,7 @@
     {
      "@type": "MedicalProcedure",
      "name": "SMILE PRO® keyhole laser eye surgery",
-     "description": "Flap-free keyhole laser vision correction for short-sightedness and astigmatism on the ZEISS VisuMax 800. Currently only available in Queensland at EyeHub.",
+     "description": "Flap-free keyhole laser vision correction for short-sightedness and astigmatism on the ZEISS VisuMax 800. EyeHub is the only practice in Queensland with the combined ZEISS VisuMax 800 and MEL 90 platform.",
      "url": "https://eyehub.net.au/our-expertise/refractive-laser/smile-pro/",
      "provider": {
       "@id": "https://laservisionsurgery.net.au/#clinic"
@@ -120,7 +118,7 @@
     {
      "@type": "MedicalProcedure",
      "name": "PRESBYOND® Laser Blended Vision",
-     "description": "Laser treatment on the ZEISS MEL 90 designed to reduce reliance on reading glasses for people over 45. Currently only available in Queensland at EyeHub.",
+     "description": "Laser treatment on the ZEISS MEL 90 designed to reduce reliance on reading glasses for people over 45. EyeHub is the only practice in Queensland with the combined ZEISS VisuMax 800 and MEL 90 platform.",
      "url": "https://eyehub.net.au/our-expertise/refractive-laser/presbyond/",
      "provider": {
       "@id": "https://laservisionsurgery.net.au/#clinic"
@@ -152,6 +150,26 @@
     "priceCurrency": "AUD",
     "url": "https://laservisionsurgery.net.au/#book",
     "availability": "https://schema.org/InStock"
+   }
+  },
+  {
+   "@type": "MedicalClinic",
+   "@id": "https://laservisionsurgery.net.au/#clinic-noosaville",
+   "name": "EyeHub Laser Vision Specialists, Noosaville",
+   "parentOrganization": {
+    "@id": "https://laservisionsurgery.net.au/#clinic"
+   },
+   "url": "https://laservisionsurgery.net.au/",
+   "telephone": "+61752208990",
+   "medicalSpecialty": "Ophthalmologic",
+   "foundingDate": "2026-10-23",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "197 Weyba Road",
+    "addressLocality": "Noosaville",
+    "addressRegion": "QLD",
+    "postalCode": "4566",
+    "addressCountry": "AU"
    }
   },
   {
@@ -602,7 +620,7 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
           <p class="opt-desc">Keyhole laser correction for short-sightedness and astigmatism. A small incision and no corneal flap, which is why it is often considered by people who surf, swim or play sport.</p>
           <ul class="opt-list">
             <li><svg><use href="#i-check"/></svg>No corneal flap, just a keyhole incision a few millimetres wide</li>
-            <li><svg><use href="#i-check"/></svg>Currently only available in Queensland at EyeHub</li>
+            <li><svg><use href="#i-check"/></svg>Only practice in Queensland with the combined ZEISS VisuMax 800 + MEL 90 platform</li>
           </ul>
           <ul class="opt-pills"><li>Short-sight</li><li>Astigmatism</li></ul>
         </article>
@@ -615,7 +633,7 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
           <p class="opt-desc">For the years when reading glasses start following you around. One eye is set for distance, the other for near, and your brain blends the two.</p>
           <ul class="opt-list">
             <li><svg><use href="#i-check"/></svg>Designed to reduce reliance on reading glasses</li>
-            <li><svg><use href="#i-check"/></svg>Currently only available in Queensland at EyeHub</li>
+            <li><svg><use href="#i-check"/></svg>Only practice in Queensland with the combined ZEISS VisuMax 800 + MEL 90 platform</li>
           </ul>
           <ul class="opt-pills"><li>Reading vision</li><li>Age 45+</li></ul>
         </article>
@@ -663,10 +681,10 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
         <div>
           <span class="eyebrow reveal">Why EyeHub</span>
           <h2 class="h2 reveal mt-2" style="--i:1">Queensland's first ZEISS VisuMax 800 and MEL 90 laser suite.</h2>
-          <p class="lead reveal mt-2" style="--i:2">EyeHub was the first clinic in Queensland to put the ZEISS VisuMax 800 and MEL 90 together in one laser suite. Right now it is the only clinic in the state offering both SMILE PRO® and PRESBYOND®.</p>
+          <p class="lead reveal mt-2" style="--i:2">EyeHub was the first clinic in Queensland to put the ZEISS VisuMax 800 and MEL 90 together in one laser suite. It is the only practice in Queensland with the combined ZEISS VisuMax 800 and MEL 90 platform.</p>
           <div class="why-list">
             <div class="why-item reveal" style="--i:3"><svg><use href="#i-star"/></svg><b>Queensland's first</b><p>The ZEISS VisuMax 800 &amp; MEL 90 laser suite. Current-generation ZEISS technology, here on the coast.</p></div>
-            <div class="why-item reveal" style="--i:4"><svg><use href="#i-pin"/></svg><b>Both, in one clinic</b><p>Currently the only Queensland clinic offering SMILE PRO® and PRESBYOND®, so the procedure is matched to your eyes and your age.</p></div>
+            <div class="why-item reveal" style="--i:4"><svg><use href="#i-pin"/></svg><b>Both lasers, one practice</b><p>The only practice in Queensland with the combined ZEISS VisuMax 800 and MEL 90 platform, so SMILE PRO®, LASIK and PRESBYOND® are all matched to your eyes and your age.</p></div>
             <div class="why-item reveal" style="--i:5"><svg><use href="#i-user"/></svg><b>Your surgeon, by name</b><p>Dr Sonia Moorthy: consultant ophthalmologist, RANZCO examiner, fellowships in Singapore and London. You will know who is treating you.</p></div>
             <div class="why-item reveal" style="--i:6"><svg><use href="#i-shield"/></svg><b>12 months of aftercare</b><p>Pre and post-op assessments and a full year of aftercare, in every price.</p></div>
             <div class="why-item reveal" style="--i:7"><svg><use href="#i-card"/></svg><b>Published prices, nothing hidden</b><p>You will know the total before you set foot in the clinic.</p></div>
@@ -862,10 +880,10 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
         <p class="doc-lead">Everything you tell us through this page is confidential. This notice explains what we collect, why we collect it and how it is protected.</p>
 
         <h3>Who we are</h3>
-        <p>EyeHub Laser Vision Specialists ("EyeHub", "we") is a private-sector healthcare provider located at Unit 1, Building A, 23 Elsa Wilson Drive, Buderim, Queensland 4556. As a private-sector healthcare provider, EyeHub is subject to the Australian Privacy Principles set out in the Privacy Act 1988 (Cth). These govern how we collect, handle, use, disclose and store personal information collected from our patients and from people who enquire with us.</p>
+        <p>EyeHub Laser Vision Specialists ("EyeHub", "we") is a private-sector healthcare provider located at Unit 1, Building A, 23 Elsa Wilson Drive, Buderim QLD 4556 (Nucleus Medical Suites) and, from 23 October 2026, at 197 Weyba Road, Noosaville QLD 4566. As a private-sector healthcare provider, EyeHub is subject to the Australian Privacy Principles set out in the Privacy Act 1988 (Cth). These govern how we collect, handle, use, disclose and store personal information collected from our patients and from people who enquire with us.</p>
 
         <h3>What we collect on this page</h3>
-        <p>When you request a free online suitability assessment we collect your name, mobile number, email address and date of birth, your preferred day and time, and any answers you choose to give about your glasses, contact lenses and eyesight. We also record the advertisement or link that brought you to this page and the time of your request. The answers about your eyesight are optional; they help our team prepare for your call.</p>
+        <p>When you request a free online suitability assessment we collect your name, mobile number, email address and date of birth, your preferred clinic, day and time, and any answers you choose to give about your glasses, contact lenses and eyesight. We also record the advertisement or link that brought you to this page and the time of your request. The answers about your eyesight are optional; they help our team prepare for your call.</p>
 
         <h3>Why we collect it</h3>
         <p>We use this information only to contact you, confirm your assessment time, conduct the assessment and, if you choose to proceed, to open your patient record. We do not use it for any other purpose. We do not add you to a marketing list, and we do not sell your information or share it with advertisers.</p>
@@ -976,7 +994,8 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
           <h2 class="h2 reveal mt-2" style="--i:1">Laser vision correction in Buderim, for the Sunshine Coast and Noosa.</h2>
         </div>
         <div class="local-copy reveal" style="--i:2">
-          <p>EyeHub Laser Vision Specialists is an ophthalmologist-led clinic in Buderim on the Sunshine Coast, treating patients from Noosa, Maroochydore, Mooloolaba, Caloundra, Nambour, Gympie and the hinterland. It is home to Queensland's first ZEISS VisuMax 800 and MEL 90 laser suite, and is currently the only clinic in the state offering both SMILE PRO® and PRESBYOND®.</p>
+          <p>EyeHub Laser Vision Specialists is an ophthalmologist-led clinic in Buderim on the Sunshine Coast, treating patients from Noosa, Maroochydore, Mooloolaba, Caloundra, Nambour and the hinterland, with a second clinic opening at Noosaville from 23 October 2026. It is home to Queensland's first ZEISS VisuMax 800 and MEL 90 laser suite, and is the only practice in Queensland with the combined ZEISS VisuMax 800 and MEL 90 platform.</p>
+          <p><b>Buderim:</b> Unit 1, Building A, 23 Elsa Wilson Drive, Buderim QLD 4556 (Nucleus Medical Suites). <b>Noosaville:</b> 197 Weyba Road, Noosaville QLD 4566, from 23 October 2026.</p>
           <p>Laser eye surgery options include SMILE PRO® keyhole laser vision correction, LASIK, and PRESBYOND® Laser Blended Vision for reading glasses, alongside Implantable Contact Lenses (ICL) and Refractive Lens Exchange (RLE) for eyes that are not suited to laser. Every procedure is performed by Dr Sonia Moorthy, consultant ophthalmologist and RANZCO examiner, with pre-operative assessments and 12 months of aftercare included. The first step is a free 15-minute online suitability assessment, from home.</p>
           <p class="local-links">Read more on the EyeHub website:
             <a href="https://eyehub.net.au/laser-vision-correction/" target="_blank" rel="noopener">Laser vision correction</a> ·
@@ -1047,7 +1066,7 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
         <ul class="ok-list reveal" style="--i:3">
           <li><svg><use href="#i-check"/></svg>Free · 15 minutes · online from anywhere</li>
           <li><svg><use href="#i-check"/></svg>Confirmed by the EyeHub team within one business day</li>
-          <li><svg><use href="#i-check"/></svg>Currently Queensland's only clinic offering both SMILE PRO® and PRESBYOND®</li>
+          <li><svg><use href="#i-check"/></svg>The only practice in Queensland with the combined ZEISS VisuMax 800 + MEL 90 platform</li>
         </ul>
       </div>
       <div id="book-bottom" class="reveal-scale">
@@ -1066,12 +1085,13 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
         <div class="footer-contact">
           <a href="tel:0752208990"><svg><use href="#i-phone"/></svg>07 5220 8990</a>
           <a href="mailto:admin@eyehub.net.au"><svg><use href="#i-mail"/></svg>admin@eyehub.net.au</a>
-          <span class="loc"><svg><use href="#i-pin"/></svg>Sunshine Coast &amp; Noosa, QLD</span>
+          <span class="loc"><svg><use href="#i-pin"/></svg>Buderim: Unit 1, Building A, 23 Elsa Wilson Drive, Buderim QLD 4556 (Nucleus Medical Suites)</span>
+          <span class="loc"><svg><use href="#i-pin"/></svg>Noosaville: 197 Weyba Road, Noosaville QLD 4566 (from 23 October 2026)</span>
         </div>
       </div>
       <div class="footer-note">
-        <p>EyeHub Laser Vision Specialists is located in Buderim on the Sunshine Coast, Queensland, and welcomes patients from Noosa, Maroochydore, Mooloolaba, Caloundra, Nambour and Gympie for laser eye surgery, ICL and Refractive Lens Exchange.</p>
-        <p>Laser vision correction and lens procedures are designed to reduce your dependence on glasses or contact lenses. They are not suitable for everyone, and results vary from person to person. Risks include dry eye, glare or halos, infection, delayed healing and under or over-correction, and Dr Moorthy discusses these with you before anything goes ahead. The free online suitability assessment is a 15-minute phone or video call with the EyeHub team for adults 18 and over. It is a preliminary screening only, not a diagnosis or medical advice, and does not replace an in-clinic consultation with full diagnostic scans. Bookings are requests until confirmed by our team. Prices are in Australian dollars, correct at the time of publication, and the surgical consultation deposit is credited to your procedure. No Medicare rebate applies. "Queensland's first" and "only clinic in Queensland" statements were correct as at September 2026 and are reviewed quarterly.</p>
+        <p>EyeHub Laser Vision Specialists is located in Buderim on the Sunshine Coast, Queensland, with a second clinic at Noosaville from 23 October 2026, and welcomes patients from Noosa, Maroochydore, Mooloolaba, Caloundra and Nambour for laser eye surgery, ICL and Refractive Lens Exchange.</p>
+        <p>Laser vision correction and lens procedures are designed to reduce your dependence on glasses or contact lenses. They are not suitable for everyone, and results vary from person to person. Risks include dry eye, glare or halos, infection, delayed healing and under or over-correction, and Dr Moorthy discusses these with you before anything goes ahead. The free online suitability assessment is a 15-minute phone or video call with the EyeHub team for adults 18 and over. It is a preliminary screening only, not a diagnosis or medical advice, and does not replace an in-clinic consultation with full diagnostic scans. Bookings are requests until confirmed by our team. Prices are in Australian dollars, correct at the time of publication, and the surgical consultation deposit is credited to your procedure. No Medicare rebate applies. "Queensland's first" and "only practice in Queensland with the combined ZEISS VisuMax 800 + MEL 90 platform" statements were correct as at October 2026 and are reviewed quarterly.</p>
         <p>Dr Sonia Moorthy, consultant ophthalmologist, registered with the Medical Board of Australia. Member of RANZCO (Royal Australian and New Zealand College of Ophthalmologists), AUSCRS, ESCRS, AAO and ISRS.</p>
         <p>This site is not part of, or endorsed by, Facebook, Instagram or Meta Platforms, Inc. FACEBOOK and INSTAGRAM are trademarks of Meta Platforms, Inc.</p>
       </div>
