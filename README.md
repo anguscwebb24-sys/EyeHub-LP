@@ -93,8 +93,8 @@ clinic phone number rather than a false success. Submissions are guarded against
 
 ## 3. What the email contains
 
-`first_name`, `last_name`, `phone`, `email`, `date_of_birth` (DD/MM/YYYY, adults 18 and over), `preferred_clinic` (Buderim, Noosaville or Either), `preferred_date`, `preferred_time`, `preferred_datetime`, `about`
-(what they wear), `tuned` (their two answers from the top of the page), `pain_points` (the annoyances they
+`first_name`, `last_name`, `phone`, `email`, `date_of_birth` (DD/MM/YYYY, adults 18 and over), `preferred_date`, `preferred_time`, `preferred_datetime`, `about`
+(what they wear), `tuned` (their two answers from the top of the page), `quiz_answers` (the candidate quiz, if taken), `pain_points` (the annoyances they
 ticked), `lead_source` (UTM parameters and Facebook click id from the ad), `page_url`, `submitted_at`.
 
 ## Availability shown in the widget

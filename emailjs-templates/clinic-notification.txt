@@ -21,11 +21,11 @@ Date of birth:   {{date_of_birth}}
 
 Preferred date:  {{preferred_date}}
 Preferred time:  {{preferred_time}}
-Preferred clinic: {{preferred_clinic}}
 
 Wears:           {{about}}
 Page tuned to:   {{tuned}}
 Ticked on page:  {{pain_points}}
+Candidate quiz:  {{quiz_answers}}
 
 Ad / source:     {{lead_source}}
 Submitted:       {{submitted_at}}
@@ -35,5 +35,5 @@ ACTION: book the time in the practice software and confirm with the patient by p
 ------------------------------------------------------------
 
 Variables the page sends (case-sensitive):
-  first_name, last_name, phone, email, date_of_birth, preferred_clinic, preferred_date, preferred_time, preferred_datetime,
-  about, tuned, pain_points, lead_source, page_url, submitted_at
+  first_name, last_name, phone, email, date_of_birth, preferred_date, preferred_time, preferred_datetime,
+  about, tuned, quiz_answers, pain_points, lead_source, page_url, submitted_at

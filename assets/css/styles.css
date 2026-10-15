@@ -1086,3 +1086,53 @@ h1.eyebrow { font-size: 12px; line-height: 1.5; }
 .choice-wrap.has-error .choice:not(.selected) { border-color: #b8432e; }
 .footer-contact { flex-wrap: wrap; }
 .footer-contact .loc { max-width: 100%; white-space: normal; }
+
+/* ---------- Hero proof line ---------- */
+.hero-proof { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin-top: 16px; font-size: 0.88rem; color: var(--ink-mute); }
+.hero-proof b { color: var(--ink); font-weight: 600; margin-right: 3px; }
+.hero-proof .star { color: #8F6A1C; margin-right: 2px; }
+.hero-proof .dot { margin: 0 4px; }
+
+/* ---------- Candidate quiz ---------- */
+.quiz { background: var(--cream); }
+.quiz-card { background: var(--white); border-radius: var(--r-xl); border: 1px solid var(--line); box-shadow: var(--shadow-lg); padding: clamp(24px, 3.5vw, 44px); max-width: 1000px; margin: 0 auto; }
+.quiz-head { max-width: 700px; margin-bottom: 18px; }
+.quiz-head .h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); margin: 12px 0 8px; }
+.quiz-head p { color: var(--ink-soft); }
+.quiz-progress { height: 6px; border-radius: 6px; background: rgba(39, 43, 39, 0.08); overflow: hidden; }
+.quiz-progress span { display: block; height: 100%; width: 0; background: var(--forest); border-radius: 6px; transition: width 0.5s var(--ease); }
+.quiz-q { padding-top: 18px; border-top: 1px solid var(--line); margin-top: 18px; animation: paneIn 0.45s var(--ease); }
+.quiz-q[hidden] { display: none; }
+.quiz .tune-label { font-size: 0.92rem; letter-spacing: 0.02em; text-transform: none; color: var(--ink); line-height: 1.5; }
+.quiz .tune-opts.three { grid-template-columns: repeat(3, 1fr); }
+.quiz .tune-opts.stack .tune-opt { display: block; }
+.quiz-result, .quiz-minor { margin-top: 22px; padding: clamp(18px, 3vw, 28px); border-radius: var(--r-lg); background: rgba(57, 76, 57, 0.07); border: 1px solid rgba(57, 76, 57, 0.16); animation: paneIn 0.45s var(--ease); }
+.quiz-result[hidden], .quiz-minor[hidden] { display: none; }
+.quiz-minor { background: rgba(141, 81, 56, 0.06); border-color: rgba(141, 81, 56, 0.18); }
+.quiz-minor .tune-check.minor { background: var(--rust); }
+.quiz-minor a { color: var(--rust); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.quiz-verdict { display: flex; gap: 14px; align-items: flex-start; }
+.quiz-verdict .tune-check { width: 40px; height: 40px; }
+.quiz-verdict h3 { font-size: clamp(1.3rem, 2.4vw, 1.8rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin: 4px 0 8px; }
+.quiz-verdict p { color: var(--ink-soft); line-height: 1.55; }
+.quiz-lines { margin: 14px 0 0; }
+.quiz-lines li { display: flex; gap: 10px; align-items: flex-start; font-size: 0.95rem; color: var(--ink-soft); padding: 5px 0; line-height: 1.5; }
+.quiz-lines li svg { width: 18px; height: 18px; color: var(--forest); flex: none; margin-top: 3px; }
+.quiz-book { margin-top: 20px; }
+.quiz-book .booking { box-shadow: var(--shadow-md), 0 0 0 1px rgba(39, 43, 39, 0.05); }
+.quiz-reset { display: inline-block; margin-top: 14px; font-size: 0.85rem; color: var(--ink-mute); text-decoration: underline; text-underline-offset: 3px; }
+.quiz-reset:hover { color: var(--ink); }
+
+/* ---------- The three-step journey, compact (success pane and quiz result) ---------- */
+.journey-mini { margin: 18px 0 0; padding: 16px 18px; border-radius: var(--r-md); background: rgba(39, 43, 39, 0.04); text-align: left; }
+.journey-mini .jm-title { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--ink-mute); margin: 0 0 8px; }
+.journey-mini ol { margin: 0; padding-left: 20px; }
+.journey-mini li { font-size: 0.9rem; line-height: 1.5; color: var(--ink-soft); padding: 4px 0; }
+.journey-mini li b { color: var(--ink); font-weight: 600; }
+.quiz-result .journey-mini { background: var(--white); border: 1px solid var(--line); }
+@media (max-width: 640px) {
+  .quiz .tune-opts, .quiz .tune-opts.three { grid-template-columns: 1fr 1fr; }
+  .quiz-verdict { flex-direction: column; gap: 10px; }
+  .quiz-card { padding: 22px 16px; }
+  .hero-proof { font-size: 0.84rem; }
+}

@@ -126,7 +126,7 @@
      --------------------------------------------------------- */
   function mountBooking(root, idx) {
     const days = businessDays();
-    const state = { day: null, time: null, period: null, about: null, clinic: null };
+    const state = { day: null, time: null, period: null, about: null };
     const uid = `bk${idx}`;
     let sending = false;
     let aboutTouched = false; // once the visitor picks an answer themselves, the page never overrides it
@@ -140,9 +140,9 @@
 
     root.innerHTML = `
       <div class="booking-head">
-        <h2>Book your free online assessment</h2>
+        <h2>Find out if you are suitable</h2>
         <span class="free-pill">Free</span>
-        <p>Takes about a minute · confirmed within one business day</p>
+        <p>Free 15-minute online call with a laser surgery coordinator · takes a minute to book · confirmed within one business day</p>
       </div>
       <div class="steps" aria-hidden="true">
         <div class="step-ind active" data-step="1"><span class="n">1</span> Pick a time</div>
@@ -178,15 +178,6 @@
             ${field('phone', 'ph', 'Mobile number', 'tel', 'tel', 'inputmode="tel" enterkeyhint="next"', 'Please enter an Australian mobile number, e.g. 0412 345 678', true)}
             ${field('email', 'em', 'Email address', 'email', 'email', 'inputmode="email" enterkeyhint="next"', 'Please check your email address', true)}
             ${field('dob', 'dob', 'Date of birth (DD/MM/YYYY)', 'text', 'bday', 'inputmode="numeric" enterkeyhint="done" maxlength="10"', 'Please enter your date of birth as DD/MM/YYYY. The assessment is for adults 18 and over.', true)}
-            <div class="full choice-wrap">
-              <div class="field-label"><span id="${uid}-cl">Preferred clinic</span><span class="hint">Required</span></div>
-              <div class="choice-row" data-clinic role="group" aria-labelledby="${uid}-cl" aria-describedby="${uid}-cl-err">
-                <button type="button" class="choice" aria-pressed="false" data-val="Buderim">Buderim</button>
-                <button type="button" class="choice" aria-pressed="false" data-val="Noosaville">Noosaville</button>
-                <button type="button" class="choice" aria-pressed="false" data-val="Either">Either</button>
-              </div>
-              <span class="err" id="${uid}-cl-err">Please choose the clinic you would prefer</span>
-            </div>
             <div class="full">
               <div class="field-label"><span id="${uid}-al">What best describes you?</span><span class="hint">Optional</span></div>
               <div class="choice-row" data-about role="group" aria-labelledby="${uid}-al">
@@ -200,7 +191,7 @@
           <input class="honey" type="text" name="bk_hp_x7" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-msg" data-msg role="alert"></div>
           <div class="booking-actions">
-            <button type="submit" class="btn btn-primary btn-block btn-lg"><span class="lbl">Book my free online assessment</span><span class="spin"></span>${I.arrow}</button>
+            <button type="submit" class="btn btn-primary btn-block btn-lg"><span class="lbl">Book my free suitability check</span><span class="spin"></span>${I.arrow}</button>
           </div>
           <p class="privacy">${I.lock} Everything you tell us is confidential. We collect your name, mobile, email, date of birth and answers only to arrange your assessment, and handle them under the Privacy Act 1988 and EyeHub's <a href="https://eyehub.net.au/terms-conditions/" data-privacy>Privacy Notice</a>. No marketing list.</p>
         </form>
@@ -215,6 +206,14 @@
             <div><span>Requested</span><b data-s-when></b></div>
             <div><span>Where</span><b>Phone or video call, from home</b></div>
             <div><span>Cost</span><b>Free, no obligation</b></div>
+          </div>
+          <div class="journey-mini">
+            <p class="jm-title">What happens from here</p>
+            <ol>
+              <li><b>Free online assessment.</b> A laser surgery coordinator calls at your chosen time, talks through your eyes and your options, and tells you whether you are likely to be suitable.</li>
+              <li><b>In-clinic consultation.</b> Extensive diagnostics and a refraction at Buderim or Noosaville. Dr Sonia Moorthy shows you how your vision could look, explains the procedure fully and answers every question.</li>
+              <li><b>Your surgery date.</b> If you are suitable and ready, we book it. Suitable patients can be glasses-free in as little as two weeks from the first call.</li>
+            </ol>
           </div>
           <ul class="next-steps">
             <li>${I.check}<span>Keep your phone handy: a team member will confirm your time.</span></li>
@@ -292,6 +291,7 @@
     const daysEl = $('.days', root), daysWrap = $('.days-wrap', root);
     const daysEdge = () => daysWrap.classList.toggle('at-end', daysEl.scrollLeft + daysEl.clientWidth >= daysEl.scrollWidth - 4);
     daysEl.addEventListener('scroll', daysEdge, { passive: true });
+    root.addEventListener('booking:shown', daysEdge);
     requestAnimationFrame(daysEdge);
     slotsEl.addEventListener('click', e => {
       const s = e.target.closest('.slot');
@@ -312,15 +312,6 @@
       $$('[data-about] .choice', root).forEach(x => { x.classList.remove('selected'); x.setAttribute('aria-pressed', 'false'); });
       if (on) { c.classList.add('selected'); c.setAttribute('aria-pressed', 'true'); }
       state.about = on ? c.dataset.val : null;
-    });
-
-    const clinicRow = $('[data-clinic]', root);
-    clinicRow.addEventListener('click', e => {
-      const c = e.target.closest('.choice');
-      if (!c) return;
-      $$('.choice', clinicRow).forEach(x => { x.classList.toggle('selected', x === c); x.setAttribute('aria-pressed', x === c); });
-      state.clinic = c.dataset.val;
-      clinicRow.parentElement.classList.remove('has-error');
     });
 
     // Live validation
@@ -370,12 +361,6 @@
       const inputs = $$('.input', form);
       const allOk = inputs.map(i => validate(i, true)).every(Boolean);
       if (!allOk) { inputs.find(i => i.classList.contains('invalid')).focus(); return; }
-      if (!state.clinic) {
-        clinicRow.parentElement.classList.add('has-error');
-        clinicRow.scrollIntoView({ block: 'center', behavior: REDUCED ? 'auto' : 'smooth' });
-        $('.choice', clinicRow).focus({ preventScroll: true });
-        return;
-      }
       if (form.bk_hp_x7.value) { // honeypot: a bot does not care about the message, a real person gets the phone number
         msg.className = 'form-msg error';
         msg.innerHTML = `Something went wrong and your request did not send. Please call us on <a href="tel:0752208990"><b>${CONFIG.clinicPhone}</b></a> and we will book you in over the phone.`;
@@ -390,12 +375,12 @@
         phone: form.phone.value.trim(),
         email: form.email.value.trim(),
         date_of_birth: form.dob.value.trim(),
-        preferred_clinic: state.clinic,
         preferred_date: `${d.dowLong} ${d.day} ${d.monLong} ${d.date.getFullYear()}`,
         preferred_time: labelTime(state.time, state.period) + ' AEST',
         preferred_datetime: when,
         about: state.about || 'Not specified',
         tuned: tunedLabel(),
+        quiz_answers: quizLabel(),
         pain_points: tickedPains(),
         lead_source: leadSource(),
         page_url: location.href,
@@ -694,6 +679,9 @@
     unsure: 'No problem. Working that out is exactly what the free assessment is for.',
   };
   const tunedLabel = () => TUNE.persona ? `${PERSONA_TITLE[TUNE.persona]}${TUNE.rx ? ' · ' + RX_NAME[TUNE.rx] : ''}` : 'Not answered';
+  const QUIZ = {};
+  const QUIZ_LABEL = { age: 'Age', wear: 'Uses', knows: 'Knows about options', eyehub: 'Knew EyeHub offers all five' };
+  const quizLabel = () => Object.keys(QUIZ_LABEL).filter(k => QUIZ[k]).map(k => `${QUIZ_LABEL[k]}: ${QUIZ[k]}`).join(' · ') || 'Not taken';
 
   function initTuner(widgets, pains, matcher) {
     const sec = $('#tune');
@@ -737,6 +725,74 @@
     const params = new URLSearchParams(location.search);
     const pre = params.get('p') || params.get('utm_content');
     if (pre && ABOUT[pre]) { const b = personaBtns.find(x => x.dataset.persona === pre); if (b) b.click(); }
+  }
+
+  function initQuiz(widgets) {
+    const sec = $('#quiz');
+    if (!sec) return;
+    const qs = $$('.quiz-q', sec), bar = $('[data-quiz-bar]', sec), res = $('.quiz-result', sec), minor = $('.quiz-minor', sec);
+    const lines = $('[data-quiz-lines]', sec);
+    const behavior = REDUCED ? 'auto' : 'smooth';
+    const TEXT = {
+      age: {
+        '18 to 39': 'At your age, laser options such as SMILE PRO® and LASIK are usually the first thing we look at, with ICL for very high prescriptions.',
+        '40 to 54': 'From your forties, PRESBYOND® can address reading glasses as well as distance, alongside SMILE PRO® and LASIK.',
+        '55 and over': 'From the mid-fifties, lens-based options such as refractive lens exchange are often considered, sometimes alongside laser.',
+      },
+      wear: {
+        'Glasses': 'Relying on glasses is the most common starting point for our patients.',
+        'Contacts': 'Contact lens wearers are often good candidates, and many are simply tired of the daily routine and the cost.',
+        'Both': 'Juggling glasses and contacts is exactly the situation laser vision correction is designed to end.',
+        'Reading glasses': 'If reading glasses are the main issue, PRESBYOND® Laser Blended Vision is designed for that.',
+      },
+      knows: {
+        'Nothing yet': 'On your free call, the coordinator starts from the beginning and explains your options in plain language.',
+        'A little': 'On your free call, the coordinator builds on what you already know and clears up the rest.',
+        'Quite a lot': 'On your free call, the coordinator can go straight to comparing the procedures for your eyes.',
+      },
+      eyehub: {
+        'Yes': 'Because all five options are available at EyeHub, the procedure is chosen to suit your eyes rather than being the only one on offer.',
+        'Some of it': 'All five options are available at EyeHub on the Sunshine Coast, so the procedure is chosen to suit your eyes.',
+        'No, news to me': 'All five options are available at EyeHub on the Sunshine Coast, so the procedure is chosen to suit your eyes, not the other way round.',
+      },
+    };
+    const headerH = () => (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 64) + 12;
+    const scrollTo = el => window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - headerH(), behavior });
+    const progress = n => { bar.style.width = `${Math.min(4, n) / 4 * 100}%`; };
+    const reveal = n => { qs.forEach(q => { q.hidden = +q.dataset.qz > n; }); };
+    const finish = () => {
+      const items = ['age', 'wear', 'knows', 'eyehub'].map(k => TEXT[k][QUIZ[k]]).filter(Boolean);
+      lines.innerHTML = items.map(t => `<li>${I.check}<span>${t}</span></li>`).join('');
+      minor.hidden = true; res.hidden = false; progress(4);
+      $$('[data-booking]', res).forEach(b => b.dispatchEvent(new Event('booking:shown')));
+      setTimeout(() => scrollTo(res), 60);
+    };
+    qs.forEach(q => $$('.tune-opt', q).forEach(b => b.addEventListener('click', () => {
+      const key = q.dataset.key, val = b.dataset.val, n = +q.dataset.qz;
+      QUIZ[key] = val;
+      $$('.tune-opt', q).forEach(x => x.setAttribute('aria-pressed', x === b));
+      // the quiz's "what do you use" answer also tunes the rest of the page and the booking form, like the tuner above
+      if (key === 'wear' && b.dataset.persona) {
+        const t = $('#tune [data-persona="' + b.dataset.persona + '"]');
+        if (t && t.getAttribute('aria-pressed') !== 'true') t.click();
+      }
+      if (key === 'age' && val === 'Under 18') {
+        reveal(1); res.hidden = true; minor.hidden = false; progress(4);
+        setTimeout(() => minor.scrollIntoView({ block: 'nearest', behavior }), 60);
+        return;
+      }
+      minor.hidden = true;
+      progress(n);
+      if (n < 4) { reveal(n + 1); setTimeout(() => qs[n].scrollIntoView({ block: 'nearest', behavior }), 60); }
+      else finish();
+    })));
+    $('[data-quiz-reset]', sec).addEventListener('click', () => {
+      Object.keys(QUIZ).forEach(k => delete QUIZ[k]);
+      $$('.tune-opt', sec).forEach(x => x.setAttribute('aria-pressed', 'false'));
+      res.hidden = true; minor.hidden = true; reveal(1); progress(0);
+      scrollTo(sec.querySelector('.quiz-card'));
+      $('.tune-opt', qs[0]).focus({ preventScroll: true });
+    });
   }
 
   function initFaq() {
@@ -852,18 +908,15 @@
 
   function initStickyBar() {
     const bar = $('.sticky-bar');
-    const hero = $('#book');
-    const bottom = $('#book-bottom');
-    if (!bar || !hero || !('IntersectionObserver' in window)) return;
+    const cards = $$('#book, #book-quiz, #book-bottom');
+    if (!bar || !cards.length || !('IntersectionObserver' in window)) return;
+    const vis = {};
     const io = new IntersectionObserver(entries => {
-      // show once the hero booking card has scrolled out of view, hide again when the bottom card is visible
-      const vis = {};
-      entries.forEach(en => vis[en.target.id] = en.isIntersecting);
-      if ('book' in vis) bar.dataset.heroVisible = vis.book;
-      if ('book-bottom' in vis) bar.dataset.bottomVisible = vis['book-bottom'];
-      bar.classList.toggle('show', bar.dataset.heroVisible === 'false' && bar.dataset.bottomVisible !== 'true');
+      // show once the hero booking card has scrolled out of view, hide again while any booking card is on screen
+      entries.forEach(en => { vis[en.target.id] = en.isIntersecting; });
+      bar.classList.toggle('show', vis.book === false && !Object.values(vis).some(Boolean));
     }, { threshold: 0, rootMargin: '-64px 0px 0px 0px' }); // any part of a booking card on screen (below the header) hides the bar
-    io.observe(hero); if (bottom) io.observe(bottom);
+    cards.forEach(c => io.observe(c));
   }
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -878,6 +931,7 @@
     const pains = initPains(widgets);
     const matcher = initMatcher();
     initTuner(widgets, pains, matcher);
+    initQuiz(widgets);
     initFaq();
     initVideos();
     initReviews();
