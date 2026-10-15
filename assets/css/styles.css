@@ -1258,3 +1258,11 @@ h1.eyebrow { font-size: 12px; line-height: 1.5; }
   .faq-more { flex-direction: column; align-items: flex-start; }
   .faq-more .btn { width: 100%; }
 }
+
+/* ---------- Finance partner logos ---------- */
+.fin-logos { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 14px; }
+.fin-label { font-size: 0.8rem; color: var(--ink-mute); margin-right: 2px; }
+.fin-logo { display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border-radius: var(--r-pill); background: var(--white); border: 1px solid var(--line); }
+.fin-logo img { display: block; width: auto; }
+.fin-logo img[alt="MediPay"] { height: 26px; }
+.fin-logo img[alt="Afterpay"] { height: 20px; }
