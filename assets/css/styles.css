@@ -1275,3 +1275,6 @@ h1.eyebrow { font-size: 12px; line-height: 1.5; }
 @media (max-width: 640px) { .fin-logo svg[aria-label="Zip"] { height: 18px; } .fin-logo svg[aria-label="Latitude"] { height: 16px; } }
 /* ---------- One page background (#F5F3EF) everywhere except the green and dark blocks; cards go white on it ---------- */
 .benefit, html[data-persona="readers"] .benefit[data-for="readers"] { background: var(--white); box-shadow: var(--shadow-sm); }
+/* ---------- Why EyeHub photo: Dr Moorthy at the laser; keep the surgeon and the patient's face in the crop ---------- */
+.why-media img { object-position: 42% 50%; }
+@media (max-width: 980px) { .why-media img { object-position: 45% 50%; } }
