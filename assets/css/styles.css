@@ -1266,3 +1266,10 @@ h1.eyebrow { font-size: 12px; line-height: 1.5; }
 .fin-logo img { display: block; width: auto; }
 .fin-logo img[alt="MediPay"] { height: 26px; }
 .fin-logo img[alt="Afterpay"] { height: 20px; }
+.fin-logo img[alt="Zip"] { height: 20px; }
+.fin-logo img[alt="Latitude"] { height: 18px; }
+@media (max-width: 640px) { .fin-logos { gap: 8px; } .fin-logo { height: 40px; padding: 0 13px; } .fin-logo img[alt="MediPay"] { height: 22px; } .fin-logo img[alt="Afterpay"] { height: 18px; } .fin-logo img[alt="Zip"] { height: 18px; } .fin-logo img[alt="Latitude"] { height: 16px; } }
+.fin-logo svg { display: block; width: auto; }
+.fin-logo svg[aria-label="Zip"] { height: 20px; }
+.fin-logo svg[aria-label="Latitude"] { height: 18px; }
+@media (max-width: 640px) { .fin-logo svg[aria-label="Zip"] { height: 18px; } .fin-logo svg[aria-label="Latitude"] { height: 16px; } }

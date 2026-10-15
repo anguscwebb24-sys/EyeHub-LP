@@ -215,11 +215,6 @@
               <li class="jstep" style="--j:2"><span class="jic"><svg><use href="#i-noglasses"/></svg></span><div><b>Out of glasses</b><p>If you are suitable and keen, we book your surgery. You can be out of glasses in as little as two weeks from that first call.</p></div></li>
             </ol>
           </div>
-          <ul class="next-steps">
-            <li>${I.check}<span>Keep your phone handy: a team member will confirm your time.</span></li>
-            <li>${I.check}<span>If you have a recent glasses or contact lens prescription, have it nearby for the call. Not essential.</span></li>
-            <li>${I.check}<span>Questions before then? Call <a href="tel:0752208990"><b>${CONFIG.clinicPhone}</b></a>.</span></li>
-          </ul>
           <div class="booking-actions">
             <button type="button" class="btn btn-ghost btn-block" data-ics>${I.download}<span class="lbl">Add to my calendar</span></button>
           </div>
