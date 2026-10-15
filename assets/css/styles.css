@@ -1209,9 +1209,9 @@ h1.eyebrow { font-size: 12px; line-height: 1.5; }
 @media (max-width: 640px) { .gpill { font-size: 0.84rem; padding: 7px 12px 7px 9px; } .finance-line { padding: 14px; } }
 
 /* ---------- v7: beige and grey backgrounds, hero proof row, pricing notes, FAQ, clinics ---------- */
-:root { --cream-2: #ECE9E2; }
-.on-white { background: var(--cream-2); }
-.local { background: var(--cream-2); }
+:root { --cream-2: var(--cream); }
+.on-white { background: var(--cream); }
+.local { background: var(--cream); }
 .proof-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
 .proof-row .gpill { margin-top: 0; }
 .gpill .d { width: 20px; height: 20px; border-radius: 6px; background: var(--charcoal); color: var(--cream); font-size: 11px; font-weight: 700; display: grid; place-items: center; flex: none; }
@@ -1273,3 +1273,5 @@ h1.eyebrow { font-size: 12px; line-height: 1.5; }
 .fin-logo svg[aria-label="Zip"] { height: 20px; }
 .fin-logo svg[aria-label="Latitude"] { height: 18px; }
 @media (max-width: 640px) { .fin-logo svg[aria-label="Zip"] { height: 18px; } .fin-logo svg[aria-label="Latitude"] { height: 16px; } }
+/* ---------- One page background (#F5F3EF) everywhere except the green and dark blocks; cards go white on it ---------- */
+.benefit, html[data-persona="readers"] .benefit[data-for="readers"] { background: var(--white); box-shadow: var(--shadow-sm); }
