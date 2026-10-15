@@ -126,7 +126,7 @@
      --------------------------------------------------------- */
   function mountBooking(root, idx) {
     const days = businessDays();
-    const state = { day: null, time: null, period: null, about: null };
+    const state = { day: null, time: null, period: null, about: null, knows: null };
     const uid = `bk${idx}`;
     let sending = false;
     let aboutTouched = false; // once the visitor picks an answer themselves, the page never overrides it
@@ -187,6 +187,14 @@
                 <button type="button" class="choice" aria-pressed="false" data-val="I am over 45 and use reading glasses">Reading glasses (45+)</button>
               </div>
             </div>
+            <div class="full">
+              <div class="field-label"><span id="${uid}-kl">How much do you already know about your options?</span><span class="hint">Optional</span></div>
+              <div class="choice-row" data-knows role="group" aria-labelledby="${uid}-kl">
+                <button type="button" class="choice" aria-pressed="false" data-val="Nothing yet">Nothing yet</button>
+                <button type="button" class="choice" aria-pressed="false" data-val="A little">A little</button>
+                <button type="button" class="choice" aria-pressed="false" data-val="Quite a lot">Quite a lot</button>
+              </div>
+            </div>
           </div>
           <input class="honey" type="text" name="bk_hp_x7" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-msg" data-msg role="alert"></div>
@@ -210,9 +218,9 @@
           <div class="journey-mini">
             <p class="jm-title">What happens from here</p>
             <ol>
-              <li><b>Free online assessment.</b> A laser surgery coordinator calls at your chosen time, talks through your eyes and your options, and tells you whether you are likely to be suitable.</li>
-              <li><b>In-clinic consultation.</b> Extensive diagnostics and a refraction at Buderim or Noosaville. Dr Sonia Moorthy shows you how your vision could look, explains the procedure fully and answers every question.</li>
-              <li><b>Your surgery date.</b> If you are suitable and ready, we book it. Suitable patients can be glasses-free in as little as two weeks from the first call.</li>
+              <li><b>Your free online assessment.</b> One of our laser surgery coordinators calls at your chosen time, asks about your eyes and what you want from them, and tells you honestly whether you are likely to be suitable.</li>
+              <li><b>In clinic, at Buderim or Noosaville.</b> Extensive diagnostic eye tests make sure the procedure is matched to you. Dr Sonia Moorthy talks you through it, answers every question, and you get to experience what your vision will look like afterwards.</li>
+              <li><b>Out of glasses.</b> If you are suitable and keen, we book your surgery. You can be out of glasses in as little as two weeks from that first call.</li>
             </ol>
           </div>
           <ul class="next-steps">
@@ -314,6 +322,16 @@
       state.about = on ? c.dataset.val : null;
     });
 
+    const knowsRow = $('[data-knows]', root);
+    knowsRow.addEventListener('click', e => {
+      const c = e.target.closest('.choice');
+      if (!c) return;
+      const on = !c.classList.contains('selected');
+      $$('.choice', knowsRow).forEach(x => { x.classList.remove('selected'); x.setAttribute('aria-pressed', 'false'); });
+      if (on) { c.classList.add('selected'); c.setAttribute('aria-pressed', 'true'); }
+      state.knows = on ? c.dataset.val : null;
+    });
+
     // Live validation
     const digits = v => v.replace(/[\s()-]/g, '');
     const validators = {
@@ -379,8 +397,7 @@
         preferred_time: labelTime(state.time, state.period) + ' AEST',
         preferred_datetime: when,
         about: state.about || 'Not specified',
-        tuned: tunedLabel(),
-        quiz_answers: quizLabel(),
+        tuned: tunedLabel() + (state.knows ? ` · Knows about options: ${state.knows}` : ''),
         pain_points: tickedPains(),
         lead_source: leadSource(),
         page_url: location.href,
@@ -679,9 +696,6 @@
     unsure: 'No problem. Working that out is exactly what the free assessment is for.',
   };
   const tunedLabel = () => TUNE.persona ? `${PERSONA_TITLE[TUNE.persona]}${TUNE.rx ? ' · ' + RX_NAME[TUNE.rx] : ''}` : 'Not answered';
-  const QUIZ = {};
-  const QUIZ_LABEL = { age: 'Age', wear: 'Uses', knows: 'Knows about options', eyehub: 'Knew EyeHub offers all five' };
-  const quizLabel = () => Object.keys(QUIZ_LABEL).filter(k => QUIZ[k]).map(k => `${QUIZ_LABEL[k]}: ${QUIZ[k]}`).join(' · ') || 'Not taken';
 
   function initTuner(widgets, pains, matcher) {
     const sec = $('#tune');
@@ -702,7 +716,7 @@
       const mrx = rx === 'unsure' ? (persona === 'readers' ? 'reading' : null) : rx;
       if (matcher) matcher.select(mrx, 'Based on what you told us, these are often considered. Tap another to compare.');
       title.textContent = `Got it. ${PERSONA_TITLE[persona]}, ${RX_NAME[rx]}.`;
-      sub.textContent = `${RX_TEXT[mrx || rx]} The annoyances list and the procedure guide below are now set to you.`;
+      sub.textContent = `${RX_TEXT[mrx || rx]} The hassles and the options below are now set to your eyes.`;
       res.hidden = false;
     };
     personaBtns.forEach(b => b.addEventListener('click', () => {
@@ -725,74 +739,6 @@
     const params = new URLSearchParams(location.search);
     const pre = params.get('p') || params.get('utm_content');
     if (pre && ABOUT[pre]) { const b = personaBtns.find(x => x.dataset.persona === pre); if (b) b.click(); }
-  }
-
-  function initQuiz(widgets) {
-    const sec = $('#quiz');
-    if (!sec) return;
-    const qs = $$('.quiz-q', sec), bar = $('[data-quiz-bar]', sec), res = $('.quiz-result', sec), minor = $('.quiz-minor', sec);
-    const lines = $('[data-quiz-lines]', sec);
-    const behavior = REDUCED ? 'auto' : 'smooth';
-    const TEXT = {
-      age: {
-        '18 to 39': 'At your age, laser options such as SMILE PRO® and LASIK are usually the first thing we look at, with ICL for very high prescriptions.',
-        '40 to 54': 'From your forties, PRESBYOND® can address reading glasses as well as distance, alongside SMILE PRO® and LASIK.',
-        '55 and over': 'From the mid-fifties, lens-based options such as refractive lens exchange are often considered, sometimes alongside laser.',
-      },
-      wear: {
-        'Glasses': 'Relying on glasses is the most common starting point for our patients.',
-        'Contacts': 'Contact lens wearers are often good candidates, and many are simply tired of the daily routine and the cost.',
-        'Both': 'Juggling glasses and contacts is exactly the situation laser vision correction is designed to end.',
-        'Reading glasses': 'If reading glasses are the main issue, PRESBYOND® Laser Blended Vision is designed for that.',
-      },
-      knows: {
-        'Nothing yet': 'On your free call, the coordinator starts from the beginning and explains your options in plain language.',
-        'A little': 'On your free call, the coordinator builds on what you already know and clears up the rest.',
-        'Quite a lot': 'On your free call, the coordinator can go straight to comparing the procedures for your eyes.',
-      },
-      eyehub: {
-        'Yes': 'Because all five options are available at EyeHub, the procedure is chosen to suit your eyes rather than being the only one on offer.',
-        'Some of it': 'All five options are available at EyeHub on the Sunshine Coast, so the procedure is chosen to suit your eyes.',
-        'No, news to me': 'All five options are available at EyeHub on the Sunshine Coast, so the procedure is chosen to suit your eyes, not the other way round.',
-      },
-    };
-    const headerH = () => (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 64) + 12;
-    const scrollTo = el => window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - headerH(), behavior });
-    const progress = n => { bar.style.width = `${Math.min(4, n) / 4 * 100}%`; };
-    const reveal = n => { qs.forEach(q => { q.hidden = +q.dataset.qz > n; }); };
-    const finish = () => {
-      const items = ['age', 'wear', 'knows', 'eyehub'].map(k => TEXT[k][QUIZ[k]]).filter(Boolean);
-      lines.innerHTML = items.map(t => `<li>${I.check}<span>${t}</span></li>`).join('');
-      minor.hidden = true; res.hidden = false; progress(4);
-      $$('[data-booking]', res).forEach(b => b.dispatchEvent(new Event('booking:shown')));
-      setTimeout(() => scrollTo(res), 60);
-    };
-    qs.forEach(q => $$('.tune-opt', q).forEach(b => b.addEventListener('click', () => {
-      const key = q.dataset.key, val = b.dataset.val, n = +q.dataset.qz;
-      QUIZ[key] = val;
-      $$('.tune-opt', q).forEach(x => x.setAttribute('aria-pressed', x === b));
-      // the quiz's "what do you use" answer also tunes the rest of the page and the booking form, like the tuner above
-      if (key === 'wear' && b.dataset.persona) {
-        const t = $('#tune [data-persona="' + b.dataset.persona + '"]');
-        if (t && t.getAttribute('aria-pressed') !== 'true') t.click();
-      }
-      if (key === 'age' && val === 'Under 18') {
-        reveal(1); res.hidden = true; minor.hidden = false; progress(4);
-        setTimeout(() => minor.scrollIntoView({ block: 'nearest', behavior }), 60);
-        return;
-      }
-      minor.hidden = true;
-      progress(n);
-      if (n < 4) { reveal(n + 1); setTimeout(() => qs[n].scrollIntoView({ block: 'nearest', behavior }), 60); }
-      else finish();
-    })));
-    $('[data-quiz-reset]', sec).addEventListener('click', () => {
-      Object.keys(QUIZ).forEach(k => delete QUIZ[k]);
-      $$('.tune-opt', sec).forEach(x => x.setAttribute('aria-pressed', 'false'));
-      res.hidden = true; minor.hidden = true; reveal(1); progress(0);
-      scrollTo(sec.querySelector('.quiz-card'));
-      $('.tune-opt', qs[0]).focus({ preventScroll: true });
-    });
   }
 
   function initFaq() {
@@ -931,7 +877,6 @@
     const pains = initPains(widgets);
     const matcher = initMatcher();
     initTuner(widgets, pains, matcher);
-    initQuiz(widgets);
     initFaq();
     initVideos();
     initReviews();
