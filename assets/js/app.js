@@ -126,7 +126,7 @@
      --------------------------------------------------------- */
   function mountBooking(root, idx) {
     const days = businessDays();
-    const state = { day: null, time: null, period: null, about: null, knows: null };
+    const state = { day: null, time: null, period: null, about: null };
     const uid = `bk${idx}`;
     let sending = false;
     let aboutTouched = false; // once the visitor picks an answer themselves, the page never overrides it
@@ -187,14 +187,6 @@
                 <button type="button" class="choice" aria-pressed="false" data-val="I am over 45 and use reading glasses">Reading glasses (45+)</button>
               </div>
             </div>
-            <div class="full">
-              <div class="field-label"><span id="${uid}-kl">How much do you already know about your options?</span><span class="hint">Optional</span></div>
-              <div class="choice-row" data-knows role="group" aria-labelledby="${uid}-kl">
-                <button type="button" class="choice" aria-pressed="false" data-val="Nothing yet">Nothing yet</button>
-                <button type="button" class="choice" aria-pressed="false" data-val="A little">A little</button>
-                <button type="button" class="choice" aria-pressed="false" data-val="Quite a lot">Quite a lot</button>
-              </div>
-            </div>
           </div>
           <input class="honey" type="text" name="bk_hp_x7" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-msg" data-msg role="alert"></div>
@@ -215,12 +207,12 @@
             <div><span>Where</span><b>Phone or video call, from home</b></div>
             <div><span>Cost</span><b>Free, no obligation</b></div>
           </div>
-          <div class="journey-mini">
+          <div class="journey">
             <p class="jm-title">What happens from here</p>
-            <ol>
-              <li><b>Your free online assessment.</b> One of our laser surgery coordinators calls at your chosen time, asks about your eyes and what you want from them, and tells you honestly whether you are likely to be suitable.</li>
-              <li><b>In clinic, at Buderim or Noosaville.</b> Extensive diagnostic eye tests make sure the procedure is matched to you. Dr Sonia Moorthy talks you through it, answers every question, and you get to experience what your vision will look like afterwards.</li>
-              <li><b>Out of glasses.</b> If you are suitable and keen, we book your surgery. You can be out of glasses in as little as two weeks from that first call.</li>
+            <ol class="jsteps">
+              <li class="jstep" style="--j:0"><span class="jic"><svg><use href="#i-phone"/></svg></span><div><b>Your free online assessment</b><p>One of our laser surgery coordinators calls at your chosen time, asks about your eyes and what you want from them, and tells you honestly whether you are likely to be suitable.</p></div></li>
+              <li class="jstep" style="--j:1"><span class="jic"><svg><use href="#p-smile"/></svg></span><div><b>In clinic, at Buderim or Noosaville</b><p>Extensive diagnostic eye tests make sure the procedure is matched to you. Dr Sonia Moorthy talks you through it, answers every question, and you get to experience what your vision will look like afterwards.</p></div></li>
+              <li class="jstep" style="--j:2"><span class="jic"><svg><use href="#i-noglasses"/></svg></span><div><b>Out of glasses</b><p>If you are suitable and keen, we book your surgery. You can be out of glasses in as little as two weeks from that first call.</p></div></li>
             </ol>
           </div>
           <ul class="next-steps">
@@ -322,16 +314,6 @@
       state.about = on ? c.dataset.val : null;
     });
 
-    const knowsRow = $('[data-knows]', root);
-    knowsRow.addEventListener('click', e => {
-      const c = e.target.closest('.choice');
-      if (!c) return;
-      const on = !c.classList.contains('selected');
-      $$('.choice', knowsRow).forEach(x => { x.classList.remove('selected'); x.setAttribute('aria-pressed', 'false'); });
-      if (on) { c.classList.add('selected'); c.setAttribute('aria-pressed', 'true'); }
-      state.knows = on ? c.dataset.val : null;
-    });
-
     // Live validation
     const digits = v => v.replace(/[\s()-]/g, '');
     const validators = {
@@ -397,7 +379,7 @@
         preferred_time: labelTime(state.time, state.period) + ' AEST',
         preferred_datetime: when,
         about: state.about || 'Not specified',
-        tuned: tunedLabel() + (state.knows ? ` · Knows about options: ${state.knows}` : ''),
+        tuned: tunedLabel(),
         pain_points: tickedPains(),
         lead_source: leadSource(),
         page_url: location.href,
