@@ -140,9 +140,9 @@
 
     root.innerHTML = `
       <div class="booking-head">
-        <h2>Find out if you are suitable</h2>
+        <h2>Find out if you are likely to be suitable</h2>
         <span class="free-pill">Free</span>
-        <p>Free 15-minute online call with a laser surgery coordinator · takes a minute to book · confirmed within one business day</p>
+        <p>Free 15-minute video call with a laser surgery coordinator · takes a minute to book · confirmed within one business day</p>
       </div>
       <div class="steps" aria-hidden="true">
         <div class="step-ind active" data-step="1"><span class="n">1</span> Pick a time</div>
@@ -184,7 +184,7 @@
                 <button type="button" class="choice" aria-pressed="false" data-val="I wear glasses">Glasses</button>
                 <button type="button" class="choice" aria-pressed="false" data-val="I wear contact lenses">Contacts</button>
                 <button type="button" class="choice" aria-pressed="false" data-val="I wear both glasses and contacts">Both</button>
-                <button type="button" class="choice" aria-pressed="false" data-val="I am over 45 and use reading glasses">Reading glasses (45+)</button>
+                <button type="button" class="choice" aria-pressed="false" data-val="I am over 45 and use reading glasses">Reading glasses</button>
               </div>
             </div>
           </div>
@@ -204,15 +204,15 @@
           <p>Our team will call or SMS you from ${CONFIG.clinicPhone} within one business day to confirm your time and send the call details. Save the number so you know it is us.</p>
           <div class="summary">
             <div><span>Requested</span><b data-s-when></b></div>
-            <div><span>Where</span><b>Phone or video call, from home</b></div>
+            <div><span>Where</span><b>Video call, from home</b></div>
             <div><span>Cost</span><b>Free, no obligation</b></div>
           </div>
           <div class="journey">
             <p class="jm-title">What happens from here</p>
             <ol class="jsteps">
-              <li class="jstep" style="--j:0"><span class="jic"><svg><use href="#i-phone"/></svg></span><div><b>Your free online assessment</b><p>One of our laser surgery coordinators calls at your chosen time, asks about your eyes and what you want from them, and tells you honestly whether you are likely to be suitable.</p></div></li>
-              <li class="jstep" style="--j:1"><span class="jic"><svg><use href="#p-smile"/></svg></span><div><b>In clinic, at Buderim or Noosaville</b><p>Extensive diagnostic eye tests make sure the procedure is matched to you. Dr Sonia Moorthy talks you through it, answers every question, and you get to experience what your vision will look like afterwards.</p></div></li>
-              <li class="jstep" style="--j:2"><span class="jic"><svg><use href="#i-noglasses"/></svg></span><div><b>Out of glasses</b><p>If you are suitable and keen, we book your surgery. You can be out of glasses in as little as two weeks from that first call.</p></div></li>
+              <li class="jstep" style="--j:0"><span class="jic"><svg><use href="#i-phone"/></svg></span><div><b>Your free online assessment</b><p>One of our laser surgery coordinators joins you on a video call at your chosen time, asks about your eyes and what you want from them, and tells you honestly whether you are likely to be suitable.</p></div></li>
+              <li class="jstep" style="--j:1"><span class="jic"><svg><use href="#p-smile"/></svg></span><div><b>In clinic, at Buderim or Noosaville</b><p>A $100 deposit (redeemable against your surgery) books your in-person assessment. Extensive diagnostic eye tests check your suitability, and you meet Dr Sonia Moorthy, who goes through your options and answers every question.</p></div></li>
+              <li class="jstep" style="--j:2"><span class="jic"><svg><use href="#i-noglasses"/></svg></span><div><b>Booking your surgery</b><p>If you decide to go ahead, a $2,000 surgery deposit books your surgery date, and the balance is normally due one week before surgery.</p></div></li>
             </ol>
           </div>
           <div class="booking-actions">
@@ -221,7 +221,7 @@
         </div>
       </div>
 
-      <p class="bk-terms">Free 15-minute phone or video call with the EyeHub team, for adults 18 and over. A preliminary screening, not a diagnosis: suitability is confirmed at an in-clinic consultation, which carries a small deposit credited to your procedure. No obligation. Times are requests until confirmed.</p>
+      <p class="bk-terms">Free 15-minute video call with the EyeHub team, for adults 18 and over. A preliminary screening, not a diagnosis: suitability is confirmed at an in-clinic consultation, which carries a $100 deposit (redeemable against your surgery). No obligation. Times are requests until confirmed.</p>
     `;
 
     const panes = $$('.pane', root);
@@ -393,7 +393,7 @@
           const [Y, M, D] = d.key.split('-').map(Number);
           const st = new Date(Date.UTC(Y, M - 1, D, h - 10, m)), en = new Date(st.getTime() + 15 * 60000);
           const z = x => x.toISOString().replace(/[-:]|\.\d{3}/g, '');
-          icsBtn.onclick = () => window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent('EyeHub free online suitability assessment (requested)') + '&dates=' + z(st) + '/' + z(en) + '&details=' + encodeURIComponent('15-minute phone or video call with the EyeHub team. Pending confirmation by phone or SMS. Questions: 07 5220 8990'), '_blank', 'noopener');
+          icsBtn.onclick = () => window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent('EyeHub free online suitability assessment (requested)') + '&dates=' + z(st) + '/' + z(en) + '&details=' + encodeURIComponent('15-minute video call with the EyeHub team. Pending confirmation by phone or SMS. Questions: 07 5220 8990'), '_blank', 'noopener');
         } else {
           icsBtn.onclick = () => downloadIcs(d, state);
         }
@@ -481,7 +481,7 @@
     const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//EyeHub//Free Assessment//EN', 'BEGIN:VEVENT',
       `UID:${Date.now()}@eyehub.net.au`, `DTSTAMP:${stamp(new Date())}`, `DTSTART:${stamp(start)}`, `DTEND:${stamp(end)}`,
       'SUMMARY:EyeHub free online suitability assessment (requested)',
-      'DESCRIPTION:15-minute phone or video call with the EyeHub team. Pending confirmation by phone or SMS. Questions: 07 5220 8990',
+      'DESCRIPTION:15-minute video call with the EyeHub team. Pending confirmation by phone or SMS. Questions: 07 5220 8990',
       'END:VEVENT', 'END:VCALENDAR'].map(fold).join('\r\n');
     const a = document.createElement('a');
     a.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);

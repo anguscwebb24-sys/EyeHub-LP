@@ -32,10 +32,10 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" as="image" href="assets/img/hero-texture.webp" media="(min-width: 981px)">
   <link rel="preload" as="image" href="assets/img/hero-texture-mobile.webp" media="(max-width: 980px)">
-  <link rel="stylesheet" href="assets/css/styles.css?v=31">
+  <link rel="stylesheet" href="assets/css/styles.css?v=32">
   <!-- Your settings (EmailJS keys, phone number, availability) live in assets/js/config.js -->
-  <script src="assets/js/config.js?v=31" defer></script>
-  <script src="assets/js/app.js?v=31" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="assets/js/config.js?v=32" defer></script>
+  <script src="assets/js/app.js?v=32" defer onerror="document.documentElement.classList.remove('js')"></script>
   <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -118,7 +118,7 @@
     {
      "@type": "MedicalProcedure",
      "name": "PRESBYOND® Laser Blended Vision",
-     "description": "Laser treatment on the ZEISS MEL 90 designed to reduce reliance on reading glasses for people over 45. EyeHub is the only practice in Queensland with the combined ZEISS VisuMax 800 and MEL 90 platform.",
+     "description": "Laser treatment on the ZEISS MEL 90 designed to reduce reliance on reading glasses, often considered from the mid-40s to around 60. EyeHub is the only practice in Queensland with the combined ZEISS VisuMax 800 and MEL 90 platform.",
      "url": "https://eyehub.net.au/our-expertise/refractive-laser/presbyond/",
      "provider": {
       "@id": "https://laservisionsurgery.net.au/#clinic"
@@ -136,7 +136,7 @@
     {
      "@type": "MedicalProcedure",
      "name": "Refractive Lens Exchange (RLE)",
-     "description": "The eye's natural lens is replaced with a premium intraocular lens, often considered from age 55, using the same approach as modern cataract surgery.",
+     "description": "The eye's natural lens is replaced with a premium intraocular lens, often considered later (lens health matters more than age), using the same approach as modern cataract surgery.",
      "url": "https://eyehub.net.au/refractive-lens-exchange/",
      "provider": {
       "@id": "https://laservisionsurgery.net.au/#clinic"
@@ -212,7 +212,7 @@
      "name": "Am I too old, or too young?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Stability matters more than age. Laser candidates are usually 18 to 60 with a prescription that has been stable for 12 months or more. Over 45 and reaching for readers? PRESBYOND® may be an option. From about 55, Refractive Lens Exchange may suit better. The free assessment sorts this out for your eyes."
+      "text": "Age on its own does not decide it. What matters is the health of your eyes and a prescription that has been stable for 12 months or more, and your suitability is checked at your assessment. PRESBYOND® is often considered from the mid-40s to around 60. Refractive Lens Exchange is often considered later; lens health matters more than age. The free assessment is the first step in working this out for your eyes."
      }
     },
     {
@@ -252,7 +252,7 @@
      "name": "What does it cost, and can I pay it off?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Every procedure has one published price, listed above: laser for both eyes, ICL and RLE per eye, covering your assessments, the procedure and 12 months of aftercare. Finance from $54 a week is available through a third-party provider, subject to their approval and terms; EyeHub does not provide the finance itself. There is no Medicare rebate, and some health fund extras may contribute."
+      "text": "Every procedure has one price for both eyes, listed above, covering your assessments, the procedure and 12 months of aftercare. The RLE price is approximate and the ICL price is a range, and we will confirm your total price when you book. Finance is available through third-party providers, subject to their approval and terms; EyeHub does not provide the finance itself. There is no Medicare rebate, and some health fund extras may contribute."
      }
     },
     {
@@ -407,15 +407,15 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
     <div class="container">
       <div class="hero-copy">
         <h1 class="eyebrow fade-up" style="--d:.05s">Laser eye surgery, Sunshine Coast &amp; Noosa · free online suitability assessment</h1>
-        <p class="h1" data-unblur>Could you wake up and see clearly, <span class="em">without</span> glasses or contacts?</p>
-        <p class="lead fade-up" style="--d:.55s">Find out if your eyes are suitable for laser eye surgery, which procedure fits them and what it would cost, in a free 15-minute online call with one of our laser surgery coordinators. No clinic visit, no eye drops. If you are not suitable, we will say so.</p>
+        <p class="h1" data-unblur>Could laser eye surgery suit your eyes?</p>
+        <p class="lead fade-up" style="--d:.55s">Find out if your eyes are likely to be suitable for laser eye surgery, which procedures are often considered for eyes like yours and what they cost, in a free 15-minute online assessment with one of our laser surgery coordinators. No clinic visit, no eye drops. If you are not suitable, we will say so.</p>
         <div class="hero-actions fade-up" style="--d:.7s">
           <a class="btn btn-primary btn-lg" href="#book" data-book>See if I am suitable, free <svg><use href="#i-arrow"/></svg></a>
         </div>
         <ul class="micro-trust fade-up" style="--d:.85s">
           <li><svg><use href="#i-check"/></svg>Free, no obligation</li>
           <li><svg><use href="#i-check"/></svg>15 minutes, from your couch</li>
-          <li><svg><use href="#i-check"/></svg>If suitable, out of glasses in as little as two weeks</li>
+          <li><svg><use href="#i-check"/></svg>If suitable, you meet Dr Moorthy in clinic</li>
         </ul>
         <div class="proof-row fade-up" style="--d:.95s">
           <a class="gpill" href="https://www.google.com/maps?cid=14017306158407155629" target="_blank" rel="noopener" aria-label="Rated 4.8 on Google from 56 reviews"><svg class="g" viewBox="0 0 48 48"><use href="#g-google"/></svg><b>4.8</b><span class="stars5" aria-hidden="true"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span><span class="n">56 Google reviews</span></a>
@@ -658,7 +658,7 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
         <button type="button" class="match-chip" aria-pressed="false" data-rx="short" data-match="smile lasik icl">Short-sighted</button>
         <button type="button" class="match-chip" aria-pressed="false" data-rx="astig" data-match="smile lasik">Astigmatism</button>
         <button type="button" class="match-chip" aria-pressed="false" data-rx="long" data-match="lasik rle">Long-sighted</button>
-        <button type="button" class="match-chip" aria-pressed="false" data-rx="reading" data-match="presbyond rle">Reading glasses, 45+</button>
+        <button type="button" class="match-chip" aria-pressed="false" data-rx="reading" data-match="presbyond rle">Reading glasses</button>
         <button type="button" class="match-chip" aria-pressed="false" data-rx="nolaser" data-match="icl rle">Told laser is not for me</button>
       </div>
 
@@ -680,13 +680,13 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
           <div class="opt-top"><span class="opt-ic"><svg><use href="#p-presbyond"/></svg></span><span class="opt-badge">First in Queensland</span></div>
           <h3>PRESBYOND<sup>®</sup></h3>
           <p class="opt-tech">ZEISS MEL 90 · Laser Blended Vision</p>
-          <p class="opt-suits"><span>Often suits</span>over-45s with reading glasses</p>
+          <p class="opt-suits"><span>Often considered</span>from the mid-40s to around 60</p>
           <p class="opt-desc">For the years when reading glasses start following you around. One eye is set for distance, the other for near, and your brain blends the two.</p>
           <ul class="opt-list">
             <li><svg><use href="#i-check"/></svg>Designed to reduce reliance on reading glasses</li>
             <li><svg><use href="#i-check"/></svg>Matched to how you use your eyes, at work and at home</li>
           </ul>
-          <ul class="opt-pills"><li>Reading vision</li><li>Age 45+</li></ul>
+          <ul class="opt-pills"><li>Reading vision</li><li>Mid-40s to around 60</li></ul>
         </article>
 
         <article class="opt brown reveal" style="--i:3" data-proc="lasik">
@@ -711,14 +711,14 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
           <div class="opt-top"><span class="opt-ic"><svg><use href="#p-rle"/></svg></span></div>
           <h3>RLE</h3>
           <p class="opt-tech">Refractive Lens Exchange</p>
-          <p class="opt-suits"><span>Often suits</span>people 55 and over</p>
+          <p class="opt-suits"><span>Often considered</span>later; lens health matters more than age</p>
           <p class="opt-desc">Your eye's natural lens is replaced with a premium artificial lens chosen for your measurements and goals, using the same established approach as modern cataract surgery.</p>
-          <ul class="opt-pills"><li>Reading vision</li><li>Long or short-sight</li><li>Age 55+</li></ul>
+          <ul class="opt-pills"><li>Reading vision</li><li>Long or short-sight</li><li>Lens health, not age</li></ul>
         </article>
       </div>
 
       <div class="opt-foot reveal">
-        <p>Every price includes your assessments and 12 months of aftercare.</p>
+        <p>Every price is for both eyes and includes your assessments and 12 months of aftercare.</p>
         <a href="#pricing">See full pricing ↓</a>
         <a href="#book" data-book>Book your free online assessment →</a>
       </div>
@@ -738,8 +738,8 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
             <div class="why-item reveal" style="--i:4"><svg><use href="#i-pin"/></svg><b>Every option under one roof</b><p>SMILE PRO®, LASIK, PRESBYOND®, ICL and lens exchange, so you get the procedure that fits your eyes, not the one a clinic happens to offer.</p></div>
             <div class="why-item reveal" style="--i:5"><svg><use href="#i-user"/></svg><b>Your surgeon, by name</b><p>Dr Sonia Moorthy: consultant ophthalmologist, RANZCO examiner, fellowships in Singapore and London. You will know who is treating you.</p></div>
             <div class="why-item reveal" style="--i:6"><svg><use href="#i-shield"/></svg><b>12 months of aftercare</b><p>Pre and post-op assessments and a full year of aftercare, in every price.</p></div>
-            <div class="why-item reveal" style="--i:7"><svg><use href="#i-card"/></svg><b>Published prices, nothing hidden</b><p>You will know the total before you set foot in the clinic.</p></div>
-            <div class="why-item reveal" style="--i:8"><svg><use href="#i-split"/></svg><b>Finance available</b><p>Payment plans from $54 a week through a third-party provider, so the cost does not have to be paid up front. Terms and conditions apply.</p></div>
+            <div class="why-item reveal" style="--i:7"><svg><use href="#i-card"/></svg><b>One price, both eyes</b><p>Each procedure has one both-eyes price on this page. We will confirm your total price when you book.</p></div>
+            <div class="why-item reveal" style="--i:8"><svg><use href="#i-split"/></svg><b>Finance options</b><p>Available through third-party providers, subject to approval. Terms and conditions apply.</p></div>
           </div>
         </div>
         <div class="why-media reveal-scale">
@@ -759,26 +759,26 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow center">How it works</span>
-        <h2 class="h2">From your first call to out of glasses, here is how it goes.</h2>
+        <h2 class="h2">From your free video assessment to your surgery day, here is how it goes.</h2>
       </div>
       <div class="how-steps">
         <div class="how-step reveal" style="--i:1">
           <div class="num"><svg><use href="#i-phone"/></svg><i>1</i></div>
           <div class="t">Step 1 · Free online assessment, 15 minutes</div>
-          <h3>A call with your laser surgery coordinator</h3>
-          <p>Pick a time that suits you. One of our laser surgery coordinators calls, asks about your eyes and what you want from them, and tells you honestly whether you are likely to be suitable and what it would cost.</p>
+          <h3>A video call with your laser surgery coordinator</h3>
+          <p>Pick a time that suits you. One of our laser surgery coordinators joins you on a video call, asks about your eyes and what you want from them, and tells you honestly whether you are likely to be suitable. They can also take you through the prices on this page.</p>
         </div>
         <div class="how-step reveal" style="--i:2">
           <div class="num"><svg><use href="#p-smile"/></svg><i>2</i></div>
           <div class="t">Step 2 · In clinic, Buderim or Noosaville</div>
-          <h3>Eye tests, and a look at your future vision</h3>
-          <p>Extensive diagnostic eye tests make sure the procedure is matched to you. Dr Sonia Moorthy talks you through it and answers every question, and you get to experience what your vision will look like afterwards.</p>
+          <h3>Your in-person assessment with Dr Moorthy</h3>
+          <p>A $100 deposit (redeemable against your surgery) books your in-person assessment. Extensive diagnostic eye tests check your suitability, and you meet Dr Sonia Moorthy, who goes through your options and answers every question.</p>
         </div>
         <div class="how-step reveal" style="--i:3">
           <div class="num"><svg><use href="#i-noglasses"/></svg><i>3</i></div>
-          <div class="t">Step 3 · As little as two weeks later</div>
-          <h3>Out of glasses</h3>
-          <p>If you are suitable and keen, we book your surgery. You can be out of glasses in as little as two weeks from that first call.</p>
+          <div class="t">Step 3 · When you decide to go ahead</div>
+          <h3>Booking your surgery</h3>
+          <p>A $2,000 surgery deposit books your surgery date, and the balance is normally due one week before surgery. We will confirm your total price when you book.</p>
         </div>
       </div>
       <div class="how-cta reveal">
@@ -978,39 +978,39 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
       <div class="section-head reveal">
         <span class="eyebrow center">Transparent pricing</span>
         <h2 class="h2">What it costs, and how it compares with glasses.</h2>
-        <p class="lead">One published price covers your assessments, the procedure and 12 months of aftercare: both eyes for laser, per eye for lens procedures. Put it next to what you keep spending on glasses and contacts, year after year, and it looks different.</p>
+        <p class="lead">Each procedure has one price for both eyes, covering your assessments, the procedure and 12 months of aftercare.</p>
       </div>
       <div class="price-table reveal-scale">
         <div class="price-row">
           <h3>SMILE PRO<sup>®</sup><small>ZEISS VisuMax 800 · flap-free keyhole laser</small></h3>
-          <div class="inc"><svg><use href="#i-check"/></svg>Pre &amp; post-op assessments · 12 months aftercare · enhancement within 12 months if clinically needed</div>
-          <div class="amt"><b>$7,500</b><span>both eyes</span></div>
+          <div class="inc"><svg><use href="#i-check"/></svg>*Includes surgeon, anaesthetic and hospital fees</div>
+          <div class="amt"><b>$7,800*</b><span>both eyes</span></div>
         </div>
         <div class="price-row">
           <h3>LASIK<small>ZEISS VisuMax 800 + MEL 90</small></h3>
-          <div class="inc"><svg><use href="#i-check"/></svg>Pre &amp; post-op assessments · 12 months aftercare · enhancement within 12 months if clinically needed</div>
-          <div class="amt"><b>$7,500</b><span>both eyes</span></div>
+          <div class="inc"><svg><use href="#i-check"/></svg>*Includes surgeon, anaesthetic and hospital fees</div>
+          <div class="amt"><b>$7,800*</b><span>both eyes</span></div>
         </div>
         <div class="price-row">
           <h3>PRESBYOND<sup>®</sup><small>ZEISS MEL 90 · Laser Blended Vision</small></h3>
-          <div class="inc"><svg><use href="#i-check"/></svg>Pre &amp; post-op assessments · 12 months aftercare · enhancement within 12 months if clinically needed</div>
-          <div class="amt"><b>$8,800</b><span>both eyes</span></div>
+          <div class="inc"><svg><use href="#i-check"/></svg>*Includes surgeon, anaesthetic and hospital fees</div>
+          <div class="amt"><b>$8,800*</b><span>both eyes</span></div>
         </div>
         <div class="price-row">
           <h3>ICL<small>Implantable Contact Lens</small></h3>
-          <div class="inc"><svg><use href="#i-check"/></svg>Pre &amp; post-op assessments · 12 months aftercare · hospital &amp; anaesthetic fees · single enhancement if clinically needed</div>
-          <div class="amt"><b>$7,000</b><span>per eye</span></div>
+          <div class="inc"><svg><use href="#i-check"/></svg>*Includes surgeon, lens, anaesthetic and hospital fees</div>
+          <div class="amt" style="flex-wrap:wrap"><b>$13,000 to $14,000</b><span>both eyes*</span><span style="flex-basis:100%">We will confirm your total price when you book.</span></div>
         </div>
         <div class="price-row">
           <h3>RLE<small>Refractive Lens Exchange</small></h3>
-          <div class="inc"><svg><use href="#i-check"/></svg>Pre-op assessment · premium intraocular lens · surgery with Dr Moorthy · 12 months post-op care. Hospital and anaesthetic fees are additional.</div>
-          <div class="amt"><b>$3,500</b><span>per eye</span></div>
+          <div class="inc"><svg><use href="#i-check"/></svg>*Includes surgeon, lens, anaesthetic and hospital fees</div>
+          <div class="amt" style="flex-wrap:wrap"><b>$13,000</b><span>both eyes*</span><span style="flex-basis:100%">Approximate. We will confirm your total price when you book.</span></div>
         </div>
         <div class="price-foot">
           <div class="price-notes">
             <div class="pn reveal" style="--i:1"><svg><use href="#i-repeat"/></svg><div><b>Compare it with glasses</b><p>If you spend $900 a year on glasses and contacts, that is $9,000 over ten years and $18,000 over twenty, with nothing to show for it. Laser or lens surgery is one price, once, with 12 months of aftercare included.</p></div></div>
-            <div class="pn reveal" style="--i:2"><svg><use href="#i-card"/></svg><div><b>Finance from $54 a week</b><p>Spread the cost into a weekly amount through a third-party finance provider. EyeHub does not provide the finance itself, and terms and conditions apply. Ask our team about it on your free call.</p></div></div>
-            <div class="pn reveal" style="--i:3"><svg><use href="#i-shield"/></svg><div><b>Nothing hidden</b><p>The online assessment is free. A clinic consultation carries a $100 deposit that comes off your procedure. There is no Medicare rebate, and some health fund extras may contribute.</p></div></div>
+            <div class="pn reveal" style="--i:2"><svg><use href="#i-card"/></svg><div><b>Finance options</b><p>Available through third-party providers, subject to approval. Terms and conditions apply.</p></div></div>
+            <div class="pn reveal" style="--i:3"><svg><use href="#i-shield"/></svg><div><b>Nothing hidden</b><p>The online video assessment is free. A $100 deposit books your in-person assessment and comes off your procedure. A $2,000 deposit books your surgery date, with the balance due one week before surgery. There is no Medicare rebate, and some health fund extras may contribute.</p></div></div>
           </div>
           <p class="price-why reveal">We offer finance and payment options because we believe everyone should have the chance to see clearly without glasses, not only those who can pay up front.</p>
           <div class="fin-logos reveal" aria-label="Finance partners">
@@ -1074,7 +1074,7 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
           </div>
           <div class="clinic-card reveal" style="--i:2">
             <span class="ci"><svg><use href="#i-pin"/></svg></span>
-            <div><b>Noosaville</b><p>197 Weyba Road, Noosaville QLD 4566</p><small>First clinic Friday 23 October, 11am to 1pm. Further dates to be announced.</small><a href="https://www.google.com/maps/search/?api=1&amp;query=197+Weyba+Road+Noosaville+QLD+4566" target="_blank" rel="noopener">Directions on Google Maps</a></div>
+            <div><b>Noosaville</b><p>197 Weyba Road, Noosaville QLD 4566</p><small>Clinics on alternate Mondays from 2 November 2026, 9:30am to 12:30pm. Call to book.</small><a href="https://www.google.com/maps/search/?api=1&amp;query=197+Weyba+Road+Noosaville+QLD+4566" target="_blank" rel="noopener">Directions on Google Maps</a></div>
           </div>
           <div class="clinic-card reveal" style="--i:3">
             <span class="ci"><svg><use href="#i-phone"/></svg></span>
@@ -1103,7 +1103,7 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">Am I too old, or too young?<span class="pm"><svg><use href="#i-plus"/></svg></span></button>
-          <div class="faq-a"><div><p>Stability matters more than age. Laser candidates are usually 18 to 60 with a prescription that has been stable for 12 months or more. Over 45 and reaching for readers? PRESBYOND® may be an option. From about 55, Refractive Lens Exchange may suit better. The free assessment sorts this out for your eyes.</p></div></div>
+          <div class="faq-a"><div><p>Age on its own does not decide it. What matters is the health of your eyes and a prescription that has been stable for 12 months or more, and your suitability is checked at your assessment. PRESBYOND® is often considered from the mid-40s to around 60. Refractive Lens Exchange is often considered later; lens health matters more than age. The free assessment is the first step in working this out for your eyes.</p></div></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">Is my prescription too strong?<span class="pm"><svg><use href="#i-plus"/></svg></span></button>
@@ -1123,7 +1123,7 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">What does it cost, and can I pay it off?<span class="pm"><svg><use href="#i-plus"/></svg></span></button>
-          <div class="faq-a"><div><p>Every procedure has one published price, listed above: laser for both eyes, ICL and RLE per eye, covering your assessments, the procedure and 12 months of aftercare. Finance from $54 a week is available through a third-party provider, subject to their approval and terms; EyeHub does not provide the finance itself. There is no Medicare rebate, and some health fund extras may contribute.</p></div></div>
+          <div class="faq-a"><div><p>Every procedure has one price for both eyes, listed above, covering your assessments, the procedure and 12 months of aftercare. The RLE price is approximate and the ICL price is a range, and we will confirm your total price when you book. Finance is available through third-party providers, subject to their approval and terms; EyeHub does not provide the finance itself. There is no Medicare rebate, and some health fund extras may contribute.</p></div></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">Is it worth it compared with glasses?<span class="pm"><svg><use href="#i-plus"/></svg></span></button>
@@ -1144,8 +1144,8 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
       </div>
       <div class="faq-more reveal">
         <span class="fm-ic"><svg><use href="#i-phone"/></svg></span>
-        <div><b>Something we have not covered?</b><p>Ask on your free call, or ring <a href="tel:0752208990">07 5220 8990</a> and the team will answer it now.</p></div>
-        <a class="btn btn-primary" href="#book" data-book>Book my free call <svg><use href="#i-arrow"/></svg></a>
+        <div><b>Something we have not covered?</b><p>Ask on your free video call, or ring <a href="tel:0752208990">07 5220 8990</a> and the team will answer it now.</p></div>
+        <a class="btn btn-primary" href="#book" data-book>Book my free video call <svg><use href="#i-arrow"/></svg></a>
       </div>
     </div>
   </section>
@@ -1156,8 +1156,8 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
     <div class="container">
       <div class="on-dark" style="background:transparent">
         <span class="eyebrow reveal">Ready when you are</span>
-        <h2 class="h2 reveal mt-2" style="--i:1">Fifteen minutes now, and you will know where you stand.</h2>
-        <p class="lead reveal mt-2" style="--i:2">Free, from home, no obligation. If you are suitable, you will know your options and the cost. If you are not, you will know that too, and you have lost nothing.</p>
+        <h2 class="h2 reveal mt-2" style="--i:1">Fifteen minutes now, and you will have a clearer idea of where you stand.</h2>
+        <p class="lead reveal mt-2" style="--i:2">Free, from home, no obligation. If you are likely to be suitable, we will take you through your options and the prices. If you are not, we will tell you that too.</p>
         <ul class="ok-list reveal" style="--i:3">
           <li><svg><use href="#i-check"/></svg>Free · 15 minutes · online from anywhere</li>
           <li><svg><use href="#i-check"/></svg>Confirmed by the EyeHub team within one business day</li>
@@ -1187,7 +1187,7 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
       </div>
       <div class="footer-note">
         <p>EyeHub Laser Vision Specialists provides laser eye surgery (SMILE PRO®, LASIK and PRESBYOND®), ICL and Refractive Lens Exchange in Buderim on the Sunshine Coast, with a second clinic in Noosaville. Patients come from Noosa, Maroochydore, Mooloolaba, Caloundra and Nambour. The first step is a free 15-minute online suitability assessment.</p>
-        <p>Laser vision correction and lens procedures are designed to reduce your dependence on glasses or contact lenses. They are not suitable for everyone, and results vary from person to person. Risks include dry eye, glare or halos, infection, delayed healing and under or over-correction, and Dr Moorthy discusses these with you before anything goes ahead. The free online suitability assessment is a 15-minute phone or video call with the EyeHub team for adults 18 and over. It is a preliminary screening only, not a diagnosis or medical advice, and does not replace an in-clinic consultation with full diagnostic scans. Bookings are requests until confirmed by our team. Prices are in Australian dollars, correct at the time of publication, and the surgical consultation deposit is credited to your procedure. No Medicare rebate applies. "Queensland's first" and "only practice in Queensland with the combined ZEISS VisuMax 800 + MEL 90 platform" statements were correct as at October 2026 and are reviewed quarterly.</p>
+        <p>Laser vision correction and lens procedures are designed to reduce your dependence on glasses or contact lenses. They are not suitable for everyone, and results vary from person to person. Risks include dry eye, glare or halos, infection, delayed healing and under or over-correction, and Dr Moorthy discusses these with you before anything goes ahead. The free online suitability assessment is a 15-minute video call with the EyeHub team for adults 18 and over. It is a preliminary screening only, not a diagnosis or medical advice, and does not replace an in-clinic consultation with full diagnostic scans. Bookings are requests until confirmed by our team. Prices are in Australian dollars, correct at the time of publication, and the surgical consultation deposit is credited to your procedure. No Medicare rebate applies. "Queensland's first" and "only practice in Queensland with the combined ZEISS VisuMax 800 + MEL 90 platform" statements were correct as at October 2026 and are reviewed quarterly.</p>
         <p>Dr Sonia Moorthy, consultant ophthalmologist, registered with the Medical Board of Australia. Member of RANZCO (Royal Australian and New Zealand College of Ophthalmologists), AUSCRS, ESCRS, AAO and ISRS.</p>
         <p>This site is not part of, or endorsed by, Facebook, Instagram or Meta Platforms, Inc. FACEBOOK and INSTAGRAM are trademarks of Meta Platforms, Inc.</p>
       </div>
