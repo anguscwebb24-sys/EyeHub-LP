@@ -142,7 +142,7 @@
       <div class="booking-head">
         <h2>Find out if you are likely to be suitable</h2>
         <span class="free-pill">Free</span>
-        <p>Free 15-minute video call with a laser surgery coordinator · takes a minute to book · confirmed within one business day</p>
+        <p>Free 15-minute video call with <b>a laser surgery coordinator</b> · takes a minute to book · confirmed within one business day</p>
       </div>
       <div class="steps" aria-hidden="true">
         <div class="step-ind active" data-step="1"><span class="n">1</span> Pick a time</div>
@@ -218,6 +218,20 @@
           <div class="booking-actions">
             <button type="button" class="btn btn-ghost btn-block" data-ics>${I.download}<span class="lbl">Add to my calendar</span></button>
           </div>
+        </div>
+      </div>
+
+      <div class="pane" data-pane="4" aria-live="polite">
+        <div class="success over60">
+          <div class="check-ring info"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.5h.01"/></svg></div>
+          <h4 tabindex="-1">Sorry, your age means you cannot safely have laser vision correction.</h4>
+          <p>We have not sent your request. If you are interested in lens-based options, call us on ${CONFIG.clinicPhone} or email reception@eyehub.net.au to discuss them and arrange an appointment.</p>
+          <div class="booking-actions over60-actions">
+            <a class="btn btn-primary btn-block" href="tel:0752208990"><svg><use href="#i-phone"/></svg><span class="lbl">Call ${CONFIG.clinicPhone}</span></a>
+            <a class="btn btn-ghost btn-block" href="mailto:reception@eyehub.net.au?subject=Lens%20options%20enquiry"><svg><use href="#i-mail"/></svg><span class="lbl">Email reception@eyehub.net.au</span></a>
+          </div>
+          <p class="over60-note">The refractive assessment for lens-based options is only available at our Buderim clinic.</p>
+          <button type="button" class="over60-back" data-over60-back>Entered the wrong date of birth? Go back</button>
         </div>
       </div>
 
@@ -325,6 +339,25 @@
         return age >= 18 && age <= 110;
       },
     };
+    // age in whole years from DD/MM/YYYY (0 if it does not parse)
+    const ageYears = v => {
+      const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(v.trim());
+      if (!m) return 0;
+      const now = new Date();
+      let a = now.getFullYear() - +m[3];
+      if (now.getMonth() + 1 < +m[2] || (now.getMonth() + 1 === +m[2] && now.getDate() < +m[1])) a--;
+      return a;
+    };
+    function showOver60() {
+      panes.forEach(p => p.classList.toggle('active', +p.dataset.pane === 4));
+      root.classList.add('done');
+      const headerH = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 64) + 12;
+      const top = root.getBoundingClientRect().top;
+      if (top < headerH || top > innerHeight * 0.5) window.scrollTo({ top: scrollY + top - headerH, behavior: REDUCED ? 'auto' : 'smooth' });
+      const t = $('[data-pane="4"] h4', root);
+      if (t) setTimeout(() => t.focus({ preventScroll: true }), REDUCED ? 0 : 350);
+    }
+    $('[data-over60-back]', root).addEventListener('click', () => go(2));
     // date of birth: digits only, slashes added as you type (works with the numeric keyboard on phones)
     form.dob.addEventListener('input', () => {
       const d = form.dob.value.replace(/\D/g, '').slice(0, 8);
@@ -361,6 +394,10 @@
         msg.innerHTML = `Something went wrong and your request did not send. Please call us on <a href="tel:0752208990"><b>${CONFIG.clinicPhone}</b></a> and we will book you in over the phone.`;
         return;
       }
+
+      // Over 60: laser vision correction is not offered, so no lead is sent. The visitor is shown how to reach
+      // reception about lens-based options instead. Nothing is emailed and no Lead event fires.
+      if (ageYears(form.dob.value) > 60) { showOver60(); return; }
 
       const d = days.find(x => x.key === state.day);
       const when = `${d.dowLong} ${d.day} ${d.monLong} ${d.date.getFullYear()} at ${labelTime(state.time, state.period)} (AEST)`;

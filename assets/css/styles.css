@@ -1299,3 +1299,14 @@ h1.eyebrow { font-size: 12px; line-height: 1.5; }
   .footer-top { gap: 20px; }
   .footer-top .footer-badge { width: 108px; height: 108px; }
 }
+
+/* ---------- Booking card: emphasised phrase, and the over-60 message ---------- */
+.booking-head p b { color: var(--ink); font-weight: 600; }
+.over60 .check-ring.info { background: rgba(141, 81, 56, 0.1); }
+.over60 .check-ring.info svg { color: var(--rust); }
+.over60 .check-ring.info svg path, .over60 .check-ring.info svg circle { stroke-dasharray: none; stroke-dashoffset: 0; animation: none; }
+.over60 h4 { font-size: 1.2rem; line-height: 1.3; }
+.over60-actions { flex-direction: column; margin-top: 16px; }
+.over60-actions .btn { width: 100%; white-space: normal; text-align: center; }
+.over60-note { margin-top: 14px; font-size: 0.85rem; color: var(--ink-mute); }
+.over60-back { display: inline-block; margin-top: 12px; font-size: 0.85rem; font-weight: 600; color: var(--rust); text-decoration: underline; text-underline-offset: 3px; }
