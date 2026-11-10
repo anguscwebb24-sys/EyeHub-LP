@@ -32,10 +32,10 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" as="image" href="assets/img/hero-texture.webp" media="(min-width: 981px)">
   <link rel="preload" as="image" href="assets/img/hero-texture-mobile.webp" media="(max-width: 980px)">
-  <link rel="stylesheet" href="assets/css/styles.css?v=33">
+  <link rel="stylesheet" href="assets/css/styles.css?v=34">
   <!-- Your settings (EmailJS keys, phone number, availability) live in assets/js/config.js -->
-  <script src="assets/js/config.js?v=33" defer></script>
-  <script src="assets/js/app.js?v=33" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="assets/js/config.js?v=34" defer></script>
+  <script src="assets/js/app.js?v=34" defer onerror="document.documentElement.classList.remove('js')"></script>
   <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -236,7 +236,7 @@
      "name": "What are the risks?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Like any surgery, laser and lens procedures carry risks. For laser these include dry eye, glare or halos at night, infection, delayed healing and under or over-correction. Dr Moorthy goes through your personal risk profile at your clinic consultation, and nothing goes ahead until every question you have is answered."
+      "text": "Like any surgery, laser and lens procedures carry risks. For laser these include dry eye, glare or halos at night, infection, delayed healing and under or over-correction. Dr Moorthy goes through your personal risk profile at your pre-surgery consultation, and nothing goes ahead until every question you have is answered."
      }
     },
     {
@@ -284,7 +284,7 @@
      "name": "What happens after the online assessment?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "If you are likely to be a candidate, we offer a clinic consultation with Dr Moorthy, where full diagnostic eye tests confirm suitability and you get to experience what your vision could look like afterwards. That consultation carries a $100 deposit, credited to your procedure if you go ahead. You decide in your own time. Nothing is booked without you."
+      "text": "If you are likely to be a candidate, we offer an in-person assessment at our Buderim clinic, where our qualified laser vision optometrist runs full diagnostic eye tests to check your suitability and you get to experience what your vision could look like afterwards. That assessment carries a $100 deposit, credited to your laser surgery fee if you go ahead. Once your surgery deposit is paid, you meet Dr Moorthy for your pre-surgery consultation. You decide in your own time. Nothing is booked without you."
      }
     }
    ]
@@ -395,7 +395,7 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
           <svg><use href="#i-phone"/></svg>
           <span><small>Call the clinic</small>07 5220 8990</span>
         </a>
-        <a class="btn btn-primary btn-sm" href="#book" data-book>See if I am suitable</a>
+        <a class="btn btn-primary btn-sm" href="#tune">See if I am suitable</a>
       </div>
     </div>
   </header>
@@ -410,12 +410,13 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
         <p class="h1" data-unblur>Could laser eye surgery suit your eyes?</p>
         <p class="lead fade-up" style="--d:.55s">Find out if your eyes are likely to be suitable for laser eye surgery, which procedures are often considered for eyes like yours and what they cost, in a free 15-minute online assessment with one of our laser surgery coordinators. No clinic visit, no eye drops. If you are not suitable, we will say so.</p>
         <div class="hero-actions fade-up" style="--d:.7s">
-          <a class="btn btn-primary btn-lg" href="#book" data-book>See if I am suitable, free <svg><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-primary btn-lg" href="#tune">Find out if I am suitable <svg><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-ghost btn-lg" href="#book" data-book>Book my free assessment</a>
         </div>
         <ul class="micro-trust fade-up" style="--d:.85s">
           <li><svg><use href="#i-check"/></svg>Free, no obligation</li>
           <li><svg><use href="#i-check"/></svg>15 minutes, from your couch</li>
-          <li><svg><use href="#i-check"/></svg>If suitable, you meet Dr Moorthy in clinic</li>
+          <li><svg><use href="#i-check"/></svg>If suitable, an in-person assessment at our Buderim clinic</li>
         </ul>
         <div class="proof-row fade-up" style="--d:.95s">
           <a class="gpill" href="https://www.google.com/maps?cid=14017306158407155629" target="_blank" rel="noopener" aria-label="Rated 4.8 on Google from 56 reviews"><svg class="g" viewBox="0 0 48 48"><use href="#g-google"/></svg><b>4.8</b><span class="stars5" aria-hidden="true"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span><span class="n">56 Google reviews</span></a>
@@ -433,12 +434,12 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
     <div class="container">
       <div class="tune-card reveal">
         <div class="tune-head">
-          <span class="eyebrow">Start here</span>
-          <h2 class="h2">What are you living with right now?</h2>
-          <p>Two taps, and this page shows you the parts that matter for your eyes.</p>
+          <span class="eyebrow">Am I suitable?</span>
+          <h2 class="h2">Find out in five taps.</h2>
+          <p>No name, no email. An honest steer on whether laser is likely to be an option for you, and the page adjusts to your eyes as you go.</p>
         </div>
         <div class="tune-q" data-q="1">
-          <p class="tune-label" id="tune-q1">I wear</p>
+          <p class="tune-label" id="tune-q1">1 of 5 · I wear</p>
           <div class="tune-opts" role="group" aria-labelledby="tune-q1">
             <button type="button" class="tune-opt" aria-pressed="false" data-persona="glasses"><svg><use href="#i-glasses"/></svg><b>Glasses</b></button>
             <button type="button" class="tune-opt" aria-pressed="false" data-persona="contacts"><svg><use href="#i-drop"/></svg><b>Contacts</b></button>
@@ -447,7 +448,7 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
           </div>
         </div>
         <div class="tune-q" data-q="2" hidden>
-          <p class="tune-label" id="tune-q2">And my eyes are</p>
+          <p class="tune-label" id="tune-q2">2 of 5 · My eyes are</p>
           <div class="tune-opts rx" role="group" aria-labelledby="tune-q2">
             <button type="button" class="tune-opt" aria-pressed="false" data-rx="short"><b>Short-sighted</b><small>far away is blurry</small></button>
             <button type="button" class="tune-opt" aria-pressed="false" data-rx="long"><b>Long-sighted</b><small>up close is harder</small></button>
@@ -456,14 +457,40 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
             <button type="button" class="tune-opt" aria-pressed="false" data-rx="unsure"><b>Not sure</b><small>that is fine</small></button>
           </div>
         </div>
+        <div class="tune-q" data-q="3" hidden>
+          <p class="tune-label" id="tune-q3">3 of 5 · My age</p>
+          <div class="tune-opts stack" role="group" aria-labelledby="tune-q3">
+            <button type="button" class="tune-opt" aria-pressed="false" data-age="u18"><b>Under 18</b></button>
+            <button type="button" class="tune-opt" aria-pressed="false" data-age="a1839"><b>18 to 39</b></button>
+            <button type="button" class="tune-opt" aria-pressed="false" data-age="a4060"><b>40 to 60</b></button>
+            <button type="button" class="tune-opt" aria-pressed="false" data-age="o60"><b>Over 60</b></button>
+          </div>
+        </div>
+        <div class="tune-q" data-q="4" hidden>
+          <p class="tune-label" id="tune-q4">4 of 5 · My prescription has been stable for the last 12 months</p>
+          <div class="tune-opts three stack" role="group" aria-labelledby="tune-q4">
+            <button type="button" class="tune-opt" aria-pressed="false" data-stable="yes"><b>Yes</b><small>no real change</small></button>
+            <button type="button" class="tune-opt" aria-pressed="false" data-stable="no"><b>No</b><small>it changed recently</small></button>
+            <button type="button" class="tune-opt" aria-pressed="false" data-stable="unsure"><b>Not sure</b><small>we can check</small></button>
+          </div>
+        </div>
+        <div class="tune-q" data-q="5" hidden>
+          <p class="tune-label" id="tune-q5">5 of 5 · Have you been told you have keratoconus, cataracts, glaucoma or another eye condition?</p>
+          <div class="tune-opts three stack" role="group" aria-labelledby="tune-q5">
+            <button type="button" class="tune-opt" aria-pressed="false" data-cond="no"><b>No</b></button>
+            <button type="button" class="tune-opt" aria-pressed="false" data-cond="yes"><b>Yes</b></button>
+            <button type="button" class="tune-opt" aria-pressed="false" data-cond="unsure"><b>Not sure</b></button>
+          </div>
+        </div>
         <div class="tune-result" hidden aria-live="polite">
           <div class="tune-summary">
             <span class="tune-check"><svg><use href="#i-check"/></svg></span>
             <div><b data-tune-title></b><span data-tune-sub></span></div>
           </div>
           <div class="tune-actions">
-            <a class="btn btn-primary" href="#book" data-book>Book my free online assessment <svg><use href="#i-arrow"/></svg></a>
-            <a class="tune-jump" href="#procedures">See what is often considered ↓</a>
+            <a class="btn btn-primary" href="#book" data-book data-suit-book>Book my free online assessment <svg><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-primary" href="tel:0752208990" data-suit-call hidden><svg><use href="#i-phone"/></svg> Call 07 5220 8990</a>
+            <a class="tune-jump" href="#procedures" data-suit-more>Or keep reading ↓</a>
             <button type="button" class="tune-reset" data-tune-reset>Change my answers</button>
           </div>
         </div>
@@ -734,9 +761,9 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
           <h2 class="h2 reveal mt-2" style="--i:1">Current-generation ZEISS lasers, one named surgeon, and a price you know before you walk in.</h2>
           <p class="lead reveal mt-2" style="--i:2">EyeHub was the first clinic in Queensland to put the ZEISS VisuMax 800 and MEL 90 together, and it is still the only practice in the state with that combined platform. Here is what that means for you.</p>
           <div class="why-list">
-            <div class="why-item reveal" style="--i:3"><svg><use href="#i-star"/></svg><b>Queensland's first</b><p>The ZEISS VisuMax 800 &amp; MEL 90 laser suite. Current-generation ZEISS technology, here on the coast.</p></div>
+            <div class="why-item reveal" style="--i:3"><svg><use href="#i-star"/></svg><b>Queensland's first</b><p>The ZEISS VisuMax 800 &amp; MEL 90 laser suite. The latest and fastest ZEISS technology, available at your doorstep on the Sunshine Coast.</p></div>
             <div class="why-item reveal" style="--i:4"><svg><use href="#i-pin"/></svg><b>Every option under one roof</b><p>SMILE PRO®, LASIK, PRESBYOND®, ICL and lens exchange, so you get the procedure that fits your eyes, not the one a clinic happens to offer.</p></div>
-            <div class="why-item reveal" style="--i:5"><svg><use href="#i-user"/></svg><b>Your surgeon, by name</b><p>Dr Sonia Moorthy: consultant ophthalmologist, RANZCO examiner, fellowships in Singapore and London. You will know who is treating you.</p></div>
+            <div class="why-item reveal" style="--i:5"><svg><use href="#i-user"/></svg><b>Your surgeon, by name</b><p>Dr Sonia Moorthy, refractive surgeon with Australian and global training. You will know who is treating you.</p></div>
             <div class="why-item reveal" style="--i:6"><svg><use href="#i-shield"/></svg><b>12 months of aftercare</b><p>Pre and post-op assessments and a full year of aftercare, in every price.</p></div>
             <div class="why-item reveal" style="--i:7"><svg><use href="#i-card"/></svg><b>One price, both eyes</b><p>Each procedure has one both-eyes price on this page. We will confirm your total price when you book.</p></div>
             <div class="why-item reveal" style="--i:8"><svg><use href="#i-split"/></svg><b>Finance options</b><p>Available through third-party providers, subject to approval. Terms and conditions apply.</p></div>
@@ -771,14 +798,14 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
         <div class="how-step reveal" style="--i:2">
           <div class="num"><svg><use href="#p-smile"/></svg><i>2</i></div>
           <div class="t">Step 2 · In clinic, Buderim or Noosaville</div>
-          <h3>Your in-person assessment with Dr Moorthy</h3>
-          <p>A $100 deposit (redeemable against your surgery) books your in-person assessment. Extensive diagnostic eye tests check your suitability, and you meet Dr Sonia Moorthy, who goes through your options and answers every question.</p>
+          <h3>Your in-person assessment at Buderim</h3>
+          <p>A $100 deposit, which comes off your laser surgery fee, books your in-person assessment at our Buderim clinic. Our qualified laser vision optometrist runs extensive diagnostic eye tests to match the procedure to you, and you get to experience what your vision could look like afterwards.</p>
         </div>
         <div class="how-step reveal" style="--i:3">
           <div class="num"><svg><use href="#i-noglasses"/></svg><i>3</i></div>
           <div class="t">Step 3 · When you decide to go ahead</div>
-          <h3>Booking your surgery</h3>
-          <p>A $2,000 surgery deposit books your surgery date, and the balance is normally due one week before surgery. We will confirm your total price when you book.</p>
+          <h3>Your pre-surgery consultation and surgery</h3>
+          <p>A $2,000 surgery deposit books your surgery date, and you then meet Dr Sonia Moorthy for your pre-surgery consultation, where she talks you through the procedure and answers every question. The balance is normally due one week before surgery, and we confirm your total price when you book.</p>
         </div>
       </div>
       <div class="how-cta reveal">
@@ -983,17 +1010,17 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
       <div class="price-table reveal-scale">
         <div class="price-row">
           <h3>SMILE PRO<sup>®</sup><small>ZEISS VisuMax 800 · flap-free keyhole laser</small></h3>
-          <div class="inc"><svg><use href="#i-check"/></svg>*Includes surgeon, anaesthetic and hospital fees</div>
+          <div class="inc"><svg><use href="#i-check"/></svg>*Includes surgeon and laser suite fees</div>
           <div class="amt"><b>$7,800*</b><span>both eyes</span></div>
         </div>
         <div class="price-row">
           <h3>LASIK<small>ZEISS VisuMax 800 + MEL 90</small></h3>
-          <div class="inc"><svg><use href="#i-check"/></svg>*Includes surgeon, anaesthetic and hospital fees</div>
+          <div class="inc"><svg><use href="#i-check"/></svg>*Includes surgeon and laser suite fees</div>
           <div class="amt"><b>$7,800*</b><span>both eyes</span></div>
         </div>
         <div class="price-row">
           <h3>PRESBYOND<sup>®</sup><small>ZEISS MEL 90 · Laser Blended Vision</small></h3>
-          <div class="inc"><svg><use href="#i-check"/></svg>*Includes surgeon, anaesthetic and hospital fees</div>
+          <div class="inc"><svg><use href="#i-check"/></svg>*Includes surgeon and laser suite fees</div>
           <div class="amt"><b>$8,800*</b><span>both eyes</span></div>
         </div>
         <div class="price-row">
@@ -1064,7 +1091,7 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
       <div class="section-head reveal">
         <span class="eyebrow center">Two clinics on the Sunshine Coast</span>
         <h2 class="h2">Laser vision correction in Buderim and Noosaville.</h2>
-        <p class="lead">Patients come to EyeHub from Noosa, Maroochydore, Mooloolaba, Caloundra, Nambour and the hinterland. Your free assessment is online. Your eye tests and your surgery happen here.</p>
+        <p class="lead">Patients come to EyeHub from Noosa, Maroochydore, Mooloolaba, Caloundra, Nambour and the hinterland. Your free assessment is online, your in-person assessment is at our Buderim clinic, and Dr Moorthy also consults at Noosaville.</p>
       </div>
       <div class="clinics">
         <div class="clinic-cards">
@@ -1115,7 +1142,7 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">What are the risks?<span class="pm"><svg><use href="#i-plus"/></svg></span></button>
-          <div class="faq-a"><div><p>Like any surgery, laser and lens procedures carry risks. For laser these include dry eye, glare or halos at night, infection, delayed healing and under or over-correction. Dr Moorthy goes through your personal risk profile at your clinic consultation, and nothing goes ahead until every question you have is answered.</p></div></div>
+          <div class="faq-a"><div><p>Like any surgery, laser and lens procedures carry risks. For laser these include dry eye, glare or halos at night, infection, delayed healing and under or over-correction. Dr Moorthy goes through your personal risk profile at your pre-surgery consultation, and nothing goes ahead until every question you have is answered.</p></div></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">How long is recovery?<span class="pm"><svg><use href="#i-plus"/></svg></span></button>
@@ -1139,7 +1166,7 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">What happens after the online assessment?<span class="pm"><svg><use href="#i-plus"/></svg></span></button>
-          <div class="faq-a"><div><p>If you are likely to be a candidate, we offer a clinic consultation with Dr Moorthy, where full diagnostic eye tests confirm suitability and you get to experience what your vision could look like afterwards. That consultation carries a $100 deposit, credited to your procedure if you go ahead. You decide in your own time. Nothing is booked without you.</p></div></div>
+          <div class="faq-a"><div><p>If you are likely to be a candidate, we offer an in-person assessment at our Buderim clinic, where our qualified laser vision optometrist runs full diagnostic eye tests to check your suitability and you get to experience what your vision could look like afterwards. That assessment carries a $100 deposit, credited to your laser surgery fee if you go ahead. Once your surgery deposit is paid, you meet Dr Moorthy for your pre-surgery consultation. You decide in your own time. Nothing is booked without you.</p></div></div>
         </div>
       </div>
       <div class="faq-more reveal">
@@ -1200,7 +1227,7 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
 
   <!-- ================= MOBILE STICKY BAR ================= -->
   <div class="sticky-bar">
-    <a class="btn btn-primary" href="#book" data-book>See if I am suitable, free</a>
+    <a class="btn btn-primary" href="#book" data-book>Book my free assessment</a>
     <a class="call" href="tel:0752208990" aria-label="Call EyeHub"><svg><use href="#i-phone"/></svg></a>
   </div>
 

@@ -147,6 +147,7 @@
       <div class="steps" aria-hidden="true">
         <div class="step-ind active" data-step="1"><span class="n">1</span> Pick a time</div>
         <div class="step-ind" data-step="2"><span class="n">2</span> Your details</div>
+        <div class="step-ind" data-step="3"><span class="n">3</span> Confirm</div>
       </div>
 
       <div class="pane active" data-pane="1">
@@ -159,7 +160,7 @@
           <div data-slots role="group" aria-labelledby="${uid}-tl"></div>
           <p class="slots-call">Greyed times are not offered online. If none of these suit, call <a href="tel:0752208990">${CONFIG.clinicPhone}</a> and we will work around you.</p>
         </div>
-        <p class="tz-note">${I.clock}<span>All times are Queensland time (AEST). Your time is a request until our team confirms it.${isConfigured() ? '' : ' <span class="demo-tag">Demo mode: requests are not sent.</span>'}</span></p>
+        <p class="tz-note">${I.clock}<span>All times are Queensland time (AEST). If your time is not available, our team will call you with another.${isConfigured() ? '' : ' <span class="demo-tag">Demo mode: requests are not sent.</span>'}</span></p>
         <div class="booking-actions">
           <button type="button" class="btn btn-primary btn-block" data-next disabled><span class="lbl">Continue</span>${I.arrow}</button>
         </div>
@@ -171,7 +172,7 @@
           <span class="txt"><b data-chosen-main></b><span data-chosen-sub></span></span>
           <button type="button" class="change" data-back>Change</button>
         </div>
-        <form class="bk-form" novalidate>
+        <form class="bk-form" id="${uid}-form" novalidate>
           <div class="form-grid">
             ${field('first_name', 'fn', 'First name', 'text', 'given-name', 'enterkeyhint="next"', 'Please enter your first name', false)}
             ${field('last_name', 'ln', 'Last name', 'text', 'family-name', 'enterkeyhint="next"', 'Please enter your last name', false)}
@@ -189,31 +190,56 @@
             </div>
           </div>
           <input class="honey" type="text" name="bk_hp_x7" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <div class="form-msg" data-msg role="alert"></div>
           <div class="booking-actions">
-            <button type="submit" class="btn btn-primary btn-block btn-lg"><span class="lbl">Book my free suitability check</span><span class="spin"></span>${I.arrow}</button>
+            <button type="button" class="btn btn-primary btn-block btn-lg" data-details-next><span class="lbl">Continue</span>${I.arrow}</button>
           </div>
           <p class="privacy">${I.lock} Everything you tell us is confidential. We collect your name, mobile, email, date of birth and answers only to arrange your assessment, and handle them under the Privacy Act 1988 and EyeHub's <a href="https://eyehub.net.au/terms-conditions/" data-privacy>Privacy Notice</a>. No marketing list.</p>
         </form>
       </div>
 
-      <div class="pane" data-pane="3" aria-live="polite">
+      <div class="pane" data-pane="3">
+        <div class="chosen">
+          <span class="ic">${I.calendar}</span>
+          <span class="txt"><b data-chosen-main></b><span data-chosen-sub></span></span>
+          <button type="button" class="change" data-back>Change</button>
+        </div>
+        <div class="walk">
+          <h3 class="walk-title" tabindex="-1">Before you confirm, here is how it works</h3>
+          <ol class="jsteps walk-steps">
+            <li class="jstep" style="--j:0"><span class="jic"><svg><use href="#i-phone"/></svg></span><div><b>Your free online assessment</b><p>A 15-minute video call with one of our laser vision coordinators, who asks about your eyes and what you want from them, and tells you honestly whether you are likely to be suitable.</p></div></li>
+            <li class="jstep" style="--j:1"><span class="jic"><svg><use href="#p-smile"/></svg></span><div><b>Your in-person assessment at Buderim</b><p>A $100 deposit, which comes off your laser surgery fee, books it. Our qualified laser vision optometrist runs extensive diagnostic eye tests to match the procedure to you, and you get to experience what your vision could look like afterwards.</p></div></li>
+            <li class="jstep" style="--j:2"><span class="jic"><svg><use href="#i-user"/></svg></span><div><b>Your pre-surgery consultation with Dr Moorthy</b><p>Once your $2,000 surgery deposit is paid, you meet Dr Sonia Moorthy, who talks you through the procedure and answers every question before your surgery date.</p></div></li>
+          </ol>
+          <div class="walk-why">
+            <p class="jm-title" data-walk-why-title>Why you are doing this</p>
+            <ul class="quiz-lines" data-walk-pains></ul>
+          </div>
+          <p class="jm-title">Five ways to get there</p>
+          <ul class="walk-procs">
+            <li style="--j:0"><span class="wp-ic"><svg><use href="#p-smile"/></svg></span><div><b>SMILE PRO®</b><span>Keyhole, flap-free laser for short-sight and astigmatism</span></div></li>
+            <li style="--j:1"><span class="wp-ic"><svg><use href="#p-lasik"/></svg></span><div><b>LASIK</b><span>The well-established laser procedure for a wide range of prescriptions</span></div></li>
+            <li style="--j:2"><span class="wp-ic"><svg><use href="#p-presbyond"/></svg></span><div><b>PRESBYOND®</b><span>Laser Blended Vision for the reading-glasses years</span></div></li>
+            <li style="--j:3"><span class="wp-ic"><svg><use href="#p-icl"/></svg></span><div><b>ICL</b><span>A tiny lens placed inside the eye when laser is not the right fit</span></div></li>
+            <li style="--j:4"><span class="wp-ic"><svg><use href="#p-rle"/></svg></span><div><b>Refractive Lens Exchange</b><span>Your natural lens replaced with a premium lens</span></div></li>
+          </ul>
+          <p class="walk-hook">Which one fits your eyes is exactly what the free assessment answers.</p>
+          <div class="form-msg" data-msg role="alert"></div>
+          <div class="booking-actions">
+            <button type="submit" form="${uid}-form" class="btn btn-primary btn-block btn-lg"><span class="lbl">Confirm my appointment</span><span class="spin"></span>${I.arrow}</button>
+          </div>
+          <button type="button" class="walk-edit" data-back-details>Edit my details</button>
+        </div>
+      </div>
+
+      <div class="pane" data-pane="4" aria-live="polite">
         <div class="success">
           <div class="check-ring"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
-          <h4 tabindex="-1">Thanks, <span data-s-name></span>. We have your request.</h4>
-          <p>Our team will call or SMS you from ${CONFIG.clinicPhone} within one business day to confirm your time and send the call details. Save the number so you know it is us.</p>
+          <h4 tabindex="-1">Confirmed, <span data-s-name></span>. We look forward to meeting you on <span data-s-when></span>.</h4>
+          <p>We will send the video call link by SMS and email before your appointment. If anything changes, our team will call you from ${CONFIG.clinicPhone}, so save the number.</p>
           <div class="summary">
-            <div><span>Requested</span><b data-s-when></b></div>
+            <div><span>Your appointment</span><b data-s-when></b></div>
             <div><span>Where</span><b>Video call, from home</b></div>
             <div><span>Cost</span><b>Free, no obligation</b></div>
-          </div>
-          <div class="journey">
-            <p class="jm-title">What happens from here</p>
-            <ol class="jsteps">
-              <li class="jstep" style="--j:0"><span class="jic"><svg><use href="#i-phone"/></svg></span><div><b>Your free online assessment</b><p>One of our laser surgery coordinators joins you on a video call at your chosen time, asks about your eyes and what you want from them, and tells you honestly whether you are likely to be suitable.</p></div></li>
-              <li class="jstep" style="--j:1"><span class="jic"><svg><use href="#p-smile"/></svg></span><div><b>In clinic, at Buderim or Noosaville</b><p>A $100 deposit (redeemable against your surgery) books your in-person assessment. Extensive diagnostic eye tests check your suitability, and you meet Dr Sonia Moorthy, who goes through your options and answers every question.</p></div></li>
-              <li class="jstep" style="--j:2"><span class="jic"><svg><use href="#i-noglasses"/></svg></span><div><b>Booking your surgery</b><p>If you decide to go ahead, a $2,000 surgery deposit books your surgery date, and the balance is normally due one week before surgery.</p></div></li>
-            </ol>
           </div>
           <div class="booking-actions">
             <button type="button" class="btn btn-ghost btn-block" data-ics>${I.download}<span class="lbl">Add to my calendar</span></button>
@@ -221,7 +247,7 @@
         </div>
       </div>
 
-      <div class="pane" data-pane="4" aria-live="polite">
+      <div class="pane" data-pane="5" aria-live="polite">
         <div class="success over60">
           <div class="check-ring info"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.5h.01"/></svg></div>
           <h4 tabindex="-1">Sorry, your age means you cannot safely have laser vision correction.</h4>
@@ -235,7 +261,7 @@
         </div>
       </div>
 
-      <p class="bk-terms">Free 15-minute video call with the EyeHub team, for adults 18 and over. A preliminary screening, not a diagnosis: suitability is confirmed at an in-clinic consultation, which carries a $100 deposit (redeemable against your surgery). No obligation. Times are requests until confirmed.</p>
+      <p class="bk-terms">Free 15-minute video call with the EyeHub team, for adults 18 and over. A preliminary screening, not a diagnosis: suitability is confirmed at an in-person assessment at our Buderim clinic, which carries a $100 deposit (redeemable against your laser surgery fee). No obligation. If your time is not available, our team will call to arrange another.</p>
     `;
 
     const panes = $$('.pane', root);
@@ -243,7 +269,7 @@
     const slotsEl = $('[data-slots]', root);
     const availEl = $('[data-avail]', root);
     const nextBtn = $('[data-next]', root);
-    const backBtn = $('[data-back]', root);
+    const backBtns = $$('[data-back]', root);
     const form = $('.bk-form', root);
     const msg = $('[data-msg]', root);
 
@@ -254,11 +280,11 @@
         s.classList.toggle('active', n === step);
         s.classList.toggle('done', n < step);
       });
-      root.classList.toggle('done', step === 3);
+      root.classList.toggle('done', step >= 4);
       if (step > 1) {
         const d = days.find(x => x.key === state.day);
-        $('[data-chosen-main]', root).textContent = `${d.dowLong} ${d.day} ${d.monLong}, ${labelTime(state.time, state.period)}`;
-        $('[data-chosen-sub]', root).textContent = 'Free online suitability assessment · 15 min';
+        $$('[data-chosen-main]', root).forEach(el => { el.textContent = `${d.dowLong} ${d.day} ${d.monLong}, ${labelTime(state.time, state.period)}`; });
+        $$('[data-chosen-sub]', root).forEach(el => { el.textContent = 'Free online assessment · 15-minute video call'; });
       }
       // bring the top of the card back into view, so a phone user never lands halfway down the new pane
       const headerH = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 64) + 12;
@@ -266,7 +292,7 @@
       if (top < headerH || top > innerHeight * 0.5) window.scrollTo({ top: scrollY + top - headerH, behavior: REDUCED ? 'auto' : 'smooth' });
       // move focus deliberately so keyboard and screen reader users are never stranded on a hidden pane.
       // On a touch screen the first input is not focused automatically: the keyboard would cover the chosen time.
-      const target = step === 1 ? $('.day.selected', root) : step === 2 ? (TOUCH ? null : $('input[name=first_name]', root)) : $('.success h4', root);
+      const target = step === 1 ? $('.day.selected', root) : step === 2 ? (TOUCH ? null : $('input[name=first_name]', root)) : step === 3 ? $('.walk-title', root) : $('.success h4', root);
       if (target) setTimeout(() => target.focus({ preventScroll: true }), REDUCED ? 0 : 350);
     }
 
@@ -312,7 +338,23 @@
       if (innerWidth <= 640) setTimeout(() => nextBtn.scrollIntoView({ block: 'nearest', behavior: REDUCED ? 'auto' : 'smooth' }), 120);
     });
     nextBtn.addEventListener('click', () => { go(2); if (isConfigured()) loadEmailJs().catch(() => {}); });
-    backBtn.addEventListener('click', () => { if (!sending) go(1); });
+    backBtns.forEach(b => b.addEventListener('click', () => { if (!sending) go(1); }));
+    $('[data-back-details]', root).addEventListener('click', () => { if (!sending) go(2); });
+    // details -> confirm: validate, run the over-60 gate, then show the walkthrough
+    $('[data-details-next]', root).addEventListener('click', () => {
+      const inputs = $$('.input', form);
+      const allOk = inputs.map(i => validate(i, true)).every(Boolean);
+      if (!allOk) { inputs.find(i => i.classList.contains('invalid')).focus(); return; }
+      if (ageYears(form.dob.value) > 60) { showOver60(); return; }
+      fillWalk(); go(3);
+    });
+    // the "why you are doing this" lines: what they ticked further up the page, or three generic ones
+    function fillWalk() {
+      const picks = $$('#pain .hassle[aria-pressed="true"] b').map(b => b.textContent.trim()).slice(0, 3);
+      const generic = ['Waking up and just seeing, no reaching for glasses', 'Surf, sport and travel without the admin', 'No more frames, lenses and solution to keep paying for'];
+      $('[data-walk-why-title]', root).textContent = picks.length ? 'What you told us is getting in the way' : 'Why people do this';
+      $('[data-walk-pains]', root).innerHTML = (picks.length ? picks : generic).map(t => `<li>${I.check}<span>${t}</span></li>`).join('');
+    }
     $('[data-about]', root).addEventListener('click', e => {
       const c = e.target.closest('.choice');
       if (!c) return;
@@ -349,12 +391,12 @@
       return a;
     };
     function showOver60() {
-      panes.forEach(p => p.classList.toggle('active', +p.dataset.pane === 4));
+      panes.forEach(p => p.classList.toggle('active', +p.dataset.pane === 5));
       root.classList.add('done');
       const headerH = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 64) + 12;
       const top = root.getBoundingClientRect().top;
       if (top < headerH || top > innerHeight * 0.5) window.scrollTo({ top: scrollY + top - headerH, behavior: REDUCED ? 'auto' : 'smooth' });
-      const t = $('[data-pane="4"] h4', root);
+      const t = $('[data-pane="5"] h4', root);
       if (t) setTimeout(() => t.focus({ preventScroll: true }), REDUCED ? 0 : 350);
     }
     $('[data-over60-back]', root).addEventListener('click', () => go(2));
@@ -418,12 +460,12 @@
         submitted_at: new Date().toLocaleString('en-AU', { timeZone: 'Australia/Brisbane' }),
       };
 
-      const btn = $('button[type=submit]', form);
-      sending = true; btn.disabled = true; backBtn.disabled = true; btn.classList.add('loading');
+      const btn = $('button[type=submit]', root);
+      sending = true; btn.disabled = true; backBtns.forEach(b => { b.disabled = true; }); btn.classList.add('loading');
       try {
         await sendLead(params);
         $('[data-s-name]', root).textContent = params.first_name;
-        $('[data-s-when]', root).textContent = when.replace(' (AEST)', '') + ' (pending confirmation)';
+        $$('[data-s-when]', root).forEach(el => { el.textContent = when.replace(' (AEST)', ''); });
         const icsBtn = $('[data-ics]', root);
         if (/FBAN|FBAV|FB_IAB|Instagram/i.test(navigator.userAgent)) {
           const { h, m } = to24(state.time, state.period);
@@ -434,7 +476,7 @@
         } else {
           icsBtn.onclick = () => downloadIcs(d, state);
         }
-        go(3);
+        go(4);
         root.classList.remove('pulse');
         track('Lead', { content_name: 'Free online assessment', value: 0, currency: 'AUD' });
       } catch (err) {
@@ -443,7 +485,7 @@
         msg.className = 'form-msg error';
         msg.innerHTML = `Something went wrong and your request did not send. Please try again, or call us on <a href="tel:0752208990"><b>${CONFIG.clinicPhone}</b></a> and we will book you in over the phone.`;
       } finally {
-        sending = false; btn.disabled = false; backBtn.disabled = false; btn.classList.remove('loading');
+        sending = false; btn.disabled = false; backBtns.forEach(b => { b.disabled = false; }); btn.classList.remove('loading');
       }
     });
 
@@ -698,7 +740,8 @@
   /* ---------------------------------------------------------
      Tuner: two taps under the hero that set the rest of the page
      --------------------------------------------------------- */
-  const TUNE = { persona: null, rx: null };
+  const TUNE = { persona: null, rx: null, age: null, stable: null, cond: null };
+  const AGE_NAME = { u18: 'under 18', a1839: '18 to 39', a4060: '40 to 60', o60: 'over 60' };
   const PERSONA_TITLE = { glasses: 'Glasses', contacts: 'Contact lenses', both: 'Glasses and contacts', readers: 'Reading glasses' };
   const PERSONA_YOU = { glasses: 'you wear glasses', contacts: 'you wear contacts', both: 'you wear glasses and contacts', readers: 'you use reading glasses' };
   const RX_NAME = { short: 'short-sighted', long: 'long-sighted', astig: 'astigmatism', reading: 'reading vision', unsure: 'prescription not sure' };
@@ -709,15 +752,20 @@
     reading: 'PRESBYOND® and Refractive Lens Exchange are often considered for reading vision.',
     unsure: 'No problem. Working that out is exactly what the free assessment is for.',
   };
-  const tunedLabel = () => TUNE.persona ? `${PERSONA_TITLE[TUNE.persona]}${TUNE.rx ? ' · ' + RX_NAME[TUNE.rx] : ''}` : 'Not answered';
+  const tunedLabel = () => TUNE.persona
+    ? [PERSONA_TITLE[TUNE.persona], TUNE.rx && RX_NAME[TUNE.rx], TUNE.age && 'age ' + AGE_NAME[TUNE.age], TUNE.stable && 'stable 12 months: ' + TUNE.stable, TUNE.cond && 'eye condition: ' + TUNE.cond].filter(Boolean).join(' · ')
+    : 'Not answered';
 
   function initTuner(widgets, pains, matcher) {
     const sec = $('#tune');
     if (!sec) return;
-    const q1 = $('[data-q="1"]', sec), q2 = $('[data-q="2"]', sec), res = $('.tune-result', sec);
+    const qs = [1, 2, 3, 4, 5].map(n => $(`[data-q="${n}"]`, sec));
+    const res = $('.tune-result', sec);
     const title = $('[data-tune-title]', sec), sub = $('[data-tune-sub]', sec);
-    const personaBtns = $$('[data-persona]', q1), rxBtns = $$('[data-rx]', q2);
-    const press = (btns, active) => btns.forEach(b => b.setAttribute('aria-pressed', b === active));
+    const bookBtn = $('[data-suit-book]', sec), callBtn = $('[data-suit-call]', sec), more = $('[data-suit-more]', sec);
+    const groups = { persona: $$('[data-persona]', qs[0]), rx: $$('[data-rx]', qs[1]), age: $$('[data-age]', qs[2]), stable: $$('[data-stable]', qs[3]), cond: $$('[data-cond]', qs[4]) };
+    const press = (btns, active) => btns.forEach(x => x.setAttribute('aria-pressed', x === active));
+    const behavior = REDUCED ? 'auto' : 'smooth';
 
     const applyPersona = () => {
       const p = TUNE.persona;
@@ -729,30 +777,48 @@
       const { persona, rx } = TUNE;
       const mrx = rx === 'unsure' ? (persona === 'readers' ? 'reading' : null) : rx;
       if (matcher) matcher.select(mrx, 'Based on what you told us, these are often considered. Tap another to compare.');
-      title.textContent = `Got it. ${PERSONA_TITLE[persona]}, ${RX_NAME[rx]}.`;
-      sub.textContent = `${RX_TEXT[mrx || rx]} The hassles and the options below are now set to your eyes.`;
-      res.hidden = false;
     };
-    personaBtns.forEach(b => b.addEventListener('click', () => {
-      TUNE.persona = b.dataset.persona; press(personaBtns, b);
-      q2.hidden = false; applyPersona();
-      if (TUNE.rx) applyRx();
-    }));
-    rxBtns.forEach(b => b.addEventListener('click', () => {
-      if (!TUNE.persona) return;
-      TUNE.rx = b.dataset.rx; press(rxBtns, b); applyRx();
-    }));
+    const show = (t, s, mode) => {
+      title.textContent = t; sub.textContent = s;
+      bookBtn.hidden = mode === 'call' || mode === 'none';
+      callBtn.hidden = mode !== 'call';
+      more.hidden = mode === 'none';
+      res.hidden = false;
+      setTimeout(() => res.scrollIntoView({ block: 'nearest', behavior }), 60);
+    };
+    const result = () => {
+      const { persona, rx, age, stable, cond } = TUNE;
+      const mrx = rx === 'unsure' ? (persona === 'readers' ? 'reading' : null) : rx;
+      if (age === 'u18') return show('Not just yet.', 'Laser vision correction is for adults whose eyes have settled, so our assessment is for people 18 and over. Keep this page for later.', 'none');
+      if (age === 'o60') return show('Laser is not the right option over 60, but lens-based surgery may be.', `Call us on ${CONFIG.clinicPhone} or email reception@eyehub.net.au to discuss lens-based options and arrange an appointment. The refractive assessment is only available at our Buderim clinic.`, 'call');
+      if (stable === 'no') return show('Likely not yet, and the free assessment can tell you when.', 'Laser needs a prescription that has been stable for 12 months. Book the free online assessment anyway: the coordinator can check your options and tell you when to come back.', 'book');
+      if (cond === 'yes') return show('Possibly, with a closer look.', 'An eye condition does not rule you out, but it needs a proper check. Book the free online assessment and mention it, and the coordinator will tell you where you stand.', 'book');
+      show('Good news. You are likely to be suitable.', `${RX_TEXT[mrx || rx]} Book your free online assessment and a laser vision coordinator will confirm which one fits your eyes.`, 'book');
+    };
+    const reveal = n => { qs.forEach((q, i) => { q.hidden = i >= n; }); };
+    const answer = (key, btn) => {
+      TUNE[key] = btn.dataset[key]; press(groups[key], btn);
+      if (key === 'persona') applyPersona();
+      if (key === 'rx') applyRx();
+      const n = ['persona', 'rx', 'age', 'stable', 'cond'].indexOf(key);
+      if (n < 4) { reveal(n + 2); res.hidden = true; setTimeout(() => qs[n + 1].scrollIntoView({ block: 'nearest', behavior }), 60); }
+      else result();
+    };
+    Object.keys(groups).forEach(key => groups[key].forEach(btn => btn.addEventListener('click', () => {
+      if (key !== 'persona' && !TUNE.persona) return;
+      answer(key, btn);
+    })));
     $('[data-tune-reset]', sec).addEventListener('click', () => {
-      TUNE.persona = null; TUNE.rx = null;
-      press(personaBtns, null); press(rxBtns, null);
-      q2.hidden = true; res.hidden = true;
+      Object.keys(TUNE).forEach(k => { TUNE[k] = null; });
+      Object.values(groups).forEach(g => press(g, null));
+      reveal(1); res.hidden = true;
       applyPersona(); if (matcher) matcher.select(null);
-      personaBtns[0].focus();
+      groups.persona[0].focus();
     });
     // Ad message match: ?p=contacts (or utm_content=glasses|contacts|both|readers) pre-answers the first tap.
     const params = new URLSearchParams(location.search);
     const pre = params.get('p') || params.get('utm_content');
-    if (pre && ABOUT[pre]) { const b = personaBtns.find(x => x.dataset.persona === pre); if (b) b.click(); }
+    if (pre && ABOUT[pre]) { const btn = groups.persona.find(x => x.dataset.persona === pre); if (btn) btn.click(); }
   }
 
   function initFaq() {

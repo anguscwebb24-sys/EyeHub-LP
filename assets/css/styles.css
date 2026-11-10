@@ -1310,3 +1310,36 @@ h1.eyebrow { font-size: 12px; line-height: 1.5; }
 .over60-actions .btn { width: 100%; white-space: normal; text-align: center; }
 .over60-note { margin-top: 14px; font-size: 0.85rem; color: var(--ink-mute); }
 .over60-back { display: inline-block; margin-top: 12px; font-size: 0.85rem; font-weight: 600; color: var(--rust); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- v8: three-step booking, confirm walkthrough, suitability check, hero split ---------- */
+.steps { grid-template-columns: repeat(3, 1fr); }
+.hero-actions .btn-ghost { background: var(--white); }
+#tune { scroll-margin-top: 84px; }
+.tune .tune-opts.three { grid-template-columns: repeat(3, 1fr); }
+.tune .tune-opts.stack .tune-opt { display: block; }
+.tune-actions .btn svg { width: 18px; height: 18px; }
+.tune-actions [hidden] { display: none !important; }
+.walk { padding-top: 4px; }
+.walk-title { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; margin: 0 0 14px; }
+.walk-title:focus { outline: none; }
+.walk-steps { margin-bottom: 4px; }
+.walk-why { margin: 6px 0 16px; padding: 14px 16px 6px; border-radius: var(--r-md); background: rgba(57, 76, 57, 0.07); border: 1px solid rgba(57, 76, 57, 0.14); }
+.walk-why .jm-title { margin-bottom: 4px; }
+.walk .jm-title { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--ink-mute); margin: 0 0 10px; }
+.walk-procs { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 8px; }
+.walk-procs li { display: flex; gap: 12px; align-items: center; padding: 10px 12px; border-radius: var(--r-md); background: var(--white); border: 1px solid var(--line); }
+.walk-procs .wp-ic { flex: none; width: 36px; height: 36px; border-radius: 10px; background: var(--forest); color: var(--cream); display: grid; place-items: center; }
+.walk-procs .wp-ic svg { width: 18px; height: 18px; }
+.walk-procs b { display: block; font-size: 0.92rem; font-weight: 600; letter-spacing: -0.01em; }
+.walk-procs span { display: block; font-size: 0.82rem; color: var(--ink-soft); line-height: 1.4; }
+.walk-hook { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin: 0 0 6px; }
+.walk-edit { display: block; margin: 12px auto 0; font-size: 0.85rem; color: var(--ink-mute); text-decoration: underline; text-underline-offset: 3px; }
+.js .pane.active .walk-procs li { opacity: 0; animation: stepIn 0.5s var(--ease) forwards; animation-delay: calc(1.25s + var(--j) * 0.12s); }
+.js .pane.active .walk-why { opacity: 0; animation: stepIn 0.5s var(--ease) forwards; animation-delay: 1.05s; }
+.js .pane.active .walk-hook, .js .pane.active .walk .booking-actions { opacity: 0; animation: stepIn 0.5s var(--ease) forwards; animation-delay: 1.9s; }
+.nofx .walk-procs li, .nofx .walk-why, .nofx .walk-hook, .nofx .walk .booking-actions { opacity: 1 !important; animation: none !important; }
+@media (max-width: 640px) {
+  .hero-actions { flex-direction: column; align-items: stretch; gap: 10px; }
+  .tune .tune-opts, .tune .tune-opts.three { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 360px) { .step-ind { font-size: 0.72rem; gap: 5px; padding: 8px 6px; } }
