@@ -273,7 +273,7 @@
         <div class="success">
           <div class="check-ring"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
           <h4 tabindex="-1">Confirmed, <span data-s-name></span>. We look forward to meeting you on <span data-s-when></span>.</h4>
-          <p>We will send the video call link by SMS and email before your appointment. If anything changes, our team will call you from ${CONFIG.clinicPhone}, so save the number.</p>
+          <p>We will send the video call link by SMS and email before your appointment. If anything changes, our team will call you from <a class="s-tel" href="tel:1800393482"><b>1800 EYEHUB</b></a>, so save the number.</p>
           <div class="summary">
             <div><span>Your appointment</span><b data-s-when></b></div>
             <div><span>Where</span><b>Video call, from home</b></div>
