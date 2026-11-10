@@ -204,28 +204,48 @@
           <button type="button" class="change" data-back>Change</button>
         </div>
         <div class="walk">
-          <h3 class="walk-title" tabindex="-1">Before you confirm, here is how it works</h3>
-          <ol class="jsteps walk-steps">
-            <li class="jstep" style="--j:0"><span class="jic"><svg><use href="#i-phone"/></svg></span><div><b>Your free online assessment</b><p>A 15-minute video call with one of our laser vision coordinators, who asks about your eyes and what you want from them, and tells you honestly whether you are likely to be suitable.</p></div></li>
-            <li class="jstep" style="--j:1"><span class="jic"><svg><use href="#p-smile"/></svg></span><div><b>Your in-person assessment at Buderim</b><p>A $100 deposit, which comes off your laser surgery fee, books it. Our qualified laser vision optometrist runs extensive diagnostic eye tests to match the procedure to you, and you get to experience what your vision could look like afterwards.</p></div></li>
-            <li class="jstep" style="--j:2"><span class="jic"><svg><use href="#i-user"/></svg></span><div><b>Your pre-surgery consultation with Dr Moorthy</b><p>Once your $2,000 surgery deposit is paid, you meet Dr Sonia Moorthy, who talks you through the procedure and answers every question before your surgery date.</p></div></li>
-          </ol>
-          <div class="walk-why">
-            <p class="jm-title" data-walk-why-title>Why you are doing this</p>
-            <ul class="quiz-lines" data-walk-pains></ul>
+          <div class="wprog" aria-hidden="true"><span class="on" data-wdot></span><span data-wdot></span><span data-wdot></span><span data-wdot></span></div>
+          <div class="wslides">
+            <section class="wslide active" data-slide="0">
+              <h3 class="walk-title" tabindex="-1">Before you confirm, here is how it works</h3>
+              <ol class="jsteps walk-steps">
+                <li class="jstep" style="--j:0"><span class="jic"><svg><use href="#i-phone"/></svg></span><div><b>Your free online assessment</b><p>A 15-minute video call with one of our laser vision coordinators, who asks about your eyes and what you want from them, and tells you honestly whether you are likely to be suitable.</p></div></li>
+                <li class="jstep" style="--j:1"><span class="jic"><svg><use href="#p-smile"/></svg></span><div><b>Your in-person assessment at Buderim</b><p>A $100 deposit, which comes off your laser surgery fee, books it. Our qualified laser vision optometrist runs extensive diagnostic eye tests to match the procedure to you, and you get to experience what your vision could look like afterwards.</p></div></li>
+                <li class="jstep" style="--j:2"><span class="jic"><svg><use href="#i-user"/></svg></span><div><b>Your pre-surgery consultation with Dr Moorthy</b><p>Once your $2,000 surgery deposit is paid, you meet Dr Sonia Moorthy, who talks you through the procedure and answers every question before your surgery date.</p></div></li>
+              </ol>
+            </section>
+            <section class="wslide" data-slide="1">
+              <h3 class="walk-title" tabindex="-1" data-wwhy-title>Why you are doing this</h3>
+              <ul class="wtick" data-wpains></ul>
+              <p class="jm-title">Now picture the opposite</p>
+              <ul class="wpos" data-wpos></ul>
+            </section>
+            <section class="wslide" data-slide="2">
+              <h3 class="walk-title" tabindex="-1">Five ways to get there. Tap any to see more.</h3>
+              <div class="wtiles" data-wtiles></div>
+              <p class="walk-hook">Which one fits your eyes is exactly what the free assessment answers.</p>
+            </section>
+            <section class="wslide" data-slide="3">
+              <h3 class="walk-title" tabindex="-1">Drag it. This is what you are booking the call for.</h3>
+              <div class="compare mini" style="--pos:50%">
+                <img class="blur" draggable="false" loading="lazy" decoding="async" src="assets/img/kitesurfer.webp" alt="" aria-hidden="true">
+                <img class="clear" draggable="false" loading="lazy" decoding="async" src="assets/img/kitesurfer.webp" alt="Kitesurfer on the Sunshine Coast, blurry to clear">
+                <div class="handle"><div class="knob"><svg><use href="#i-drag"/></svg></div></div>
+                <span class="tag l">Blurry</span>
+                <span class="tag r">Clear</span>
+                <input type="range" min="2" max="98" value="50" step="0.1" aria-label="Drag to compare blurry and clear vision">
+              </div>
+              <p class="walk-hook">Fifteen minutes on a video call is all it takes to find out if this could be you.</p>
+              <div class="form-msg" data-msg role="alert"></div>
+              <div class="booking-actions">
+                <button type="submit" form="${uid}-form" class="btn btn-primary btn-block btn-lg"><span class="lbl">Confirm my appointment</span><span class="spin"></span>${I.arrow}</button>
+              </div>
+              <p class="walk-fine">Free, no obligation. If your time is not available, our team will call to arrange another.</p>
+            </section>
           </div>
-          <p class="jm-title">Five ways to get there</p>
-          <ul class="walk-procs">
-            <li style="--j:0"><span class="wp-ic"><svg><use href="#p-smile"/></svg></span><div><b>SMILE PRO®</b><span>Keyhole, flap-free laser for short-sight and astigmatism</span></div></li>
-            <li style="--j:1"><span class="wp-ic"><svg><use href="#p-lasik"/></svg></span><div><b>LASIK</b><span>The well-established laser procedure for a wide range of prescriptions</span></div></li>
-            <li style="--j:2"><span class="wp-ic"><svg><use href="#p-presbyond"/></svg></span><div><b>PRESBYOND®</b><span>Laser Blended Vision for the reading-glasses years</span></div></li>
-            <li style="--j:3"><span class="wp-ic"><svg><use href="#p-icl"/></svg></span><div><b>ICL</b><span>A tiny lens placed inside the eye when laser is not the right fit</span></div></li>
-            <li style="--j:4"><span class="wp-ic"><svg><use href="#p-rle"/></svg></span><div><b>Refractive Lens Exchange</b><span>Your natural lens replaced with a premium lens</span></div></li>
-          </ul>
-          <p class="walk-hook">Which one fits your eyes is exactly what the free assessment answers.</p>
-          <div class="form-msg" data-msg role="alert"></div>
-          <div class="booking-actions">
-            <button type="submit" form="${uid}-form" class="btn btn-primary btn-block btn-lg"><span class="lbl">Confirm my appointment</span><span class="spin"></span>${I.arrow}</button>
+          <div class="wnav">
+            <button type="button" class="wback" data-wprev hidden>Back</button>
+            <button type="button" class="btn btn-primary btn-block" data-wnext><span class="lbl">Next: why you are doing this</span>${I.arrow}</button>
           </div>
           <button type="button" class="walk-edit" data-back-details>Edit my details</button>
         </div>
@@ -349,11 +369,56 @@
       fillWalk(); go(3);
     });
     // the "why you are doing this" lines: what they ticked further up the page, or three generic ones
+    // ---- confirm step: four screens the visitor taps through before the Confirm button ----
+    const slides = $$('.wslide', root), wdots = $$('[data-wdot]', root), wnext = $('[data-wnext]', root), wprev = $('[data-wprev]', root);
+    const WLABELS = ['Next: why you are doing this', 'Next: your five options', 'Next: picture it'];
+    let wcur = 0;
+    function wgo(i) {
+      wcur = i;
+      slides.forEach((s, k) => s.classList.toggle('active', k === i));
+      wdots.forEach((d, k) => d.classList.toggle('on', k <= i));
+      wprev.hidden = i === 0;
+      wnext.hidden = i === slides.length - 1;
+      if (i < WLABELS.length) $('.lbl', wnext).textContent = WLABELS[i];
+      const headerH = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 64) + 12;
+      const top = root.getBoundingClientRect().top;
+      if (top < headerH || top > innerHeight * 0.5) window.scrollTo({ top: scrollY + top - headerH, behavior: REDUCED ? 'auto' : 'smooth' });
+      const t = $('.walk-title', slides[i]);
+      if (t) setTimeout(() => t.focus({ preventScroll: true }), REDUCED ? 0 : 300);
+    }
+    wnext.addEventListener('click', () => wgo(Math.min(slides.length - 1, wcur + 1)));
+    wprev.addEventListener('click', () => wgo(Math.max(0, wcur - 1)));
+    const PROCS = [
+      { k: 'smile', ic: 'p-smile', n: 'SMILE PRO®', s: 'Keyhole, flap-free laser', d: 'A small incision and no corneal flap, which is why it is often considered by people who surf, swim or play sport. For short-sight and astigmatism.' },
+      { k: 'lasik', ic: 'p-lasik', n: 'LASIK', s: 'The well-established laser', d: 'Two ZEISS lasers: one creates a thin, blade-free flap, the other reshapes the cornea beneath it. Suits a wide range of prescriptions.' },
+      { k: 'presbyond', ic: 'p-presbyond', n: 'PRESBYOND®', s: 'Laser Blended Vision', d: 'One eye is set for distance, the other for near, and your brain blends the two. Designed to reduce reliance on reading glasses.' },
+      { k: 'icl', ic: 'p-icl', n: 'ICL', s: 'Implantable Contact Lens', d: 'A tiny lens placed inside the eye, in front of your own. Nothing is removed. For higher prescriptions and thinner corneas.' },
+      { k: 'rle', ic: 'p-rle', n: 'Refractive Lens Exchange', s: 'A premium lens, cataract-surgery approach', d: 'Your natural lens is replaced with a premium lens chosen for your eyes. Often considered when lens health matters more than age.' },
+    ];
+    const RX_PROCS = { short: ['smile', 'lasik', 'icl'], astig: ['smile', 'lasik'], long: ['lasik', 'rle'], reading: ['presbyond', 'rle'] };
+    const POS = {
+      glasses: ['Wake up and just see. The clock, the ceiling, their face.', 'Sunglasses off the rack, any pair, from any shop.', 'Nothing to fog up, slip down or go missing.'],
+      contacts: ['No 6am and 10pm ritual. No case, no solution, no spare pair.', 'Straight into the surf with your eyes open.', 'Eyes that are not gritty by 3pm.'],
+      both: ['Wake up and just see, no bedside-table fumble.', 'Straight into the surf, and sunglasses off the rack after.', 'Two bills that stop, for good.'],
+      readers: ['Read the menu, not the phone torch.', 'Your phone at a normal distance again.', 'One pair fewer in every room of the house.'],
+    };
     function fillWalk() {
-      const picks = $$('#pain .hassle[aria-pressed="true"] b').map(b => b.textContent.trim()).slice(0, 3);
-      const generic = ['Waking up and just seeing, no reaching for glasses', 'Surf, sport and travel without the admin', 'No more frames, lenses and solution to keep paying for'];
-      $('[data-walk-why-title]', root).textContent = picks.length ? 'What you told us is getting in the way' : 'Why people do this';
-      $('[data-walk-pains]', root).innerHTML = (picks.length ? picks : generic).map(t => `<li>${I.check}<span>${t}</span></li>`).join('');
+      const persona = TUNE.persona || Object.keys(ABOUT).find(k => ABOUT[k] === state.about) || 'glasses';
+      const picks = $$('#pain .hassle[aria-pressed="true"] b').map(x => x.textContent.trim()).slice(0, 3);
+      const generic = ['Reaching for glasses before you can see the clock', 'The fog, the smears, the pair you cannot find', 'Frames, lenses and solution you never stop paying for'];
+      $('[data-wwhy-title]', root).textContent = picks.length ? 'What you told us is getting in the way' : 'Why people do this';
+      const tick = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+      $('[data-wpains]', root).innerHTML = (picks.length ? picks : generic).map((t, i) => `<li style="--j:${i}"><span class="tk">${tick}</span><span>${t}</span></li>`).join('');
+      $('[data-wpos]', root).innerHTML = (POS[persona] || POS.glasses).map((t, i) => `<li style="--j:${i}"><span class="sun"><svg><use href="#i-sun"/></svg></span><span>${t}</span></li>`).join('');
+      const rx = TUNE.rx === 'unsure' ? (persona === 'readers' ? 'reading' : null) : TUNE.rx;
+      const mine = RX_PROCS[rx] || [];
+      $('[data-wtiles]', root).innerHTML = PROCS.map((p, i) => `<button type="button" class="wtile${mine.includes(p.k) ? ' mine' : ''}" style="--j:${i}" aria-expanded="false"><span class="wt-ic"><svg><use href="#${p.ic}"/></svg></span><span class="wt-txt"><b>${p.n}</b><small>${p.s}</small><p>${p.d}</p></span>${mine.includes(p.k) ? '<span class="wt-for">For your eyes</span>' : ''}</button>`).join('');
+      $$('.wtile', root).forEach(t => t.addEventListener('click', () => {
+        const open = t.getAttribute('aria-expanded') === 'true';
+        $$('.wtile', root).forEach(x => x.setAttribute('aria-expanded', 'false'));
+        t.setAttribute('aria-expanded', open ? 'false' : 'true');
+      }));
+      wgo(0);
     }
     $('[data-about]', root).addEventListener('click', e => {
       const c = e.target.closest('.choice');

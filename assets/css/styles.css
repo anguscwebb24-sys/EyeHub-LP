@@ -1343,3 +1343,56 @@ h1.eyebrow { font-size: 12px; line-height: 1.5; }
   .tune .tune-opts, .tune .tune-opts.three { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 360px) { .step-ind { font-size: 0.72rem; gap: 5px; padding: 8px 6px; } }
+
+/* ---------- Confirm step: four tappable screens ---------- */
+.wprog { display: flex; gap: 6px; margin: 2px 0 14px; }
+.wprog span { height: 6px; width: 14px; border-radius: 4px; background: rgba(39, 43, 39, 0.12); transition: all 0.4s var(--ease); }
+.wprog span.on { background: var(--forest); width: 28px; }
+.wslide { display: none; }
+.wslide.active { display: block; animation: paneIn 0.45s var(--ease); }
+.wnav { display: flex; gap: 10px; align-items: center; margin-top: 16px; }
+.wnav .btn { flex: 1; }
+.wback { flex: none; padding: 14px 16px; border-radius: var(--r-pill); font-weight: 600; font-size: 0.92rem; color: var(--ink-soft); background: var(--white); box-shadow: inset 0 0 0 1.5px var(--line-strong); }
+.wback[hidden], .wnav .btn[hidden] { display: none; }
+.wtick, .wpos { list-style: none; margin: 0; padding: 0; }
+.wtick li, .wpos li { display: flex; gap: 12px; align-items: center; padding: 9px 0; font-size: 0.98rem; color: var(--ink); line-height: 1.4; }
+.wtick .tk { flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--forest); color: var(--cream); display: grid; place-items: center; }
+.wtick .tk svg { width: 16px; height: 16px; }
+.wtick .tk svg path { stroke-dasharray: 24; stroke-dashoffset: 24; }
+.wpos li { color: var(--ink-soft); }
+.wpos .sun { flex: none; width: 30px; height: 30px; border-radius: 50%; background: rgba(185, 162, 128, 0.25); color: var(--rust); display: grid; place-items: center; }
+.wpos .sun svg { width: 16px; height: 16px; }
+.wtiles { display: grid; gap: 8px; margin-bottom: 12px; }
+.wtile { position: relative; display: flex; gap: 12px; align-items: flex-start; width: 100%; text-align: left; padding: 12px 14px; border-radius: var(--r-md); background: var(--white); border: 1.5px solid var(--line); transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease); -webkit-tap-highlight-color: transparent; }
+.wtile:hover, .wtile[aria-expanded="true"] { border-color: var(--forest); box-shadow: 0 6px 18px rgba(57, 76, 57, 0.12); }
+.wtile.mine { border-color: rgba(57, 76, 57, 0.45); }
+.wtile .wt-ic { flex: none; width: 38px; height: 38px; border-radius: 11px; background: var(--forest); color: var(--cream); display: grid; place-items: center; }
+.wtile .wt-ic svg { width: 19px; height: 19px; }
+.wtile .wt-txt { flex: 1; min-width: 0; }
+.wtile b { display: block; font-size: 0.95rem; font-weight: 600; letter-spacing: -0.01em; padding-right: 86px; }
+.wtile small { display: block; font-size: 0.8rem; color: var(--ink-mute); margin-top: 1px; }
+.wtile p { display: none; margin: 8px 0 0; font-size: 0.86rem; color: var(--ink-soft); line-height: 1.5; }
+.wtile[aria-expanded="true"] p { display: block; animation: paneIn 0.35s var(--ease); }
+.wtile .wt-for { position: absolute; top: 10px; right: 10px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream); background: var(--forest); padding: 4px 8px; border-radius: 999px; }
+.compare.mini { aspect-ratio: 16 / 9; border-radius: 16px; box-shadow: var(--shadow-md); margin: 0 0 12px; }
+.compare.mini .knob { width: 44px; height: 44px; }
+.compare.mini .knob svg { width: 20px; height: 20px; }
+.compare.mini .tag { bottom: 12px; padding: 6px 10px; font-size: 10px; }
+.compare.mini .tag.l { left: 12px; } .compare.mini .tag.r { right: 12px; }
+.walk-fine { margin: 10px 0 0; font-size: 0.8rem; color: var(--ink-mute); text-align: center; }
+/* animations, per screen */
+@keyframes tickDraw { to { stroke-dashoffset: 0; } }
+@keyframes tileIn { from { opacity: 0; transform: translateY(12px) scale(0.97); } to { opacity: 1; transform: none; } }
+.js .wslide.active .jstep { opacity: 0; animation: stepIn 0.55s var(--ease) forwards; animation-delay: calc(0.25s + var(--j) * 0.22s); }
+.js .wslide.active .jic { transform: scale(0.4); animation: popIn 0.5s var(--ease) forwards; animation-delay: calc(0.3s + var(--j) * 0.22s); }
+.js .wslide.active .jstep::before { transform: scaleY(0); animation: lineGrow 0.5s var(--ease) forwards; animation-delay: calc(0.65s + var(--j) * 0.22s); }
+.js .wslide.active .wtick li { opacity: 0; animation: stepIn 0.45s var(--ease) forwards; animation-delay: calc(0.2s + var(--j) * 0.22s); }
+.js .wslide.active .wtick .tk { transform: scale(0.5); animation: popIn 0.4s var(--ease) forwards; animation-delay: calc(0.3s + var(--j) * 0.22s); }
+.js .wslide.active .wtick .tk svg path { animation: tickDraw 0.4s var(--ease) forwards; animation-delay: calc(0.5s + var(--j) * 0.22s); }
+.js .wslide.active .wpos li { opacity: 0; animation: stepIn 0.45s var(--ease) forwards; animation-delay: calc(1.1s + var(--j) * 0.2s); }
+.js .wslide.active .wpos + * , .js .wslide.active .jm-title { opacity: 0; animation: stepIn 0.4s var(--ease) forwards; animation-delay: 0.95s; }
+.js .wslide.active .wtile { opacity: 0; animation: tileIn 0.5s var(--ease) forwards; animation-delay: calc(0.15s + var(--j) * 0.11s); }
+.js .wslide.active .walk-hook { opacity: 0; animation: stepIn 0.45s var(--ease) forwards; animation-delay: 0.8s; }
+.js .wslide.active .compare.mini { opacity: 0; transform: scale(0.97); animation: tileIn 0.6s var(--ease) forwards; animation-delay: 0.15s; }
+.js .wslide.active .booking-actions, .js .wslide.active .walk-fine { opacity: 0; animation: stepIn 0.45s var(--ease) forwards; animation-delay: 1.1s; }
+.nofx .wslide .jstep, .nofx .wslide .jic, .nofx .wslide .jstep::before, .nofx .wtick li, .nofx .wtick .tk, .nofx .wtick .tk svg path, .nofx .wpos li, .nofx .wslide .jm-title, .nofx .wtile, .nofx .wslide .walk-hook, .nofx .compare.mini, .nofx .wslide .booking-actions, .nofx .walk-fine { opacity: 1 !important; transform: none !important; animation: none !important; stroke-dashoffset: 0 !important; }
