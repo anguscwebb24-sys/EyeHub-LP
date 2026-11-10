@@ -221,21 +221,39 @@
               <ul class="wpos" data-wpos></ul>
             </section>
             <section class="wslide" data-slide="2">
-              <h3 class="walk-title" tabindex="-1">Five ways to get there. Tap any to see more.</h3>
-              <div class="wtiles" data-wtiles></div>
-              <p class="walk-hook">Which one fits your eyes is exactly what the free assessment answers.</p>
+              <h3 class="walk-title" tabindex="-1" data-wproc-title>Five procedures. Three on the cornea, two inside the eye.</h3>
+              <p class="walk-lead">Tap one to see where it works on the eye, and what it involves.</p>
+              <div class="eye-box">
+                <svg class="eye" viewBox="38 10 184 110" aria-hidden="true" focusable="false">
+                  <path class="ray" d="M42 44 C 56 52, 62 58, 72 61" /><path class="ray" d="M42 86 C 56 78, 62 72, 72 69" />
+                  <circle class="globe" cx="130" cy="65" r="52" />
+                  <path class="nerve" d="M181 59 C 194 57, 204 59, 210 63 L 210 67 C 204 71, 194 73, 181 71 Z" />
+                  <path class="retina" d="M151 20 A 48 48 0 0 1 151 110" />
+                  <path class="cornea" d="M91 31 C 64 40, 64 90, 91 99" />
+                  <path class="iris" d="M92 34 L 92 55" /><path class="iris" d="M92 75 L 92 96" />
+                  <ellipse class="lens" cx="105" cy="65" rx="7.5" ry="17" />
+                  <g class="zone" data-zone="smile"><ellipse cx="77" cy="65" rx="3.2" ry="12" /><path d="M72.5 50.5 L 69.5 46.5" /></g>
+                  <g class="zone" data-zone="lasik"><path d="M88 37 C 70 45, 70 85, 88 93" /><circle cx="88" cy="37" r="2" /></g>
+                  <g class="zone" data-zone="presbyond"><path class="fill" d="M91 31 C 64 40, 64 90, 91 99 Z" /></g>
+                  <g class="zone" data-zone="icl"><path d="M96.5 45 C 90.5 54, 90.5 76, 96.5 85" /></g>
+                  <g class="zone" data-zone="rle"><ellipse class="fill" cx="105" cy="65" rx="7.5" ry="17" /></g>
+                </svg>
+                <p class="eye-cap" data-eye-cap aria-live="polite"></p>
+              </div>
+              <div class="wprocs" data-wprocs></div>
+              <p class="walk-hook soft">Nothing is decided on the video call. The optometrist's tests at Buderim settle which of these suits your eyes.</p>
             </section>
             <section class="wslide" data-slide="3">
-              <h3 class="walk-title" tabindex="-1">Drag it. This is what you are booking the call for.</h3>
+              <h3 class="walk-title" tabindex="-1">What all five are designed to do</h3>
               <div class="compare mini" style="--pos:50%">
-                <img class="blur" draggable="false" loading="lazy" decoding="async" src="assets/img/kitesurfer.webp" alt="" aria-hidden="true">
-                <img class="clear" draggable="false" loading="lazy" decoding="async" src="assets/img/kitesurfer.webp" alt="Kitesurfer on the Sunshine Coast, blurry to clear">
+                <img class="blur" draggable="false" loading="lazy" decoding="async" src="assets/img/cyclist.jpg" alt="" aria-hidden="true">
+                <img class="clear" draggable="false" loading="lazy" decoding="async" src="assets/img/cyclist.jpg" alt="Cyclist smiling mid-ride, blurry to clear">
                 <div class="handle"><div class="knob"><svg><use href="#i-drag"/></svg></div></div>
                 <span class="tag l">Blurry</span>
                 <span class="tag r">Clear</span>
                 <input type="range" min="2" max="98" value="50" step="0.1" aria-label="Drag to compare blurry and clear vision">
               </div>
-              <p class="walk-hook">Fifteen minutes on a video call is all it takes to find out if this could be you.</p>
+              <p class="walk-hook soft">Fifteen minutes with a laser vision coordinator, to see whether it is worth coming in for the tests.</p>
               <div class="form-msg" data-msg role="alert"></div>
               <div class="booking-actions">
                 <button type="submit" form="${uid}-form" class="btn btn-primary btn-block btn-lg"><span class="lbl">Confirm my appointment</span><span class="spin"></span>${I.arrow}</button>
@@ -371,7 +389,7 @@
     // the "why you are doing this" lines: what they ticked further up the page, or three generic ones
     // ---- confirm step: four screens the visitor taps through before the Confirm button ----
     const slides = $$('.wslide', root), wdots = $$('[data-wdot]', root), wnext = $('[data-wnext]', root), wprev = $('[data-wprev]', root);
-    const WLABELS = ['Next: why you are doing this', 'Next: your five options', 'Next: picture it'];
+    const WLABELS = ['Next: why you are doing this', 'Next: the five procedures', 'Next: confirm your call'];
     let wcur = 0;
     function wgo(i) {
       wcur = i;
@@ -389,11 +407,11 @@
     wnext.addEventListener('click', () => wgo(Math.min(slides.length - 1, wcur + 1)));
     wprev.addEventListener('click', () => wgo(Math.max(0, wcur - 1)));
     const PROCS = [
-      { k: 'smile', ic: 'p-smile', n: 'SMILE PRO®', s: 'Keyhole, flap-free laser', d: 'A small incision and no corneal flap, which is why it is often considered by people who surf, swim or play sport. For short-sight and astigmatism.' },
-      { k: 'lasik', ic: 'p-lasik', n: 'LASIK', s: 'The well-established laser', d: 'Two ZEISS lasers: one creates a thin, blade-free flap, the other reshapes the cornea beneath it. Suits a wide range of prescriptions.' },
-      { k: 'presbyond', ic: 'p-presbyond', n: 'PRESBYOND®', s: 'Laser Blended Vision', d: 'One eye is set for distance, the other for near, and your brain blends the two. Designed to reduce reliance on reading glasses.' },
-      { k: 'icl', ic: 'p-icl', n: 'ICL', s: 'Implantable Contact Lens', d: 'A tiny lens placed inside the eye, in front of your own. Nothing is removed. For higher prescriptions and thinner corneas.' },
-      { k: 'rle', ic: 'p-rle', n: 'Refractive Lens Exchange', s: 'A premium lens, cataract-surgery approach', d: 'Your natural lens is replaced with a premium lens chosen for your eyes. Often considered when lens health matters more than age.' },
+      { k: 'smile', ic: 'p-smile', n: 'SMILE PRO®', s: 'Keyhole laser, no flap', f: 'Short-sight and astigmatism', price: '$7,800 both eyes', cap: 'Inside the cornea. A thin disc of tissue comes out through a keyhole a few millimetres wide.', d: 'The ZEISS VisuMax 800 separates a thin disc of tissue inside the cornea, which comes out through a keyhole. No flap is made, so people who surf, swim or play contact sport often consider it.' },
+      { k: 'lasik', ic: 'p-lasik', n: 'LASIK', s: 'Laser under a thin flap', f: 'Short-sight, long-sight and astigmatism', price: '$7,800 both eyes', cap: 'The cornea. A thin flap is lifted, the laser reshapes beneath it, and the flap settles back.', d: 'The VisuMax 800 makes a thin flap without a blade, the MEL 90 reshapes the cornea beneath it, and the flap settles back into place. It has been in use since the 1990s.' },
+      { k: 'presbyond', ic: 'p-presbyond', n: 'PRESBYOND®', s: 'Laser that blends near and far', f: 'Reading glasses, often from the mid-40s', price: '$8,800 both eyes', cap: 'Each cornea. One eye is tuned a little more for distance, the other a little more for near.', d: 'Laser Blended Vision on the MEL 90 tunes one eye a little more for distance and the other for near, and the brain blends the two. It is designed to reduce reliance on reading glasses.' },
+      { k: 'icl', ic: 'p-icl', n: 'ICL', s: 'A lens added, nothing removed', f: 'Higher prescriptions and thinner corneas', price: '$13,000 to $14,000 both eyes', cap: 'Behind the iris. A soft lens made for your prescription sits in front of the natural lens.', d: 'A soft lens made for your prescription is placed behind the iris, in front of the natural lens. Nothing is removed, and the lens can be taken out later if that is ever needed.' },
+      { k: 'rle', ic: 'p-rle', n: 'Refractive Lens Exchange', s: 'A new lens in place of your own', f: 'Later life, when lens health matters more', price: 'About $13,000 both eyes', cap: 'The natural lens. It is removed and replaced with one chosen to suit your eyes.', d: 'The natural lens is replaced with a lens chosen for your eyes, the same approach as modern cataract surgery. It is often considered later in life, when lens health matters more than age.' },
     ];
     const RX_PROCS = { short: ['smile', 'lasik', 'icl'], astig: ['smile', 'lasik'], long: ['lasik', 'rle'], reading: ['presbyond', 'rle'] };
     const POS = {
@@ -412,12 +430,23 @@
       $('[data-wpos]', root).innerHTML = (POS[persona] || POS.glasses).map((t, i) => `<li style="--j:${i}"><span class="sun"><svg><use href="#i-sun"/></svg></span><span>${t}</span></li>`).join('');
       const rx = TUNE.rx === 'unsure' ? (persona === 'readers' ? 'reading' : null) : TUNE.rx;
       const mine = RX_PROCS[rx] || [];
-      $('[data-wtiles]', root).innerHTML = PROCS.map((p, i) => `<button type="button" class="wtile${mine.includes(p.k) ? ' mine' : ''}" style="--j:${i}" aria-expanded="false"><span class="wt-ic"><svg><use href="#${p.ic}"/></svg></span><span class="wt-txt"><b>${p.n}</b><small>${p.s}</small><p>${p.d}</p></span>${mine.includes(p.k) ? '<span class="wt-for">For your eyes</span>' : ''}</button>`).join('');
-      $$('.wtile', root).forEach(t => t.addEventListener('click', () => {
-        const open = t.getAttribute('aria-expanded') === 'true';
-        $$('.wtile', root).forEach(x => x.setAttribute('aria-expanded', 'false'));
-        t.setAttribute('aria-expanded', open ? 'false' : 'true');
+      const ordered = PROCS.slice().sort((a, b) => (mine.includes(b.k) ? 1 : 0) - (mine.includes(a.k) ? 1 : 0));
+      $('[data-wproc-title]', root).textContent = mine.length ? 'Five procedures. The ones that fit your answers come first.' : 'Five procedures. Three on the cornea, two inside the eye.';
+      $('[data-wprocs]', root).innerHTML = ordered.map((p, i) => `<button type="button" class="wproc${mine.includes(p.k) ? ' mine' : ''}" data-proc="${p.k}" style="--j:${i}" aria-expanded="false"><span class="wp-ic"><svg><use href="#${p.ic}"/></svg></span><span class="wp-txt"><span class="wp-head"><b>${p.n}</b>${mine.includes(p.k) ? '<span class="wp-for">Fits your answers</span>' : ''}</span><small>${p.s}</small><span class="wp-facts"><span class="wp-fact"><svg><use href="#i-eye"/></svg>${p.f}</span><span class="wp-fact wp-price">${p.price}</span></span><p>${p.d}</p></span></button>`).join('');
+      const cap = $('[data-eye-cap]', root), zones = $$('.eye .zone', root);
+      function showProc(btn) {
+        const p = PROCS.find(x => x.k === btn.dataset.proc);
+        $$('.wproc', root).forEach(x => x.setAttribute('aria-expanded', String(x === btn)));
+        zones.forEach(z => z.classList.toggle('on', z.dataset.zone === p.k));
+        cap.classList.remove('swap'); void cap.offsetWidth; cap.classList.add('swap');
+        cap.textContent = p.cap;
+      }
+      $$('.wproc', root).forEach(b => b.addEventListener('click', () => {
+        if (b.getAttribute('aria-expanded') === 'true') return;
+        showProc(b);
+        if (b.getBoundingClientRect().top < 0) b.scrollIntoView({ block: 'nearest', behavior: REDUCED ? 'auto' : 'smooth' });
       }));
+      showProc($('.wproc', root));
       wgo(0);
     }
     $('[data-about]', root).addEventListener('click', e => {
