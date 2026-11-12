@@ -32,10 +32,10 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" as="image" href="assets/img/hero-texture.webp" media="(min-width: 981px)">
   <link rel="preload" as="image" href="assets/img/hero-texture-mobile.webp" media="(max-width: 980px)">
-  <link rel="stylesheet" href="assets/css/styles.css?v=38">
+  <link rel="stylesheet" href="assets/css/styles.css?v=39">
   <!-- Your settings (EmailJS keys, phone number, availability) live in assets/js/config.js -->
-  <script src="assets/js/config.js?v=38" defer></script>
-  <script src="assets/js/app.js?v=38" defer onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="assets/js/config.js?v=39" defer></script>
+  <script src="assets/js/app.js?v=39" defer onerror="document.documentElement.classList.remove('js')"></script>
   <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -101,7 +101,7 @@
      "@type": "MedicalProcedure",
      "name": "SMILE PRO® keyhole laser eye surgery",
      "description": "Flap-free keyhole laser vision correction for short-sightedness and astigmatism on the ZEISS VisuMax 800. EyeHub is the only practice in Queensland with the combined ZEISS VisuMax 800 and MEL 90 platform.",
-     "url": "https://eyehub.net.au/our-expertise/refractive-laser/smile-pro/",
+     "url": "https://eyehub.net.au/smile-pro/",
      "provider": {
       "@id": "https://laservisionsurgery.net.au/#clinic"
      }
@@ -110,7 +110,7 @@
      "@type": "MedicalProcedure",
      "name": "LASIK laser eye surgery",
      "description": "Laser vision correction for short-sightedness, long-sightedness and astigmatism, performed with the ZEISS VisuMax 800 and MEL 90 lasers.",
-     "url": "https://eyehub.net.au/our-expertise/refractive-laser/lasik/",
+     "url": "https://eyehub.net.au/lasik/",
      "provider": {
       "@id": "https://laservisionsurgery.net.au/#clinic"
      }
@@ -119,7 +119,7 @@
      "@type": "MedicalProcedure",
      "name": "PRESBYOND® Laser Blended Vision",
      "description": "Laser treatment on the ZEISS MEL 90 designed to reduce reliance on reading glasses, often considered from the mid-40s to around 60. EyeHub is the only practice in Queensland with the combined ZEISS VisuMax 800 and MEL 90 platform.",
-     "url": "https://eyehub.net.au/our-expertise/refractive-laser/presbyond/",
+     "url": "https://eyehub.net.au/presbyond/",
      "provider": {
       "@id": "https://laservisionsurgery.net.au/#clinic"
      }
@@ -128,7 +128,7 @@
      "@type": "MedicalProcedure",
      "name": "Implantable Contact Lenses (ICL)",
      "description": "A lens placed inside the eye for higher prescriptions or thinner corneas, when laser eye surgery is not suitable.",
-     "url": "https://eyehub.net.au/our-expertise/refractive-laser/implantable-contact-lenses-icl/",
+     "url": "https://eyehub.net.au/implantable-contact-lenses-icl/",
      "provider": {
       "@id": "https://laservisionsurgery.net.au/#clinic"
      }
@@ -431,250 +431,93 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
           <a class="gpill" href="https://www.doctify.com/au/specialist/sonia-moorthy/reviews" target="_blank" rel="noopener" aria-label="Rated 4.9 on Doctify from 47 reviews"><span class="d" aria-hidden="true">D</span><b>4.9</b><span class="stars5" aria-hidden="true"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span><span class="n">47 Doctify reviews</span></a>
         </div>
       </div>
-      <div id="book" class="fade-up" style="--d:.35s">
+      <div class="tune fade-up" id="tune" style="--d:.35s">
+        <div class="tune-card">
+          <div class="tune-head">
+            <span class="eyebrow">Am I suitable?</span>
+            <h2 class="h2">Find out in five taps.</h2>
+            <p>No name, no email. An honest steer on whether laser is likely to be an option for you.</p>
+          </div>
+          <div class="tune-prog" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+          <div class="tune-q" data-q="1">
+            <p class="tune-label" id="tune-q1">1 of 5 · I wear</p>
+            <div class="tune-opts" role="group" aria-labelledby="tune-q1">
+              <button type="button" class="tune-opt" aria-pressed="false" data-persona="glasses"><svg><use href="#i-glasses"/></svg><b>Glasses</b></button>
+              <button type="button" class="tune-opt" aria-pressed="false" data-persona="contacts"><svg><use href="#i-drop"/></svg><b>Contacts</b></button>
+              <button type="button" class="tune-opt" aria-pressed="false" data-persona="both"><svg><use href="#i-both"/></svg><b>Both</b></button>
+              <button type="button" class="tune-opt" aria-pressed="false" data-persona="readers"><svg><use href="#i-book"/></svg><b>Reading glasses</b></button>
+            </div>
+          </div>
+          <div class="tune-q" data-q="2" hidden>
+            <p class="tune-label" id="tune-q2">2 of 5 · My eyes are</p>
+            <div class="tune-opts rx" role="group" aria-labelledby="tune-q2">
+              <button type="button" class="tune-opt" aria-pressed="false" data-rx="short"><b>Short-sighted</b><small>far away is blurry</small></button>
+              <button type="button" class="tune-opt" aria-pressed="false" data-rx="long"><b>Long-sighted</b><small>up close is harder</small></button>
+              <button type="button" class="tune-opt" aria-pressed="false" data-rx="astig"><b>Astigmatism</b><small>blurry at every distance</small></button>
+              <button type="button" class="tune-opt" aria-pressed="false" data-rx="reading"><b>Fine, except reading</b><small>menus, phone, labels</small></button>
+              <button type="button" class="tune-opt" aria-pressed="false" data-rx="unsure"><b>Not sure</b><small>that is fine</small></button>
+            </div>
+          </div>
+          <div class="tune-q" data-q="3" hidden>
+            <p class="tune-label" id="tune-q3">3 of 5 · My age</p>
+            <div class="tune-opts stack" role="group" aria-labelledby="tune-q3">
+              <button type="button" class="tune-opt" aria-pressed="false" data-age="u18"><b>Under 18</b></button>
+              <button type="button" class="tune-opt" aria-pressed="false" data-age="a1839"><b>18 to 39</b></button>
+              <button type="button" class="tune-opt" aria-pressed="false" data-age="a4060"><b>40 to 60</b></button>
+              <button type="button" class="tune-opt" aria-pressed="false" data-age="o60"><b>Over 60</b></button>
+            </div>
+          </div>
+          <div class="tune-q" data-q="4" hidden>
+            <p class="tune-label" id="tune-q4">4 of 5 · My prescription has been stable for the last 12 months</p>
+            <div class="tune-opts three stack" role="group" aria-labelledby="tune-q4">
+              <button type="button" class="tune-opt" aria-pressed="false" data-stable="yes"><b>Yes</b><small>no real change</small></button>
+              <button type="button" class="tune-opt" aria-pressed="false" data-stable="no"><b>No</b><small>it changed recently</small></button>
+              <button type="button" class="tune-opt" aria-pressed="false" data-stable="unsure"><b>Not sure</b><small>we can check</small></button>
+            </div>
+          </div>
+          <div class="tune-q" data-q="5" hidden>
+            <p class="tune-label" id="tune-q5">5 of 5 · Have you been told you have keratoconus, cataracts, glaucoma or another eye condition?</p>
+            <div class="tune-opts three stack" role="group" aria-labelledby="tune-q5">
+              <button type="button" class="tune-opt" aria-pressed="false" data-cond="no"><b>No</b></button>
+              <button type="button" class="tune-opt" aria-pressed="false" data-cond="yes"><b>Yes</b></button>
+              <button type="button" class="tune-opt" aria-pressed="false" data-cond="unsure"><b>Not sure</b></button>
+            </div>
+          </div>
+          <div class="tune-result" hidden aria-live="polite">
+            <div class="tune-summary">
+              <span class="tune-check"><svg><use href="#i-check"/></svg></span>
+              <div><b data-tune-title></b><span data-tune-sub></span></div>
+            </div>
+            <div class="tune-actions">
+              <a class="btn btn-primary" href="#book" data-book data-suit-book>Book my free assessment <svg><use href="#i-arrow"/></svg></a>
+              <a class="btn btn-primary" href="tel:0752208990" data-suit-call hidden><svg><use href="#i-phone"/></svg> Call 07 5220 8990</a>
+              <a class="tune-jump" href="#procedures" data-suit-more>Or keep reading ↓</a>
+              <button type="button" class="tune-reset" data-tune-reset>Change my answers</button>
+            </div>
+          </div>
+          <div class="tune-foot"><button type="button" class="tune-back" data-tune-back hidden>Back</button><span>Five questions, about 20 seconds</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DIARY ================= -->
+  <section class="section final book-band" id="book-section">
+    <div class="final-bg" aria-hidden="true"><img loading="lazy" decoding="async" src="assets/img/kitesurfer.webp" alt=""></div>
+    <div class="container">
+      <div class="on-dark book-copy" style="background:transparent">
+        <span class="eyebrow reveal">Ready to book?</span>
+        <h2 class="h2 reveal mt-2" style="--i:1">Fifteen minutes now, and you will have a clearer idea of where you stand.</h2>
+        <p class="lead reveal mt-2" style="--i:2">Free, from home, no obligation. If you are likely to be suitable, we will take you through your options and the prices. If you are not, we will tell you that too.</p>
+        <ul class="ok-list reveal" style="--i:3">
+          <li><svg><use href="#i-check"/></svg>Free · 15 minutes · online from anywhere</li>
+          <li><svg><use href="#i-check"/></svg>Confirmed by the EyeHub team within one business day</li>
+          <li><svg><use href="#i-check"/></svg>The only practice in Queensland with the combined ZEISS VisuMax 800 + MEL 90 platform</li>
+        </ul>
+        <a class="book-skip reveal" style="--i:4" href="#procedures">Not ready yet? Keep reading ↓</a>
+      </div>
+      <div id="book" class="reveal-scale">
         <div class="booking" data-booking><div class="bk-fallback"><div class="booking-head"><div><h2>Book your free online assessment</h2><p>Call <a href="tel:0752208990"><b>07 5220 8990</b></a> or email <a href="mailto:admin@eyehub.net.au?subject=Free%20online%20suitability%20assessment"><b>admin@eyehub.net.au</b></a> with two times that suit, on a Monday, Wednesday or Friday. We confirm within one business day.</p></div><span class="free-pill">Free</span></div></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= TUNER ================= -->
-  <section class="tune" id="tune">
-    <div class="container">
-      <div class="tune-card reveal">
-        <div class="tune-head">
-          <span class="eyebrow">Am I suitable?</span>
-          <h2 class="h2">Find out in five taps.</h2>
-          <p>No name, no email. An honest steer on whether laser is likely to be an option for you, and the page adjusts to your eyes as you go.</p>
-        </div>
-        <div class="tune-q" data-q="1">
-          <p class="tune-label" id="tune-q1">1 of 5 · I wear</p>
-          <div class="tune-opts" role="group" aria-labelledby="tune-q1">
-            <button type="button" class="tune-opt" aria-pressed="false" data-persona="glasses"><svg><use href="#i-glasses"/></svg><b>Glasses</b></button>
-            <button type="button" class="tune-opt" aria-pressed="false" data-persona="contacts"><svg><use href="#i-drop"/></svg><b>Contacts</b></button>
-            <button type="button" class="tune-opt" aria-pressed="false" data-persona="both"><svg><use href="#i-both"/></svg><b>Both</b></button>
-            <button type="button" class="tune-opt" aria-pressed="false" data-persona="readers"><svg><use href="#i-book"/></svg><b>Reading glasses</b></button>
-          </div>
-        </div>
-        <div class="tune-q" data-q="2" hidden>
-          <p class="tune-label" id="tune-q2">2 of 5 · My eyes are</p>
-          <div class="tune-opts rx" role="group" aria-labelledby="tune-q2">
-            <button type="button" class="tune-opt" aria-pressed="false" data-rx="short"><b>Short-sighted</b><small>far away is blurry</small></button>
-            <button type="button" class="tune-opt" aria-pressed="false" data-rx="long"><b>Long-sighted</b><small>up close is harder</small></button>
-            <button type="button" class="tune-opt" aria-pressed="false" data-rx="astig"><b>Astigmatism</b><small>blurry at every distance</small></button>
-            <button type="button" class="tune-opt" aria-pressed="false" data-rx="reading"><b>Fine, except reading</b><small>menus, phone, labels</small></button>
-            <button type="button" class="tune-opt" aria-pressed="false" data-rx="unsure"><b>Not sure</b><small>that is fine</small></button>
-          </div>
-        </div>
-        <div class="tune-q" data-q="3" hidden>
-          <p class="tune-label" id="tune-q3">3 of 5 · My age</p>
-          <div class="tune-opts stack" role="group" aria-labelledby="tune-q3">
-            <button type="button" class="tune-opt" aria-pressed="false" data-age="u18"><b>Under 18</b></button>
-            <button type="button" class="tune-opt" aria-pressed="false" data-age="a1839"><b>18 to 39</b></button>
-            <button type="button" class="tune-opt" aria-pressed="false" data-age="a4060"><b>40 to 60</b></button>
-            <button type="button" class="tune-opt" aria-pressed="false" data-age="o60"><b>Over 60</b></button>
-          </div>
-        </div>
-        <div class="tune-q" data-q="4" hidden>
-          <p class="tune-label" id="tune-q4">4 of 5 · My prescription has been stable for the last 12 months</p>
-          <div class="tune-opts three stack" role="group" aria-labelledby="tune-q4">
-            <button type="button" class="tune-opt" aria-pressed="false" data-stable="yes"><b>Yes</b><small>no real change</small></button>
-            <button type="button" class="tune-opt" aria-pressed="false" data-stable="no"><b>No</b><small>it changed recently</small></button>
-            <button type="button" class="tune-opt" aria-pressed="false" data-stable="unsure"><b>Not sure</b><small>we can check</small></button>
-          </div>
-        </div>
-        <div class="tune-q" data-q="5" hidden>
-          <p class="tune-label" id="tune-q5">5 of 5 · Have you been told you have keratoconus, cataracts, glaucoma or another eye condition?</p>
-          <div class="tune-opts three stack" role="group" aria-labelledby="tune-q5">
-            <button type="button" class="tune-opt" aria-pressed="false" data-cond="no"><b>No</b></button>
-            <button type="button" class="tune-opt" aria-pressed="false" data-cond="yes"><b>Yes</b></button>
-            <button type="button" class="tune-opt" aria-pressed="false" data-cond="unsure"><b>Not sure</b></button>
-          </div>
-        </div>
-        <div class="tune-result" hidden aria-live="polite">
-          <div class="tune-summary">
-            <span class="tune-check"><svg><use href="#i-check"/></svg></span>
-            <div><b data-tune-title></b><span data-tune-sub></span></div>
-          </div>
-          <div class="tune-actions">
-            <a class="btn btn-primary" href="#book" data-book data-suit-book>Book my free online assessment <svg><use href="#i-arrow"/></svg></a>
-            <a class="btn btn-primary" href="tel:0752208990" data-suit-call hidden><svg><use href="#i-phone"/></svg> Call 07 5220 8990</a>
-            <a class="tune-jump" href="#procedures" data-suit-more>Or keep reading ↓</a>
-            <button type="button" class="tune-reset" data-tune-reset>Change my answers</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= TRUST BAR ================= -->
-  <section class="trust" id="trust">
-    <div class="container">
-      <div class="trust-inner reveal">
-        <p>Dr Sonia Moorthy, consultant ophthalmologist &amp; laser vision specialist, RANZCO examiner, is a member of</p>
-        <div class="trust-logos">
-          <img loading="lazy" decoding="async" src="assets/img/logo-ranzco.png" width="278" height="68" alt="RANZCO, Royal Australian and New Zealand College of Ophthalmologists">
-          <img loading="lazy" decoding="async" src="assets/img/logo-auscrs.png" width="173" height="68" alt="AUSCRS, Australasian Society of Cataract and Refractive Surgeons">
-          <img loading="lazy" decoding="async" src="assets/img/logo-escrs.png" width="159" height="68" alt="ESCRS, European Society of Cataract and Refractive Surgeons">
-          <img loading="lazy" decoding="async" src="assets/img/logo-aao.png" width="234" height="68" alt="American Academy of Ophthalmology">
-          <img loading="lazy" decoding="async" src="assets/img/logo-isrs.png" width="203" height="68" alt="ISRS, International Society of Refractive Surgery">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= BLUR TO CLEAR ================= -->
-  <section class="compare-section" id="compare">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow center">See the difference</span>
-        <h2 class="h2">Drag to see the difference.</h2>
-        <p class="lead">Your mornings, your drive and your surf, without reaching for glasses first.</p>
-      </div>
-      <div class="compare reveal-scale" style="--pos:50%">
-        <img class="blur" draggable="false" loading="lazy" decoding="async" src="assets/img/kitesurfer.webp" alt="" aria-hidden="true">
-        <img class="clear" draggable="false" loading="lazy" decoding="async" src="assets/img/kitesurfer.webp" alt="Kitesurfer on the Sunshine Coast at golden hour">
-        <div class="handle"><div class="knob"><svg><use href="#i-drag"/></svg></div></div>
-        <span class="tag l">Blurry</span>
-        <span class="tag r">Clear</span>
-        <input type="range" min="2" max="98" value="50" step="0.1" aria-label="Drag to compare blurry and clear vision">
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= PAIN ================= -->
-  <section class="section" id="pain">
-    <div class="container">
-      <div class="pain-top">
-        <div>
-          <span class="eyebrow reveal">Sound familiar?</span>
-          <h2 class="h2 reveal mt-2" style="--i:1">The small stuff adds up.</h2>
-          <p class="lead reveal mt-2" style="--i:2">None of these work in isolation. Together, they are why you are reading this page. Tick the ones that make sense to you.</p>
-          <p class="tuned-note reveal" data-tuned-note hidden><svg><use href="#i-sparkle"/></svg><span></span></p>
-        </div>
-        <div class="pain-photo reveal-scale">
-          <img loading="lazy" decoding="async" src="assets/img/surf-couple.jpg" alt="Couple surfing on the Sunshine Coast" width="768" height="794">
-          <div class="pain-float">
-            <span class="ic"><svg><use href="#i-clock"/></svg></span>
-            <div><b>15 minutes, from home</b><span>is all it takes to find out if you can do something about it.</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="persona-tabs reveal" role="tablist" aria-label="What do you wear?">
-        <button type="button" class="persona-tab active" role="tab" aria-selected="true" id="tab-glasses" aria-controls="panel-glasses" data-persona="glasses"><svg><use href="#i-glasses"/></svg>Glasses</button>
-        <button type="button" class="persona-tab" role="tab" aria-selected="false" id="tab-contacts" aria-controls="panel-contacts" data-persona="contacts"><svg><use href="#i-drop"/></svg>Contacts</button>
-        <button type="button" class="persona-tab" role="tab" aria-selected="false" id="tab-both" aria-controls="panel-both" data-persona="both"><svg><use href="#i-both"/></svg>Both</button>
-        <button type="button" class="persona-tab" role="tab" aria-selected="false" id="tab-readers" aria-controls="panel-readers" data-persona="readers"><svg><use href="#i-book"/></svg>Readers</button>
-      </div>
-
-      <div class="pain-panel active" role="tabpanel" id="panel-glasses" aria-labelledby="tab-glasses" data-persona="glasses">
-        <h3 class="panel-title">If you wear glasses</h3>
-        <div class="hassle-grid">
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-sun"/></svg></span><span class="ht"><b>The 5am fumble</b><span>Patting the bedside table before you can read the time, check the surf, or see your kids' faces.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-cloud"/></svg></span><span class="ht"><b>Fogged, every single time</b><span>Coffee steam, the oven door, stepping out of the air conditioning into a Queensland summer. Wipe, and repeat.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-wave"/></svg></span><span class="ht"><b>Sunscreen, salt and sand</b><span>Smeared by 9am, scratched by Christmas. The beach is where good glasses go to die.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-shade"/></svg></span><span class="ht"><b>Prescription sunnies, or squinting</b><span>Swap pairs at every doorway, or pay for a third pair you will leave on the roof of the car.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-rain"/></svg></span><span class="ht"><b>Rain, sweat and sport</b><span>They slide down your nose on a run, fog up on the bike, and cannot come into the surf at all.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-search"/></svg></span><span class="ht"><b>"Has anyone seen my glasses?"</b><span>The daily hunt. The pair on your head. The pair the toddler bent. The spare you were sure you packed.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-glasses"/></svg></span><span class="ht"><b>Sore nose, sore ears</b><span>Red dents on your nose, frames that slip when you look down, and that ache behind the ears by 3pm.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-dollar"/></svg></span><span class="ht"><b>The bill that never ends</b><span>Frames, lenses, coatings, a spare pair. Every couple of years, forever. You never actually pay it off.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-        </div>
-      </div>
-
-      <div class="pain-panel" role="tabpanel" id="panel-contacts" aria-labelledby="tab-contacts" data-persona="contacts">
-        <h3 class="panel-title">If you wear contact lenses</h3>
-        <div class="hassle-grid">
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-drop"/></svg></span><span class="ht"><b>Gritty by 3pm</b><span>Air conditioning, screens and a long day. By mid-afternoon your eyes feel like sandpaper.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-wave"/></svg></span><span class="ht"><b>Salt water roulette</b><span>You know you should not swim in them. You do anyway, then hold your breath every time you duck under a wave.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-clock"/></svg></span><span class="ht"><b>The 6am and 10pm ritual</b><span>Wash hands, case, solution, mirror. Twice a day, every day, even when you are exhausted.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-moon"/></svg></span><span class="ht"><b>Falling asleep in them</b><span>The couch nap you wake from with lenses glued to your eyes and a day of redness ahead.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-dash"/></svg></span><span class="ht"><b>The lost lens</b><span>One torn, or down the sink on a weekend away, and your backup glasses are at home.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-bag"/></svg></span><span class="ht"><b>Travel admin for your eyes</b><span>Solution under 100ml, spare lenses, the case, glasses just in case. A whole bag, every trip.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-wind"/></svg></span><span class="ht"><b>Hay fever and dusty days</b><span>Every irritant feels ten times worse with a lens sitting on top of it.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-dollar"/></svg></span><span class="ht"><b>The subscription you never cancelled</b><span>Boxes of lenses and bottles of solution, month after month, year after year.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-        </div>
-      </div>
-
-      <div class="pain-panel" role="tabpanel" id="panel-both" aria-labelledby="tab-both" data-persona="both">
-        <h3 class="panel-title">If you wear both</h3>
-        <div class="hassle-grid">
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-sun"/></svg></span><span class="ht"><b>The 5am fumble</b><span>Patting the bedside table before you can read the time, check the surf, or see your kids' faces.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-drop"/></svg></span><span class="ht"><b>Gritty by 3pm</b><span>Contacts in for the day, then glasses on the minute you get home because your eyes have had enough.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-wave"/></svg></span><span class="ht"><b>Salt water roulette</b><span>Lenses in the surf and a spare pair of glasses waiting on the towel. Neither is a great plan.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-cloud"/></svg></span><span class="ht"><b>Fogged, every single time</b><span>Coffee steam, the oven door, stepping out of the air conditioning into a Queensland summer. Wipe, and repeat.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-clock"/></svg></span><span class="ht"><b>The 6am and 10pm ritual</b><span>Wash hands, case, solution, mirror. Twice a day, every day, even when you are exhausted.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-shade"/></svg></span><span class="ht"><b>Prescription sunnies, or squinting</b><span>Swap pairs at every doorway, or pay for a third pair you will leave on the roof of the car.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-bag"/></svg></span><span class="ht"><b>Travel admin for your eyes</b><span>Solution, spare lenses, the case, the glasses, the glasses case. A whole bag, every trip.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-dollar"/></svg></span><span class="ht"><b>Paying for both</b><span>Frames and lenses every couple of years, plus boxes of contacts and solution every month. Two bills, forever.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-        </div>
-      </div>
-
-      <div class="pain-panel" role="tabpanel" id="panel-readers" aria-labelledby="tab-readers" data-persona="readers">
-        <h3 class="panel-title">If you need reading glasses</h3>
-        <div class="hassle-grid">
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-mobile"/></svg></span><span class="ht"><b>Arms not long enough</b><span>Holding your phone further and further away, until you run out of arm.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-home"/></svg></span><span class="ht"><b>A pair in every room</b><span>Kitchen, car, bedside, handbag, office, and still never where you need them.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-book"/></svg></span><span class="ht"><b>Menus in dim restaurants</b><span>Phone torch on, squinting at the specials while the whole table waits.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-repeat"/></svg></span><span class="ht"><b>On, off, on, off</b><span>Glasses on to read the text, off to look up, on again for the price tag. All day long.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-tag"/></svg></span><span class="ht"><b>Labels and fine print</b><span>Medicine bottles, sunscreen directions, the back of anything at the supermarket.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-layers"/></svg></span><span class="ht"><b>Three pairs, never the right one</b><span>Distance, reading, sunglasses. Or multifocals you never quite got used to.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-hourglass"/></svg></span><span class="ht"><b>The moment you felt your age</b><span>Reaching for readers was the first thing that made it real.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-          <button type="button" class="hassle" aria-pressed="false"><span class="hx"><svg><use href="#i-bag"/></svg></span><span class="ht"><b>Chemist readers that never last</b><span>Cheap pairs, scratched and sat on, bought again every few months.</span></span><span class="tick"><svg><use href="#i-check"/></svg></span></button>
-        </div>
-      </div>
-
-      <div class="tally reveal">
-        <div class="tally-n" aria-hidden="true"><b data-tally-n>0</b><span>ticked</span></div>
-        <p data-tally-msg aria-live="polite">Tick the ones that make sense to you.</p>
-        <a class="btn btn-primary" href="#book" data-book>Book my free online assessment <svg><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= COST OF WAITING ================= -->
-  <section class="section tight" id="cost">
-    <div class="container">
-      <div class="calc reveal-scale">
-        <div>
-          <span class="eyebrow">The cost of waiting</span>
-          <h2 class="h2">What are glasses and contacts really costing you?</h2>
-          <p class="lead">Frames, lenses, contacts, solution, prescription sunnies, the optometrist every couple of years. It adds up quietly and it never stops. Slide to roughly what you spend a year.</p>
-          <div class="range-wrap">
-            <div class="range-out"><b id="spend-yr">$900</b><span>a year on glasses and contacts</span></div>
-            <input type="range" class="range" id="spend" min="200" max="3000" step="50" value="900" aria-label="Your yearly spend on glasses and contacts">
-            <div class="range-ticks"><span>$200</span><span>$1,000</span><span>$2,000</span><span>$3,000</span></div>
-          </div>
-        </div>
-        <div class="calc-result">
-          <div class="calc-tile"><small>Over the next 10 years</small><b id="spend-10">$9,000</b><span>and you still own nothing but a drawer of old frames</span></div>
-          <div class="calc-tile"><small>Over the next 20 years</small><b id="spend-20">$18,000</b><span>before price rises, and before the pairs you lose</span></div>
-          <div class="calc-tile hot"><small>Laser or lens surgery at EyeHub</small><b>One published price.</b><span>Assessments · the procedure · 12 months of aftercare · finance available</span><a class="vs" href="#pricing">See transparent pricing ↓</a></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= BENEFITS ================= -->
-  <section class="section benefits on-white" id="benefits">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow center">Now picture the opposite</span>
-        <h2 class="h2">What changes when the glasses go.</h2>
-        <p class="lead">For suitable patients, laser and lens procedures are designed to reduce dependence on glasses and contacts. Here is what that looks like on the coast.</p>
-      </div>
-      <div class="benefit-grid">
-        <div class="benefit reveal" style="--i:1"><span class="bx"><svg><use href="#i-sun"/></svg></span><b>Wake up and just see.</b><p>The clock, the ceiling, your partner's face. No reaching, no patting the bedside table.</p></div>
-        <div class="benefit reveal" style="--i:2" data-for="general"><span class="bx"><svg><use href="#i-wave"/></svg></span><b>Straight into the surf.</b><p>Duck under a wave with your eyes open. Come up and actually see the next set coming.</p></div>
-        <div class="benefit reveal" style="--i:3" data-for="general"><span class="bx"><svg><use href="#i-shade"/></svg></span><b>Sunglasses off the rack.</b><p>Any pair, from any shop. No prescription lenses, no swapping at the door.</p></div>
-        <div class="benefit reveal" style="--i:4" data-for="general"><span class="bx"><svg><use href="#i-bag"/></svg></span><b>Nothing to pack, nothing to lose.</b><p>No solution, no spare pair, no case. Your eyes come with you.</p></div>
-        <div class="benefit reveal" style="--i:2" data-for="readers"><span class="bx"><svg><use href="#i-book"/></svg></span><b>Read the menu, not the phone torch.</b><p>Candlelit restaurant, tiny type, no drama.</p></div>
-        <div class="benefit reveal" style="--i:3" data-for="readers"><span class="bx"><svg><use href="#i-mobile"/></svg></span><b>Your phone at a normal distance.</b><p>Texts, recipes, the footy scores, without the arm stretch.</p></div>
-        <div class="benefit reveal" style="--i:4" data-for="readers"><span class="bx"><svg><use href="#i-home"/></svg></span><b>One pair fewer in every room.</b><p>No more readers in the kitchen, the car, the handbag and the bedside drawer.</p></div>
-        <div class="benefit reveal" style="--i:5"><span class="bx"><svg><use href="#i-rain"/></svg></span><b>Rain, sweat and steam stop mattering.</b><p>The run, the ride, the hot shower, the kettle. Nothing to fog up, nothing to slip.</p></div>
-        <div class="benefit reveal" style="--i:6"><span class="bx"><svg><use href="#i-dollar"/></svg></span><b>A running cost that stops running.</b><p>Frames, lenses, contacts, solution: money you have been spending for years, and can stop spending.</p></div>
-      </div>
-      <div class="benefit-cta reveal">
-        <a class="btn btn-primary btn-lg" href="#book" data-book>Book my free online assessment <svg><use href="#i-arrow"/></svg></a>
       </div>
     </div>
   </section>
@@ -684,8 +527,8 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow center">Your options</span>
-        <h2 class="h2">Five ways to get out of glasses. The free assessment tells you which one fits you, if any.</h2>
-        <p class="lead">You do not have to work out which one you need. Dr Moorthy matches the procedure to your eyes, using Queensland's first ZEISS VisuMax 800 and MEL 90 laser suite and two lens options. Here is what each one is, in plain words.</p>
+        <h2 class="h2">The five procedures, and what each one costs.</h2>
+        <p class="lead">You do not have to work out which one you need. The diagnostic tests at your in-person assessment match the procedure to your eyes. EyeHub has Queensland's first ZEISS VisuMax 800 and MEL 90 laser suite, and two lens options.</p>
       </div>
 
       <div class="match reveal" role="group" aria-labelledby="match-label">
@@ -703,12 +546,14 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
           <h3>SMILE PRO<sup>®</sup></h3>
           <p class="opt-tech">ZEISS VisuMax 800 · keyhole, flap-free laser</p>
           <p class="opt-suits"><span>Often suits</span>active, short-sighted eyes</p>
+          <button type="button" class="opt-more" aria-expanded="false"><span class="lbl">What it involves</span><svg><use href="#i-plus"/></svg></button>
           <p class="opt-desc">Keyhole laser correction for short-sightedness and astigmatism. A small incision and no corneal flap, which is why it is often considered by people who surf, swim or play sport.</p>
           <ul class="opt-list">
             <li><svg><use href="#i-check"/></svg>No corneal flap, just a keyhole incision a few millimetres wide</li>
             <li><svg><use href="#i-check"/></svg>Flap-free, so often considered by surfers and swimmers</li>
           </ul>
           <ul class="opt-pills"><li>Short-sight</li><li>Astigmatism</li></ul>
+          <p class="opt-price"><b>$7,800</b><span>both eyes</span><small>Includes surgeon and laser suite fees</small></p>
         </article>
 
         <article class="opt lead forest reveal" style="--i:2" data-proc="presbyond">
@@ -716,12 +561,14 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
           <h3>PRESBYOND<sup>®</sup></h3>
           <p class="opt-tech">ZEISS MEL 90 · Laser Blended Vision</p>
           <p class="opt-suits"><span>Often considered</span>from the mid-40s to around 60</p>
+          <button type="button" class="opt-more" aria-expanded="false"><span class="lbl">What it involves</span><svg><use href="#i-plus"/></svg></button>
           <p class="opt-desc">For the years when reading glasses start following you around. One eye is set for distance, the other for near, and your brain blends the two.</p>
           <ul class="opt-list">
             <li><svg><use href="#i-check"/></svg>Designed to reduce reliance on reading glasses</li>
             <li><svg><use href="#i-check"/></svg>Matched to how you use your eyes, at work and at home</li>
           </ul>
           <ul class="opt-pills"><li>Reading vision</li><li>Mid-40s to around 60</li></ul>
+          <p class="opt-price"><b>$8,800</b><span>both eyes</span><small>Includes surgeon and laser suite fees</small></p>
         </article>
 
         <article class="opt brown reveal" style="--i:3" data-proc="lasik">
@@ -729,8 +576,10 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
           <h3>LASIK</h3>
           <p class="opt-tech">ZEISS VisuMax 800 + MEL 90</p>
           <p class="opt-suits"><span>Often suits</span>a wide prescription range</p>
+          <button type="button" class="opt-more" aria-expanded="false"><span class="lbl">What it involves</span><svg><use href="#i-plus"/></svg></button>
           <p class="opt-desc">The well-established laser procedure, performed with two ZEISS lasers: one creates a thin, blade-free flap, the other reshapes the cornea beneath it.</p>
           <ul class="opt-pills"><li>Short-sight</li><li>Long-sight</li><li>Astigmatism</li></ul>
+          <p class="opt-price"><b>$7,800</b><span>both eyes</span><small>Includes surgeon and laser suite fees</small></p>
         </article>
 
         <article class="opt charcoal reveal" style="--i:4" data-proc="icl">
@@ -738,8 +587,10 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
           <h3>ICL</h3>
           <p class="opt-tech">Implantable Contact Lens</p>
           <p class="opt-suits"><span>An option</span>when laser is not suitable</p>
+          <button type="button" class="opt-more" aria-expanded="false"><span class="lbl">What it involves</span><svg><use href="#i-plus"/></svg></button>
           <p class="opt-desc">A tiny lens placed inside the eye, in front of your own lens. Nothing is removed, and it can usually be taken out later if needed.</p>
           <ul class="opt-pills"><li>Higher prescriptions</li><li>Thinner corneas</li></ul>
+          <p class="opt-price"><b>$13,000 to $14,000</b><span>both eyes</span><small>Includes surgeon, lens, anaesthetic and hospital fees. We will confirm your total price when you book.</small></p>
         </article>
 
         <article class="opt gold reveal" style="--i:5" data-proc="rle">
@@ -747,44 +598,16 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
           <h3>RLE</h3>
           <p class="opt-tech">Refractive Lens Exchange</p>
           <p class="opt-suits"><span>Often considered</span>later; lens health matters more than age</p>
+          <button type="button" class="opt-more" aria-expanded="false"><span class="lbl">What it involves</span><svg><use href="#i-plus"/></svg></button>
           <p class="opt-desc">Your eye's natural lens is replaced with a premium artificial lens chosen for your measurements and goals, using the same established approach as modern cataract surgery.</p>
           <ul class="opt-pills"><li>Reading vision</li><li>Long or short-sight</li><li>Lens health, not age</li></ul>
+          <p class="opt-price"><b>$13,000</b><span>both eyes, approximate</span><small>Includes surgeon, lens, anaesthetic and hospital fees. We will confirm your total price when you book.</small></p>
         </article>
       </div>
 
       <div class="opt-foot reveal">
-        <p>Every price is for both eyes and includes your assessments and 12 months of aftercare.</p>
-        <a href="#pricing">See full pricing ↓</a>
-        <a href="#book" data-book>Book your free online assessment →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= WHY EYEHUB ================= -->
-  <section class="section on-dark" id="why">
-    <div class="container">
-      <div class="why-wrap">
-        <div>
-          <span class="eyebrow reveal">Why EyeHub</span>
-          <h2 class="h2 reveal mt-2" style="--i:1">Current-generation ZEISS lasers, one named surgeon, and a price you know before you walk in.</h2>
-          <p class="lead reveal mt-2" style="--i:2">EyeHub was the first clinic in Queensland to put the ZEISS VisuMax 800 and MEL 90 together, and it is still the only practice in the state with that combined platform. Here is what that means for you.</p>
-          <div class="why-list">
-            <div class="why-item reveal" style="--i:3"><svg><use href="#i-star"/></svg><b>Queensland's first</b><p>The ZEISS VisuMax 800 &amp; MEL 90 laser suite. The latest and fastest ZEISS technology, available at your doorstep on the Sunshine Coast.</p></div>
-            <div class="why-item reveal" style="--i:4"><svg><use href="#i-pin"/></svg><b>Every option under one roof</b><p>SMILE PRO®, LASIK, PRESBYOND®, ICL and lens exchange, so you get the procedure that fits your eyes, not the one a clinic happens to offer.</p></div>
-            <div class="why-item reveal" style="--i:5"><svg><use href="#i-user"/></svg><b>Your surgeon, by name</b><p>Dr Sonia Moorthy, refractive surgeon with Australian and global training. You will know who is treating you.</p></div>
-            <div class="why-item reveal" style="--i:6"><svg><use href="#i-shield"/></svg><b>12 months of aftercare</b><p>Pre and post-op assessments and a full year of aftercare, in every price.</p></div>
-            <div class="why-item reveal" style="--i:7"><svg><use href="#i-card"/></svg><b>One price, both eyes</b><p>Each procedure has one both-eyes price on this page. We will confirm your total price when you book.</p></div>
-            <div class="why-item reveal" style="--i:8"><svg><use href="#i-split"/></svg><b>Finance options</b><p>Available through third-party providers, subject to approval. Terms and conditions apply.</p></div>
-          </div>
-        </div>
-        <div class="why-media reveal-scale">
-          <img loading="lazy" decoding="async" src="assets/img/dr-moorthy-laser.jpg" alt="Dr Sonia Moorthy with a patient at the ZEISS VisuMax 800 laser, EyeHub Sunshine Coast" width="1100" height="733">
-          <div class="stamp"><b>1st</b><span>in Queensland</span></div>
-          <div class="zeiss">
-            <img loading="lazy" decoding="async" src="assets/img/brandmark.png" alt="" width="34" height="34" style="width:34px;height:34px;opacity:.95">
-            <div><b>ZEISS VisuMax 800 + MEL 90</b><span>Femtosecond &amp; excimer laser suite</span></div>
-          </div>
-        </div>
+        <p>Every price is for both eyes and includes your assessments and 12 months of aftercare. We will confirm your total price when you book.</p>
+        <a href="#book" data-book>Ready to book? Pick a time for your free assessment →</a>
       </div>
     </div>
   </section>
@@ -817,310 +640,47 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
         </div>
       </div>
       <div class="how-cta reveal">
+        <p class="ready-q">Read enough, and ready to book?</p>
         <a class="btn btn-primary btn-lg" href="#book" data-book>Book my free online assessment <svg><use href="#i-arrow"/></svg></a>
       </div>
     </div>
   </section>
 
-  <!-- ================= SOCIAL PROOF ================= -->
-  <!-- Reviews are excerpts from public Google and Doctify reviews (non-clinical comments only, per Ahpra advertising
-       guidelines). Video tiles are hidden until the clinic supplies its videos. -->
-  <section class="section proof" id="stories">
+  <!-- ================= COST OF WAITING ================= -->
+  <section class="section tight" id="cost">
     <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow center">What patients say</span>
-        <h2 class="h2">Real reviews, from real patients.</h2>
-        <div class="rating gbadge">
-          <svg class="g" viewBox="0 0 48 48" aria-label="Google"><use href="#g-google"/></svg>
-          <span class="rt"><b>4.8</b> <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span> <a href="https://www.google.com/maps?cid=14017306158407155629" target="_blank" rel="noopener">56 Google reviews</a></span>
-          <span class="sep" aria-hidden="true"></span>
-          <span class="rt"><b>4.9</b> <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span> <a href="https://www.doctify.com/au/specialist/sonia-moorthy/reviews" target="_blank" rel="noopener">47 Doctify reviews</a></span>
-        </div>
-      </div>
-
-      <!-- VIDEO STORIES: hidden until EyeHub's videos arrive. To show them, delete the hidden attribute on the next line
-           and put a YouTube ID or embed URL in each tile's data-video. -->
-      <div class="videos" hidden>
-        <button type="button" class="video reveal" style="--i:1" data-video="">
-          <img loading="lazy" decoding="async" src="assets/img/kitesurfer.webp" alt="">
-          <span class="play"><svg><use href="#i-play"/></svg></span>
-          <span class="sr-only">Play video: </span><span class="vmeta"><b>Patient story</b><span>Video coming soon</span></span>
-        </button>
-        <button type="button" class="video reveal" style="--i:2" data-video="">
-          <img loading="lazy" decoding="async" src="assets/img/cyclist.jpg" alt="">
-          <span class="play"><svg><use href="#i-play"/></svg></span>
-          <span class="sr-only">Play video: </span><span class="vmeta"><b>Patient story</b><span>Video coming soon</span></span>
-        </button>
-        <button type="button" class="video reveal" style="--i:3" data-video="">
-          <img loading="lazy" decoding="async" src="assets/img/sand-rings.jpg" alt="">
-          <span class="play"><svg><use href="#i-play"/></svg></span>
-          <span class="sr-only">Play video: </span><span class="vmeta"><b>Patient story</b><span>Video coming soon</span></span>
-        </button>
-      </div>
-
-      <div class="quotes-wrap">
-      <div class="quotes" data-reviews tabindex="0" aria-label="Patient reviews. Use the arrow keys or the buttons below to see more.">
-        <figure class="quote-card reveal" style="--i:1">
-          <figcaption>
-            <span class="avatar a1" aria-hidden="true">M</span>
-            <span class="who"><b>Michelle D.</b><span>Google review · September 2026</span></span>
-            <svg class="src-g" viewBox="0 0 48 48" aria-label="Google"><use href="#g-google"/></svg>
-          </figcaption>
-          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
-          <blockquote>What I’ve particularly appreciated throughout the process has been the persistence, patience and precision of the team ... Eye Hub is genuinely committed to building a great service and learning from the experience of its patients.</blockquote>
-        </figure>
-        <figure class="quote-card reveal" style="--i:2">
-          <figcaption>
-            <span class="avatar a2" aria-hidden="true">N</span>
-            <span class="who"><b>Nikkie V.</b><span>Google review · September 2026</span></span>
-            <svg class="src-g" viewBox="0 0 48 48" aria-label="Google"><use href="#g-google"/></svg>
-          </figcaption>
-          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
-          <blockquote>After years of hesitation, I finally decided to have laser eye surgery ... Dr Moorthy was absolutely wonderful. She made me feel genuinely seen and cared for as a person, not just as a patient.</blockquote>
-        </figure>
-        <figure class="quote-card reveal" style="--i:3">
-          <figcaption>
-            <span class="avatar a3" aria-hidden="true">M</span>
-            <span class="who"><b>Mitchell N.</b><span>Google review · June 2026</span></span>
-            <svg class="src-g" viewBox="0 0 48 48" aria-label="Google"><use href="#g-google"/></svg>
-          </figcaption>
-          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
-          <blockquote>Came up from Brisbane since they have smile pro here and have experience with it. Everyone was super helpful, professional and friendly ... All up a good experience.</blockquote>
-        </figure>
-        <figure class="quote-card reveal" style="--i:4">
-          <figcaption>
-            <span class="avatar a1" aria-hidden="true">L</span>
-            <span class="who"><b>Local Guide</b><span>Google review · 2025</span></span>
-            <svg class="src-g" viewBox="0 0 48 48" aria-label="Google"><use href="#g-google"/></svg>
-          </figcaption>
-          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
-          <blockquote>Her expertise, clear communication, and gentle approach made me feel completely at ease throughout the entire process. She took the time to explain everything in detail and answered all of my questions patiently.</blockquote>
-        </figure>
-        <figure class="quote-card reveal" style="--i:5">
-          <figcaption>
-            <span class="avatar a2" aria-hidden="true">V</span>
-            <span class="who"><b>Verified patient</b><span>Doctify review · August 2025</span></span>
-            <span class="src-d" aria-label="Doctify">D</span>
-          </figcaption>
-          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
-          <blockquote>Always smiling and very friendly. Explains everything clearly and doesn’t rush you.</blockquote>
-        </figure>
-        <figure class="quote-card reveal" style="--i:6">
-          <figcaption>
-            <span class="avatar a3" aria-hidden="true">T</span>
-            <span class="who"><b>Terry G.</b><span>Google review · February 2026</span></span>
-            <svg class="src-g" viewBox="0 0 48 48" aria-label="Google"><use href="#g-google"/></svg>
-          </figcaption>
-          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
-          <blockquote>After 35 years of wearing glasses ... this was my experience and I would recommend the Eye Hub Sunshine Coast! It was a great experience and the staff are very friendly.</blockquote>
-        </figure>
-        <figure class="quote-card reveal" style="--i:7">
-          <figcaption>
-            <span class="avatar a1" aria-hidden="true">R</span>
-            <span class="who"><b>Richard B.</b><span>Google review · June 2026</span></span>
-            <svg class="src-g" viewBox="0 0 48 48" aria-label="Google"><use href="#g-google"/></svg>
-          </figcaption>
-          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
-          <blockquote>Totally professional service. The staff are excellent. They keep you informed all the time. Nothing is too much trouble for them.</blockquote>
-        </figure>
-        <figure class="quote-card reveal" style="--i:8">
-          <figcaption>
-            <span class="avatar a2" aria-hidden="true">V</span>
-            <span class="who"><b>Verified patient</b><span>Doctify review · September 2025</span></span>
-            <span class="src-d" aria-label="Doctify">D</span>
-          </figcaption>
-          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
-          <blockquote>Very professional and understanding of our situation, (being a patient from a very remote location) I would definitely recommend Dr Moorthy to others</blockquote>
-        </figure>
-        <figure class="quote-card reveal" style="--i:9">
-          <figcaption>
-            <span class="avatar a3" aria-hidden="true">K</span>
-            <span class="who"><b>Kayla</b><span>Google review · August 2026</span></span>
-            <svg class="src-g" viewBox="0 0 48 48" aria-label="Google"><use href="#g-google"/></svg>
-          </figcaption>
-          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
-          <blockquote>Lovely experience with a very kind team. Always listening to what’s going on and trying to find the best solution.</blockquote>
-        </figure>
-      </div>
-      <div class="quotes-nav">
-        <button type="button" class="qnav" data-qprev aria-label="Previous reviews"><svg><use href="#i-arrow"/></svg></button>
-        <span class="qcount" data-count aria-live="polite"></span>
-        <button type="button" class="qnav" data-qnext aria-label="Next reviews"><svg><use href="#i-arrow"/></svg></button>
-      </div>
-      </div>
-      <p class="quotes-links reveal"><a href="https://www.google.com/maps?cid=14017306158407155629" target="_blank" rel="noopener">Read all reviews on Google</a><span class="dot">·</span><a href="https://www.doctify.com/au/specialist/sonia-moorthy/reviews" target="_blank" rel="noopener">Dr Moorthy on Doctify</a></p>
-    </div>
-  </section>
-
-  <!-- video modal -->
-  <div class="modal" id="video-modal" hidden>
-    <div class="modal-bg" data-close></div>
-    <div class="modal-box" role="dialog" aria-modal="true" aria-label="Patient video">
-      <button type="button" class="modal-x" data-close aria-label="Close">×</button>
-      <div class="modal-frame" data-frame>
-        <div class="modal-empty">
-          <span class="play"><svg><use href="#i-play"/></svg></span>
-          <b>Patient video story</b>
-          <span>EyeHub's patient video plays here.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- privacy notice (opened by any [data-privacy] link) -->
-  <div class="modal privacy-modal" id="privacy-modal" hidden>
-    <div class="modal-bg" data-pclose></div>
-    <div class="modal-box modal-doc" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
-      <button type="button" class="modal-x" data-pclose aria-label="Close">×</button>
-      <div class="doc">
-        <span class="eyebrow">EyeHub Laser Vision Specialists</span>
-        <h2 id="privacy-title">Privacy Notice and Consent</h2>
-        <p class="doc-lead">Everything you tell us through this page is confidential. This notice explains what we collect, why we collect it and how it is protected.</p>
-
-        <h3>Who we are</h3>
-        <p>EyeHub Laser Vision Specialists ("EyeHub", "we") is a private-sector healthcare provider located at Unit 1, Building A, 23 Elsa Wilson Drive, Buderim QLD 4556 (Nucleus Medical Suites) and at 197 Weyba Road, Noosaville QLD 4566. As a private-sector healthcare provider, EyeHub is subject to the Australian Privacy Principles set out in the Privacy Act 1988 (Cth). These govern how we collect, handle, use, disclose and store personal information collected from our patients and from people who enquire with us.</p>
-
-        <h3>What we collect on this page</h3>
-        <p>When you request a free online suitability assessment we collect your name, mobile number, email address and date of birth, your preferred day and time, and any answers you choose to give about your glasses, contact lenses, eyesight. We also record the advertisement or link that brought you to this page and the time of your request. The answers about your eyesight are optional; they help our team prepare for your call.</p>
-
-        <h3>Why we collect it</h3>
-        <p>We use this information only to contact you, confirm your assessment time, conduct the assessment and, if you choose to proceed, to open your patient record. We do not use it for any other purpose. We do not add you to a marketing list, and we do not sell your information or share it with advertisers.</p>
-
-        <h3>Confidentiality</h3>
-        <p>All information you provide is treated as confidential. It is available only to the EyeHub team members who need it to arrange and conduct your assessment, and it is stored in our secure practice systems. Information about your eyesight is health information, which the Privacy Act treats as sensitive information. We collect it only with your consent and use it only for the purpose described above.</p>
-
-        <h3>How your request reaches us</h3>
-        <p>Your request is delivered to our reception team through EmailJS, a secure third-party form delivery service, and may be recorded in the customer management software we use to manage enquiries. These providers process the information on our behalf and are not permitted to use it for their own purposes.</p>
-
-        <h3>Sharing with other health professionals</h3>
-        <p>If you proceed to a consultation, we may need to disclose relevant medical details to other healthcare professionals, such as your optometrist or general practitioner, to obtain an accurate diagnosis or treatment options. We do so only where it is needed for your care or where the law requires it.</p>
-
-        <h3>Your rights</h3>
-        <p>You may ask us at any time to see or correct the information we hold about you, or to delete an enquiry that did not proceed. Call us on <a href="tel:0752208990">07 5220 8990</a> or email <a href="mailto:admin@eyehub.net.au">admin@eyehub.net.au</a>. If you have a concern about how we have handled your information, please raise it with us first. You may also contact the Office of the Australian Information Commissioner.</p>
-
-        <h3>Your consent</h3>
-        <p>By sending a request through this page you consent to EyeHub collecting and using the information described above to arrange and conduct your free online assessment.</p>
-
-        <p class="doc-foot">This notice applies to this page. EyeHub's general terms, including its privacy policy and consent to share information, are published at <a href="https://eyehub.net.au/terms-conditions/" target="_blank" rel="noopener">eyehub.net.au/terms-conditions</a>. Last updated 28 September 2026.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= PRICING ================= -->
-  <section class="section on-white" id="pricing">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow center">Transparent pricing</span>
-        <h2 class="h2">What it costs, and how it compares with glasses.</h2>
-        <p class="lead">Each procedure has one price for both eyes, covering your assessments, the procedure and 12 months of aftercare.</p>
-      </div>
-      <div class="price-table reveal-scale">
-        <div class="price-row">
-          <h3>SMILE PRO<sup>®</sup><small>ZEISS VisuMax 800 · flap-free keyhole laser</small></h3>
-          <div class="inc"><svg><use href="#i-check"/></svg>*Includes surgeon and laser suite fees</div>
-          <div class="amt"><b>$7,800*</b><span>both eyes</span></div>
-        </div>
-        <div class="price-row">
-          <h3>LASIK<small>ZEISS VisuMax 800 + MEL 90</small></h3>
-          <div class="inc"><svg><use href="#i-check"/></svg>*Includes surgeon and laser suite fees</div>
-          <div class="amt"><b>$7,800*</b><span>both eyes</span></div>
-        </div>
-        <div class="price-row">
-          <h3>PRESBYOND<sup>®</sup><small>ZEISS MEL 90 · Laser Blended Vision</small></h3>
-          <div class="inc"><svg><use href="#i-check"/></svg>*Includes surgeon and laser suite fees</div>
-          <div class="amt"><b>$8,800*</b><span>both eyes</span></div>
-        </div>
-        <div class="price-row">
-          <h3>ICL<small>Implantable Contact Lens</small></h3>
-          <div class="inc"><svg><use href="#i-check"/></svg>*Includes surgeon, lens, anaesthetic and hospital fees</div>
-          <div class="amt" style="flex-wrap:wrap"><b>$13,000 to $14,000</b><span>both eyes*</span><span style="flex-basis:100%">We will confirm your total price when you book.</span></div>
-        </div>
-        <div class="price-row">
-          <h3>RLE<small>Refractive Lens Exchange</small></h3>
-          <div class="inc"><svg><use href="#i-check"/></svg>*Includes surgeon, lens, anaesthetic and hospital fees</div>
-          <div class="amt" style="flex-wrap:wrap"><b>$13,000</b><span>both eyes*</span><span style="flex-basis:100%">Approximate. We will confirm your total price when you book.</span></div>
-        </div>
-        <div class="price-foot">
-          <div class="price-notes">
-            <div class="pn reveal" style="--i:1"><svg><use href="#i-repeat"/></svg><div><b>Compare it with glasses</b><p>If you spend $900 a year on glasses and contacts, that is $9,000 over ten years and $18,000 over twenty, with nothing to show for it. Laser or lens surgery is one price, once, with 12 months of aftercare included.</p></div></div>
-            <div class="pn reveal" style="--i:2"><svg><use href="#i-card"/></svg><div><b>Finance options</b><p>Available through third-party providers, subject to approval. Terms and conditions apply.</p></div></div>
-            <div class="pn reveal" style="--i:3"><svg><use href="#i-shield"/></svg><div><b>Nothing hidden</b><p>The online video assessment is free. A $100 deposit books your in-person assessment and comes off your procedure. A $2,000 deposit books your surgery date, with the balance due one week before surgery. There is no Medicare rebate, and some health fund extras may contribute.</p></div></div>
-          </div>
-          <p class="price-why reveal">We offer finance and payment options because we believe everyone should have the chance to see clearly without glasses, not only those who can pay up front.</p>
-          <div class="fin-logos reveal" aria-label="Finance partners">
-            <span class="fin-logo"><img src="assets/img/logo-medipay.png" alt="MediPay" height="26" loading="lazy" decoding="async"></span>
-            <span class="fin-logo"><img src="assets/img/logo-afterpay.png" alt="Afterpay" height="22" loading="lazy" decoding="async"></span>
-            <span class="fin-logo"><svg fill="none" viewBox="0 0 216 96" role="img" aria-label="Zip"><path fill="#9D80FF" d="m72.374 26 6.629 54h64.892l-6.633-54H72.374Z"></path><path fill="#1B1B1F" d="M211.943 45.442c-1.497-12.138-11.032-19.494-23.99-19.442h-43.175l6.632 54h19.415l-1.327-10.796h20.55c16.182-.006 23.59-10.084 21.895-23.762Zm-23.984 8.619-20.308.02-1.593-12.96 20.424.017c4.8.058 7.257 2.76 7.654 6.46.245 2.384-.844 6.463-6.174 6.463h-.003ZM92.206 19.061c3.44-3.66 2.873-9.782-1.268-13.675-4.142-3.893-10.288-4.082-13.728-.422-3.44 3.66-2.872 9.782 1.269 13.675 4.141 3.893 10.287 4.082 13.727.422ZM4.776 64.912 6.63 80h64.842l-2.12-17.28H39.115l-.263-2.144L66.698 41.12 64.839 26H0l2.121 17.28h30.284l.265 2.159L4.776 64.912Z"></path></svg></span>
-            <span class="fin-logo"><svg viewBox="0 0 203 36" fill="none" role="img" aria-label="Latitude"><g clip-path="url(#c)"><path d="M147.617 6.96472V20.1671C147.617 20.9678 147.793 21.6843 148.141 22.32C148.489 22.9557 148.966 23.4545 149.57 23.8127C150.174 24.171 150.849 24.3501 151.586 24.3501C152.324 24.3501 153.026 24.171 153.634 23.8127C154.238 23.4545 154.712 22.9557 155.049 22.32C155.386 21.6843 155.555 20.9643 155.555 20.1671V6.96472H160.11V20.1671C160.11 21.7897 159.742 23.2543 159.004 24.5678C158.266 25.8814 157.241 26.9105 155.927 27.6621C154.614 28.4102 153.16 28.786 151.558 28.786C149.957 28.786 148.506 28.4102 147.203 27.6621C145.9 26.914 144.878 25.8814 144.14 24.5678C143.403 23.2543 143.034 21.7897 143.034 20.1671V6.96472H147.617ZM188.011 8.9456V26.5206C188.011 27.6164 188.9 28.505 189.996 28.505H202.306V24.1358H192.598V19.5805H201.382V15.2114H192.598V11.3339H202.306V6.96472H189.996C188.9 6.96472 188.011 7.85331 188.011 8.94911V8.9456ZM184.014 17.6418C184.014 19.6929 183.544 21.5509 182.599 23.2121C181.654 24.8734 180.348 26.1729 178.676 27.1036C177.004 28.0379 175.143 28.505 173.091 28.505H165.705V6.96472H173.091C175.164 6.96472 177.029 7.43184 178.693 8.36609C180.355 9.30033 181.658 10.5753 182.602 12.1979C183.547 13.8205 184.018 15.6328 184.018 17.6453L184.014 17.6418ZM179.34 17.6418C179.34 16.4512 179.083 15.3764 178.57 14.4106C178.058 13.4482 177.355 12.6931 176.463 12.1487C175.571 11.6043 174.56 11.3339 173.432 11.3339H170.292V24.1358H173.432C174.56 24.1358 175.571 23.8549 176.463 23.2894C177.355 22.7239 178.058 21.9513 178.57 20.9643C179.083 19.9809 179.34 18.8711 179.34 17.6418ZM121.339 6.96472V11.3339H127.616V28.505H132.202V11.3339H138.479V6.96472H121.339ZM52.6829 6.96472V26.5206C52.6829 27.6164 53.5714 28.505 54.6672 28.505H67.118V23.9286H57.3716V6.96472H52.6864H52.6829ZM112.113 6.96472V28.505H116.7V6.96472H112.113ZM96.6029 11.3339V28.505H101.19V11.3339H107.466V6.96472H90.3266V11.3339H96.6029ZM91.0957 28.505H86.2138L84.8054 24.905H76.3445L74.9361 28.505H70.0542L78.6766 6.96472H82.4733L91.0957 28.505ZM83.2495 20.9327L80.5732 14.1015L77.8969 20.9327H83.2495Z" fill="#0B2374"/><path d="M7.49502 28.505H35.5434V36H3.89151C1.74205 36 0 34.2579 0 32.1085V0.460097H7.49502V28.505ZM17.4837 8.98771C19.9668 8.98771 21.9758 6.97522 21.9758 4.49561C21.9758 2.016 19.9633 0 17.4837 0C15.0041 0 12.9916 2.01249 12.9916 4.4921C12.9916 6.97171 15.0041 8.98419 17.4837 8.98419V8.98771ZM27.0158 4.4921C27.0158 2.01249 29.0283 0 31.5114 0C33.9945 0 36.0035 2.01249 36.0035 4.4921C36.0035 6.97171 33.991 8.98419 31.5114 8.98419C29.0318 8.98419 27.0193 6.97171 27.0193 4.4921H27.0158ZM36.0035 18.5233C36.0035 21.0064 33.991 23.0154 31.5114 23.0154C29.0318 23.0154 27.0193 21.0029 27.0193 18.5233C27.0193 16.0437 29.0318 14.0312 31.5114 14.0312C33.991 14.0312 36.0035 16.0437 36.0035 18.5233Z" fill="#0B2374"/></g><defs><clipPath id="c"><rect width="202.302" height="36" fill="white"/></clipPath></defs></svg></span>
-          </div>
-        </div>
-      </div>
-      <div class="how-cta reveal">
-        <a class="btn btn-primary btn-lg" href="#book" data-book>Book my free online assessment <svg><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= DR MOORTHY ================= -->
-  <section class="section" id="surgeon">
-    <div class="container">
-      <div class="doc-wrap">
-        <div class="doc-media reveal-scale">
-          <img loading="lazy" decoding="async" src="assets/img/dr-sonia-moorthy.jpg" alt="Dr Sonia Moorthy, consultant ophthalmologist and laser eye surgeon, EyeHub Sunshine Coast" width="840" height="840">
-          <div class="cred">
-            <img loading="lazy" decoding="async" src="assets/img/brandmark.png" alt="" width="44" height="44">
-            <div><b>Dr Sonia Moorthy</b><span>Ophthalmologist · Founder, EyeHub</span></div>
-          </div>
-        </div>
+      <div class="calc reveal-scale">
         <div>
-          <span class="eyebrow reveal">Your surgeon</span>
-          <h2 class="h2 reveal mt-2" style="--i:1">Meet Dr Sonia Moorthy.</h2>
-          <p class="lead reveal mt-2" style="--i:2">Dr Moorthy is a consultant ophthalmologist and the founder of EyeHub, which she opened on the Sunshine Coast in 2022. She studied medicine in Scotland and trained at Sydney Eye Hospital, then completed fellowships in Singapore and London and further training in laser vision surgery in Spain, India and the UK. She is a RANZCO examiner and committee member, and her clinic is home to Queensland's first ZEISS VisuMax 800 and MEL 90 laser suite.</p>
-          <div class="chips reveal" style="--i:3">
-            <span class="chip">Consultant Ophthalmologist</span>
-            <span class="chip">RANZCO Examiner</span>
-            <span class="chip">Fellowships · Singapore &amp; London</span>
-            <span class="chip">Refractive training · Spain, India, UK</span>
-            <span class="chip">Founder, EyeHub · 2022</span>
-          </div>
-          <!-- NOTE FOR CLIENT REVIEW: draft quote for Dr Moorthy to approve or replace in her own words before publication. -->
-          <blockquote class="quote reveal" style="--i:4">"Not everyone is a candidate, and you deserve to know early. Fifteen free minutes, a straight answer, and no pressure either way."
-            <cite>Dr Sonia Moorthy, Ophthalmologist &amp; Founder, EyeHub</cite>
-          </blockquote>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= LOCAL / PROCEDURE CONTENT ================= -->
-  <section class="section local" id="sunshine-coast">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow center">Two clinics on the Sunshine Coast</span>
-        <h2 class="h2">Laser vision correction in Buderim and Noosaville.</h2>
-        <p class="lead">Patients come to EyeHub from Noosa, Maroochydore, Mooloolaba, Caloundra, Nambour and the hinterland. Your free assessment is online, your in-person assessment is at our Buderim clinic, and Dr Moorthy also consults at Noosaville.</p>
-      </div>
-      <div class="clinics">
-        <div class="clinic-cards">
-          <div class="clinic-card reveal" style="--i:1">
-            <span class="ci"><svg><use href="#i-pin"/></svg></span>
-            <div><b>Buderim</b><p>Unit 1, Building A, 23 Elsa Wilson Drive, Buderim QLD 4556</p><small>Nucleus Medical Suites</small><a href="https://www.google.com/maps?cid=14017306158407155629" target="_blank" rel="noopener">Directions on Google Maps</a></div>
-          </div>
-          <div class="clinic-card reveal" style="--i:2">
-            <span class="ci"><svg><use href="#i-pin"/></svg></span>
-            <div><b>Noosaville</b><p>197 Weyba Road, Noosaville QLD 4566</p><small>Clinics on alternate Mondays from 2 November 2026, 9:30am to 12:30pm. Call to book.</small><a href="https://www.google.com/maps/search/?api=1&amp;query=197+Weyba+Road+Noosaville+QLD+4566" target="_blank" rel="noopener">Directions on Google Maps</a></div>
-          </div>
-          <div class="clinic-card reveal" style="--i:3">
-            <span class="ci"><svg><use href="#i-phone"/></svg></span>
-            <div><b>Call or email</b><p><a href="tel:0752208990">07 5220 8990</a><br><a href="mailto:admin@eyehub.net.au">admin@eyehub.net.au</a></p><small>Online assessments on Monday, Wednesday and Friday</small></div>
+          <span class="eyebrow">The cost of waiting</span>
+          <h2 class="h2">What are glasses and contacts really costing you?</h2>
+          <p class="lead">Frames, lenses, contacts, solution, prescription sunnies, the optometrist every couple of years. It adds up quietly and it never stops. Slide to roughly what you spend a year.</p>
+          <div class="range-wrap">
+            <div class="range-out"><b id="spend-yr">$900</b><span>a year on glasses and contacts</span></div>
+            <input type="range" class="range" id="spend" min="200" max="3000" step="50" value="900" aria-label="Your yearly spend on glasses and contacts">
+            <div class="range-ticks"><span>$200</span><span>$1,000</span><span>$2,000</span><span>$3,000</span></div>
           </div>
         </div>
-        <div class="map-embed reveal" style="--i:2">
-          <iframe title="EyeHub Laser Vision Specialists, Buderim, on Google Maps" src="https://maps.google.com/maps?q=EyeHub%20Laser%20Vision%20Specialists%2C%2023%20Elsa%20Wilson%20Drive%2C%20Buderim%20QLD%204556&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <div class="calc-result">
+          <div class="calc-tile"><small>Over the next 10 years</small><b id="spend-10">$9,000</b><span>and you still own nothing but a drawer of old frames</span></div>
+          <div class="calc-tile"><small>Over the next 20 years</small><b id="spend-20">$18,000</b><span>before price rises, and before the pairs you lose</span></div>
+          <div class="calc-tile hot"><small>Laser or lens surgery at EyeHub</small><b>One published price.</b><span>Assessments · the procedure · 12 months of aftercare · finance available</span><a class="vs" href="#procedures">See the prices ↑</a></div>
         </div>
       </div>
-      <p class="local-links reveal"><span>More on eyehub.net.au</span><a href="https://eyehub.net.au/laser-vision-correction/" target="_blank" rel="noopener">Laser vision correction</a><a href="https://eyehub.net.au/our-expertise/refractive-laser/smile-pro/" target="_blank" rel="noopener">SMILE PRO®</a><a href="https://eyehub.net.au/our-expertise/refractive-laser/lasik/" target="_blank" rel="noopener">LASIK</a><a href="https://eyehub.net.au/our-expertise/refractive-laser/presbyond/" target="_blank" rel="noopener">PRESBYOND®</a><a href="https://eyehub.net.au/our-expertise/refractive-laser/implantable-contact-lenses-icl/" target="_blank" rel="noopener">Implantable Contact Lenses</a><a href="https://eyehub.net.au/refractive-lens-exchange/" target="_blank" rel="noopener">Refractive Lens Exchange</a><a href="https://eyehub.net.au/dr-sonia-moorthy/" target="_blank" rel="noopener">Dr Sonia Moorthy</a></p>
+      <div class="pay reveal" id="pricing">
+        <div class="pay-notes">
+          <div class="pn"><svg><use href="#i-card"/></svg><div><b>Payment options</b><p>We offer finance and payment options because we believe everyone should have the chance to see clearly without glasses, not only those who can pay up front. Available through third-party providers, subject to approval. Terms and conditions apply. EyeHub does not provide the finance itself.</p></div></div>
+        </div>
+        <div class="pay-side">
+          <p class="pay-label">Tap a provider to see how it works</p>
+          <div class="fin-logos" aria-label="Payment providers">
+          <a class="fin-logo" href="https://smile.medipay.com.au/paylater/eyehub" target="_blank" rel="noopener" aria-label="MediPay, opens in a new tab"><img src="assets/img/logo-medipay.png" alt="MediPay" height="26" loading="lazy" decoding="async"></a>
+          <a class="fin-logo" href="https://www.afterpay.com/en-AU/how-it-works" target="_blank" rel="noopener" aria-label="Afterpay, opens in a new tab"><img src="assets/img/logo-afterpay.png" alt="Afterpay" height="22" loading="lazy" decoding="async"></a>
+          <a class="fin-logo" href="https://zip.co/au" target="_blank" rel="noopener" aria-label="Zip, opens in a new tab"><svg fill="none" viewBox="0 0 216 96" role="img" aria-label="Zip"><path fill="#9D80FF" d="m72.374 26 6.629 54h64.892l-6.633-54H72.374Z"></path><path fill="#1B1B1F" d="M211.943 45.442c-1.497-12.138-11.032-19.494-23.99-19.442h-43.175l6.632 54h19.415l-1.327-10.796h20.55c16.182-.006 23.59-10.084 21.895-23.762Zm-23.984 8.619-20.308.02-1.593-12.96 20.424.017c4.8.058 7.257 2.76 7.654 6.46.245 2.384-.844 6.463-6.174 6.463h-.003ZM92.206 19.061c3.44-3.66 2.873-9.782-1.268-13.675-4.142-3.893-10.288-4.082-13.728-.422-3.44 3.66-2.872 9.782 1.269 13.675 4.141 3.893 10.287 4.082 13.727.422ZM4.776 64.912 6.63 80h64.842l-2.12-17.28H39.115l-.263-2.144L66.698 41.12 64.839 26H0l2.121 17.28h30.284l.265 2.159L4.776 64.912Z"></path></svg></a>
+          <a class="fin-logo" href="https://www.latitudefinancial.com.au/" target="_blank" rel="noopener" aria-label="Latitude, opens in a new tab"><svg viewBox="0 0 203 36" fill="none" role="img" aria-label="Latitude"><g clip-path="url(#c)"><path d="M147.617 6.96472V20.1671C147.617 20.9678 147.793 21.6843 148.141 22.32C148.489 22.9557 148.966 23.4545 149.57 23.8127C150.174 24.171 150.849 24.3501 151.586 24.3501C152.324 24.3501 153.026 24.171 153.634 23.8127C154.238 23.4545 154.712 22.9557 155.049 22.32C155.386 21.6843 155.555 20.9643 155.555 20.1671V6.96472H160.11V20.1671C160.11 21.7897 159.742 23.2543 159.004 24.5678C158.266 25.8814 157.241 26.9105 155.927 27.6621C154.614 28.4102 153.16 28.786 151.558 28.786C149.957 28.786 148.506 28.4102 147.203 27.6621C145.9 26.914 144.878 25.8814 144.14 24.5678C143.403 23.2543 143.034 21.7897 143.034 20.1671V6.96472H147.617ZM188.011 8.9456V26.5206C188.011 27.6164 188.9 28.505 189.996 28.505H202.306V24.1358H192.598V19.5805H201.382V15.2114H192.598V11.3339H202.306V6.96472H189.996C188.9 6.96472 188.011 7.85331 188.011 8.94911V8.9456ZM184.014 17.6418C184.014 19.6929 183.544 21.5509 182.599 23.2121C181.654 24.8734 180.348 26.1729 178.676 27.1036C177.004 28.0379 175.143 28.505 173.091 28.505H165.705V6.96472H173.091C175.164 6.96472 177.029 7.43184 178.693 8.36609C180.355 9.30033 181.658 10.5753 182.602 12.1979C183.547 13.8205 184.018 15.6328 184.018 17.6453L184.014 17.6418ZM179.34 17.6418C179.34 16.4512 179.083 15.3764 178.57 14.4106C178.058 13.4482 177.355 12.6931 176.463 12.1487C175.571 11.6043 174.56 11.3339 173.432 11.3339H170.292V24.1358H173.432C174.56 24.1358 175.571 23.8549 176.463 23.2894C177.355 22.7239 178.058 21.9513 178.57 20.9643C179.083 19.9809 179.34 18.8711 179.34 17.6418ZM121.339 6.96472V11.3339H127.616V28.505H132.202V11.3339H138.479V6.96472H121.339ZM52.6829 6.96472V26.5206C52.6829 27.6164 53.5714 28.505 54.6672 28.505H67.118V23.9286H57.3716V6.96472H52.6864H52.6829ZM112.113 6.96472V28.505H116.7V6.96472H112.113ZM96.6029 11.3339V28.505H101.19V11.3339H107.466V6.96472H90.3266V11.3339H96.6029ZM91.0957 28.505H86.2138L84.8054 24.905H76.3445L74.9361 28.505H70.0542L78.6766 6.96472H82.4733L91.0957 28.505ZM83.2495 20.9327L80.5732 14.1015L77.8969 20.9327H83.2495Z" fill="#0B2374"/><path d="M7.49502 28.505H35.5434V36H3.89151C1.74205 36 0 34.2579 0 32.1085V0.460097H7.49502V28.505ZM17.4837 8.98771C19.9668 8.98771 21.9758 6.97522 21.9758 4.49561C21.9758 2.016 19.9633 0 17.4837 0C15.0041 0 12.9916 2.01249 12.9916 4.4921C12.9916 6.97171 15.0041 8.98419 17.4837 8.98419V8.98771ZM27.0158 4.4921C27.0158 2.01249 29.0283 0 31.5114 0C33.9945 0 36.0035 2.01249 36.0035 4.4921C36.0035 6.97171 33.991 8.98419 31.5114 8.98419C29.0318 8.98419 27.0193 6.97171 27.0193 4.4921H27.0158ZM36.0035 18.5233C36.0035 21.0064 33.991 23.0154 31.5114 23.0154C29.0318 23.0154 27.0193 21.0029 27.0193 18.5233C27.0193 16.0437 29.0318 14.0312 31.5114 14.0312C33.991 14.0312 36.0035 16.0437 36.0035 18.5233Z" fill="#0B2374"/></g><defs><clipPath id="c"><rect width="202.302" height="36" fill="white"/></clipPath></defs></svg></a>
+          </div>
+          <a class="pay-more" href="https://eyehub.net.au/payment-plans/" target="_blank" rel="noopener">All payment options on eyehub.net.au</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1185,22 +745,279 @@ src="https://www.facebook.com/tr?id=1625467935750709&ev=PageView&noscript=1"
     </div>
   </section>
 
-  <!-- ================= FINAL CTA ================= -->
-  <section class="section final" id="final">
-    <div class="final-bg" aria-hidden="true"><img loading="lazy" decoding="async" src="assets/img/cyclist.jpg" alt=""></div>
+  <!-- ================= DR MOORTHY ================= -->
+  <section class="section" id="surgeon">
     <div class="container">
-      <div class="on-dark" style="background:transparent">
-        <span class="eyebrow reveal">Ready when you are</span>
-        <h2 class="h2 reveal mt-2" style="--i:1">Fifteen minutes now, and you will have a clearer idea of where you stand.</h2>
-        <p class="lead reveal mt-2" style="--i:2">Free, from home, no obligation. If you are likely to be suitable, we will take you through your options and the prices. If you are not, we will tell you that too.</p>
-        <ul class="ok-list reveal" style="--i:3">
-          <li><svg><use href="#i-check"/></svg>Free · 15 minutes · online from anywhere</li>
-          <li><svg><use href="#i-check"/></svg>Confirmed by the EyeHub team within one business day</li>
-          <li><svg><use href="#i-check"/></svg>The only practice in Queensland with the combined ZEISS VisuMax 800 + MEL 90 platform</li>
-        </ul>
+      <div class="doc-wrap">
+        <div class="doc-media reveal-scale">
+          <img loading="lazy" decoding="async" src="assets/img/dr-sonia-moorthy.jpg" alt="Dr Sonia Moorthy, consultant ophthalmologist and laser eye surgeon, EyeHub Sunshine Coast" width="840" height="840">
+          <div class="cred">
+            <img loading="lazy" decoding="async" src="assets/img/brandmark.png" alt="" width="44" height="44">
+            <div><b>Dr Sonia Moorthy</b><span>Ophthalmologist · Founder, EyeHub</span></div>
+          </div>
+        </div>
+        <div>
+          <span class="eyebrow reveal">Dr Sonia Moorthy</span>
+          <h2 class="h2 reveal mt-2" style="--i:1">Meet your surgeon.</h2>
+          <p class="lead reveal mt-2" style="--i:2">Dr Sonia Moorthy is a refractive surgeon with Australian and global training, a consultant ophthalmologist and the founder of EyeHub, which she opened on the Sunshine Coast in 2022. She studied medicine in Scotland and trained at Sydney Eye Hospital, then completed fellowships in Singapore and London and further training in laser vision surgery in Spain, India and the UK. She is a RANZCO examiner and committee member, and her clinic is home to Queensland's first ZEISS VisuMax 800 and MEL 90 laser suite: the latest and fastest ZEISS technology, available at your doorstep on the Sunshine Coast.</p>
+          <div class="chips reveal" style="--i:3">
+            <span class="chip">Consultant Ophthalmologist</span>
+            <span class="chip">RANZCO Examiner</span>
+            <span class="chip">Fellowships · Singapore &amp; London</span>
+            <span class="chip">Refractive training · Spain, India, UK</span>
+            <span class="chip">Founder, EyeHub · 2022</span>
+          </div>
+          <div class="doc-members reveal" style="--i:3">
+            <span>Member of</span>
+            <div class="trust-logos">
+              <img loading="lazy" decoding="async" src="assets/img/logo-ranzco.png" width="278" height="68" alt="RANZCO, Royal Australian and New Zealand College of Ophthalmologists">
+              <img loading="lazy" decoding="async" src="assets/img/logo-auscrs.png" width="173" height="68" alt="AUSCRS, Australasian Society of Cataract and Refractive Surgeons">
+              <img loading="lazy" decoding="async" src="assets/img/logo-escrs.png" width="159" height="68" alt="ESCRS, European Society of Cataract and Refractive Surgeons">
+              <img loading="lazy" decoding="async" src="assets/img/logo-aao.png" width="234" height="68" alt="American Academy of Ophthalmology">
+              <img loading="lazy" decoding="async" src="assets/img/logo-isrs.png" width="203" height="68" alt="ISRS, International Society of Refractive Surgery">
+            </div>
+          </div>
+          <!-- NOTE FOR CLIENT REVIEW: draft quote for Dr Moorthy to approve or replace in her own words before publication. -->
+          <blockquote class="quote reveal" style="--i:4">"Not everyone is a candidate, and you deserve to know early. Fifteen free minutes, a straight answer, and no pressure either way."
+            <cite>Dr Sonia Moorthy, Ophthalmologist &amp; Founder, EyeHub</cite>
+          </blockquote>
+        </div>
       </div>
-      <div id="book-bottom" class="reveal-scale">
-        <div class="booking" data-booking><div class="bk-fallback"><div class="booking-head"><div><h2>Book your free online assessment</h2><p>Call <a href="tel:0752208990"><b>07 5220 8990</b></a> or email <a href="mailto:admin@eyehub.net.au?subject=Free%20online%20suitability%20assessment"><b>admin@eyehub.net.au</b></a> with two times that suit, on a Monday, Wednesday or Friday. We confirm within one business day.</p></div><span class="free-pill">Free</span></div></div></div>
+    </div>
+  </section>
+
+  <!-- ================= SOCIAL PROOF ================= -->
+  <!-- Reviews are excerpts from public Google and Doctify reviews (non-clinical comments only, per Ahpra advertising
+       guidelines). Video tiles are hidden until the clinic supplies its videos. -->
+  <section class="section proof" id="stories">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow center">What patients say</span>
+        <h2 class="h2">Real reviews, from real patients.</h2>
+        <div class="rating gbadge">
+          <svg class="g" viewBox="0 0 48 48" aria-label="Google"><use href="#g-google"/></svg>
+          <span class="rt"><b>4.8</b> <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span> <a href="https://www.google.com/maps?cid=14017306158407155629" target="_blank" rel="noopener">56 Google reviews</a></span>
+          <span class="sep" aria-hidden="true"></span>
+          <span class="rt"><b>4.9</b> <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span> <a href="https://www.doctify.com/au/specialist/sonia-moorthy/reviews" target="_blank" rel="noopener">47 Doctify reviews</a></span>
+        </div>
+      </div>
+
+      <!-- VIDEO STORIES: hidden until EyeHub's videos arrive. To show them, delete the hidden attribute on the next line
+           and put a YouTube ID or embed URL in each tile's data-video. -->
+      <div class="videos" hidden>
+        <button type="button" class="video reveal" style="--i:1" data-video="">
+          <img loading="lazy" decoding="async" src="assets/img/kitesurfer.webp" alt="">
+          <span class="play"><svg><use href="#i-play"/></svg></span>
+          <span class="sr-only">Play video: </span><span class="vmeta"><b>Patient story</b><span>Video coming soon</span></span>
+        </button>
+        <button type="button" class="video reveal" style="--i:2" data-video="">
+          <img loading="lazy" decoding="async" src="assets/img/cyclist.jpg" alt="">
+          <span class="play"><svg><use href="#i-play"/></svg></span>
+          <span class="sr-only">Play video: </span><span class="vmeta"><b>Patient story</b><span>Video coming soon</span></span>
+        </button>
+        <button type="button" class="video reveal" style="--i:3" data-video="">
+          <img loading="lazy" decoding="async" src="assets/img/sand-rings.jpg" alt="">
+          <span class="play"><svg><use href="#i-play"/></svg></span>
+          <span class="sr-only">Play video: </span><span class="vmeta"><b>Patient story</b><span>Video coming soon</span></span>
+        </button>
+      </div>
+
+      <div class="quotes-wrap">
+      <div class="quotes" data-reviews tabindex="0" aria-label="Patient reviews. Use the arrow keys or the buttons below to see more.">
+        <figure class="quote-card reveal" style="--i:1">
+          <figcaption>
+            <span class="avatar a1" aria-hidden="true">M</span>
+            <span class="who"><b>Michelle D.</b><span>Google review · September 2026</span></span>
+            <svg class="src-g" viewBox="0 0 48 48" aria-label="Google"><use href="#g-google"/></svg>
+          </figcaption>
+          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
+          <blockquote>What I’ve particularly appreciated throughout the process has been the persistence, patience and precision of the team ... Eye Hub is genuinely committed to building a great service and learning from the experience of its patients.</blockquote>
+        </figure>
+        <figure class="quote-card reveal" style="--i:2">
+          <figcaption>
+            <span class="avatar a2" aria-hidden="true">V</span>
+            <span class="who"><b>Verified patient</b><span>Doctify review · August 2025</span></span>
+            <span class="src-d" aria-label="Doctify">D</span>
+          </figcaption>
+          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
+          <blockquote>Always smiling and very friendly. Explains everything clearly and doesn’t rush you.</blockquote>
+        </figure>
+        <figure class="quote-card reveal" style="--i:3">
+          <figcaption>
+            <span class="avatar a2" aria-hidden="true">N</span>
+            <span class="who"><b>Nikkie V.</b><span>Google review · September 2026</span></span>
+            <svg class="src-g" viewBox="0 0 48 48" aria-label="Google"><use href="#g-google"/></svg>
+          </figcaption>
+          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
+          <blockquote>After years of hesitation, I finally decided to have laser eye surgery ... Dr Moorthy was absolutely wonderful. She made me feel genuinely seen and cared for as a person, not just as a patient.</blockquote>
+        </figure>
+        <figure class="quote-card reveal" style="--i:4">
+          <figcaption>
+            <span class="avatar a3" aria-hidden="true">M</span>
+            <span class="who"><b>Mitchell N.</b><span>Google review · June 2026</span></span>
+            <svg class="src-g" viewBox="0 0 48 48" aria-label="Google"><use href="#g-google"/></svg>
+          </figcaption>
+          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
+          <blockquote>Came up from Brisbane since they have smile pro here and have experience with it. Everyone was super helpful, professional and friendly ... All up a good experience.</blockquote>
+        </figure>
+        <figure class="quote-card reveal" style="--i:5">
+          <figcaption>
+            <span class="avatar a1" aria-hidden="true">L</span>
+            <span class="who"><b>Local Guide</b><span>Google review · 2025</span></span>
+            <svg class="src-g" viewBox="0 0 48 48" aria-label="Google"><use href="#g-google"/></svg>
+          </figcaption>
+          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
+          <blockquote>Her expertise, clear communication, and gentle approach made me feel completely at ease throughout the entire process. She took the time to explain everything in detail and answered all of my questions patiently.</blockquote>
+        </figure>
+        <figure class="quote-card reveal" style="--i:6">
+          <figcaption>
+            <span class="avatar a3" aria-hidden="true">T</span>
+            <span class="who"><b>Terry G.</b><span>Google review · February 2026</span></span>
+            <svg class="src-g" viewBox="0 0 48 48" aria-label="Google"><use href="#g-google"/></svg>
+          </figcaption>
+          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
+          <blockquote>After 35 years of wearing glasses ... this was my experience and I would recommend the Eye Hub Sunshine Coast! It was a great experience and the staff are very friendly.</blockquote>
+        </figure>
+        <figure class="quote-card reveal" style="--i:7">
+          <figcaption>
+            <span class="avatar a1" aria-hidden="true">R</span>
+            <span class="who"><b>Richard B.</b><span>Google review · June 2026</span></span>
+            <svg class="src-g" viewBox="0 0 48 48" aria-label="Google"><use href="#g-google"/></svg>
+          </figcaption>
+          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
+          <blockquote>Totally professional service. The staff are excellent. They keep you informed all the time. Nothing is too much trouble for them.</blockquote>
+        </figure>
+        <figure class="quote-card reveal" style="--i:8">
+          <figcaption>
+            <span class="avatar a2" aria-hidden="true">V</span>
+            <span class="who"><b>Verified patient</b><span>Doctify review · September 2025</span></span>
+            <span class="src-d" aria-label="Doctify">D</span>
+          </figcaption>
+          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
+          <blockquote>Very professional and understanding of our situation, (being a patient from a very remote location) I would definitely recommend Dr Moorthy to others</blockquote>
+        </figure>
+        <figure class="quote-card reveal" style="--i:9">
+          <figcaption>
+            <span class="avatar a3" aria-hidden="true">K</span>
+            <span class="who"><b>Kayla</b><span>Google review · August 2026</span></span>
+            <svg class="src-g" viewBox="0 0 48 48" aria-label="Google"><use href="#g-google"/></svg>
+          </figcaption>
+          <span class="stars5" aria-label="Five stars"><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg><svg><use href="#i-starf"/></svg></span>
+          <blockquote>Lovely experience with a very kind team. Always listening to what’s going on and trying to find the best solution.</blockquote>
+        </figure>
+      </div>
+      <div class="quotes-nav">
+        <button type="button" class="qnav" data-qprev aria-label="Previous reviews"><svg><use href="#i-arrow"/></svg></button>
+        <span class="qcount" data-count aria-live="polite"></span>
+        <button type="button" class="qnav" data-qnext aria-label="Next reviews"><svg><use href="#i-arrow"/></svg></button>
+      </div>
+      </div>
+      <div class="doctify-box reveal">
+        <iframe id="ehdoctify1" class="doctify-widget" name="average-category-rating-widget" title="Dr Sonia Moorthy, patient ratings verified by Doctify" loading="lazy" scrolling="no" src="https://www.doctify.com/wv2/average-category-rating-widget?containerId=ehdoctify1&amp;widgetName=average-category-rating-widget&amp;tenantId=athena-au&amp;language=en&amp;profileType=specialist&amp;theme=transparent&amp;slugs=sonia-moorthy"></iframe>
+      </div>
+      <p class="quotes-links reveal"><a href="https://www.google.com/maps?cid=14017306158407155629" target="_blank" rel="noopener">Read all reviews on Google</a><span class="dot">·</span><a href="https://www.doctify.com/au/specialist/sonia-moorthy/reviews" target="_blank" rel="noopener">Read all 47 verified reviews on Doctify</a></p>
+    </div>
+  </section>
+
+  <!-- video modal -->
+  <div class="modal" id="video-modal" hidden>
+    <div class="modal-bg" data-close></div>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-label="Patient video">
+      <button type="button" class="modal-x" data-close aria-label="Close">×</button>
+      <div class="modal-frame" data-frame>
+        <div class="modal-empty">
+          <span class="play"><svg><use href="#i-play"/></svg></span>
+          <b>Patient video story</b>
+          <span>EyeHub's patient video plays here.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- privacy notice (opened by any [data-privacy] link) -->
+  <div class="modal privacy-modal" id="privacy-modal" hidden>
+    <div class="modal-bg" data-pclose></div>
+    <div class="modal-box modal-doc" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+      <button type="button" class="modal-x" data-pclose aria-label="Close">×</button>
+      <div class="doc">
+        <span class="eyebrow">EyeHub Laser Vision Specialists</span>
+        <h2 id="privacy-title">Privacy Notice and Consent</h2>
+        <p class="doc-lead">Everything you tell us through this page is confidential. This notice explains what we collect, why we collect it and how it is protected.</p>
+
+        <h3>Who we are</h3>
+        <p>EyeHub Laser Vision Specialists ("EyeHub", "we") is a private-sector healthcare provider located at Unit 1, Building A, 23 Elsa Wilson Drive, Buderim QLD 4556 (Nucleus Medical Suites) and at 197 Weyba Road, Noosaville QLD 4566. As a private-sector healthcare provider, EyeHub is subject to the Australian Privacy Principles set out in the Privacy Act 1988 (Cth). These govern how we collect, handle, use, disclose and store personal information collected from our patients and from people who enquire with us.</p>
+
+        <h3>What we collect on this page</h3>
+        <p>When you request a free online suitability assessment we collect your name, mobile number, email address and date of birth, your preferred day and time, and any answers you choose to give about your glasses, contact lenses, eyesight. We also record the advertisement or link that brought you to this page and the time of your request. The answers about your eyesight are optional; they help our team prepare for your call.</p>
+
+        <h3>Why we collect it</h3>
+        <p>We use this information only to contact you, confirm your assessment time, conduct the assessment and, if you choose to proceed, to open your patient record. We do not use it for any other purpose. We do not add you to a marketing list, and we do not sell your information or share it with advertisers.</p>
+
+        <h3>Confidentiality</h3>
+        <p>All information you provide is treated as confidential. It is available only to the EyeHub team members who need it to arrange and conduct your assessment, and it is stored in our secure practice systems. Information about your eyesight is health information, which the Privacy Act treats as sensitive information. We collect it only with your consent and use it only for the purpose described above.</p>
+
+        <h3>How your request reaches us</h3>
+        <p>Your request is delivered to our reception team through EmailJS, a secure third-party form delivery service, and may be recorded in the customer management software we use to manage enquiries. These providers process the information on our behalf and are not permitted to use it for their own purposes.</p>
+
+        <h3>Sharing with other health professionals</h3>
+        <p>If you proceed to a consultation, we may need to disclose relevant medical details to other healthcare professionals, such as your optometrist or general practitioner, to obtain an accurate diagnosis or treatment options. We do so only where it is needed for your care or where the law requires it.</p>
+
+        <h3>Your rights</h3>
+        <p>You may ask us at any time to see or correct the information we hold about you, or to delete an enquiry that did not proceed. Call us on <a href="tel:0752208990">07 5220 8990</a> or email <a href="mailto:admin@eyehub.net.au">admin@eyehub.net.au</a>. If you have a concern about how we have handled your information, please raise it with us first. You may also contact the Office of the Australian Information Commissioner.</p>
+
+        <h3>Your consent</h3>
+        <p>By sending a request through this page you consent to EyeHub collecting and using the information described above to arrange and conduct your free online assessment.</p>
+
+        <p class="doc-foot">This notice applies to this page. EyeHub's general terms, including its privacy policy and consent to share information, are published at <a href="https://eyehub.net.au/terms-conditions/" target="_blank" rel="noopener">eyehub.net.au/terms-conditions</a>. Last updated 28 September 2026.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= LOCAL / PROCEDURE CONTENT ================= -->
+  <section class="section local" id="sunshine-coast">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow center">On the Sunshine Coast</span>
+        <h2 class="h2">Laser vision correction in Buderim.</h2>
+        <p class="lead">Patients come to EyeHub from Noosa, Maroochydore, Mooloolaba, Caloundra, Nambour and the hinterland. Your free assessment is online, and your in-person assessment is at our Buderim clinic.</p>
+      </div>
+      <div class="clinics">
+        <div class="clinic-cards">
+          <div class="clinic-card reveal" style="--i:1">
+            <span class="ci"><svg><use href="#i-pin"/></svg></span>
+            <div><b>Buderim</b><p>Unit 1, Building A, 23 Elsa Wilson Drive, Buderim QLD 4556</p><small>Nucleus Medical Suites</small><a href="https://www.google.com/maps?cid=14017306158407155629" target="_blank" rel="noopener">Directions on Google Maps</a></div>
+          </div>
+          <div class="clinic-card reveal" style="--i:2">
+            <span class="ci"><svg><use href="#i-pin"/></svg></span>
+            <div><b>Noosaville</b><p>197 Weyba Road, Noosaville QLD 4566</p><small>Clinics on alternate Mondays from 2 November 2026, 9:30am to 12:30pm. Call to book.</small><a href="https://www.google.com/maps/search/?api=1&amp;query=197+Weyba+Road+Noosaville+QLD+4566" target="_blank" rel="noopener">Directions on Google Maps</a></div>
+          </div>
+          <div class="clinic-card reveal" style="--i:3">
+            <span class="ci"><svg><use href="#i-phone"/></svg></span>
+            <div><b>Call or email</b><p><a href="tel:0752208990">07 5220 8990</a><br><a href="mailto:admin@eyehub.net.au">admin@eyehub.net.au</a></p><small>Online assessments on Monday, Wednesday and Friday</small></div>
+          </div>
+        </div>
+        <div class="map-embed reveal" style="--i:2">
+          <iframe title="EyeHub Laser Vision Specialists, Buderim, on Google Maps" src="https://maps.google.com/maps?q=EyeHub%20Laser%20Vision%20Specialists%2C%2023%20Elsa%20Wilson%20Drive%2C%20Buderim%20QLD%204556&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+      </div>
+      <p class="local-links reveal"><span>More information on eyehub.net.au</span><a href="https://eyehub.net.au/laser-vision-correction/" target="_blank" rel="noopener">Laser vision correction</a><a href="https://eyehub.net.au/smile-pro/" target="_blank" rel="noopener">SMILE PRO®</a><a href="https://eyehub.net.au/lasik/" target="_blank" rel="noopener">LASIK</a><a href="https://eyehub.net.au/presbyond/" target="_blank" rel="noopener">PRESBYOND®</a><a href="https://eyehub.net.au/implantable-contact-lenses-icl/" target="_blank" rel="noopener">Implantable Contact Lenses</a><a href="https://eyehub.net.au/refractive-lens-exchange/" target="_blank" rel="noopener">Refractive Lens Exchange</a><a href="https://eyehub.net.au/dr-sonia-moorthy/" target="_blank" rel="noopener">Dr Sonia Moorthy</a><a href="https://eyehub.net.au/pricing-information/" target="_blank" rel="noopener">Pricing information</a><a href="https://eyehub.net.au/payment-plans/" target="_blank" rel="noopener">Payment options</a><a href="https://eyehub.net.au/what-to-expect/" target="_blank" rel="noopener">What to expect</a><a href="https://eyehub.net.au/common-faqs/" target="_blank" rel="noopener">Common questions</a></p>
+    </div>
+  </section>
+
+  <!-- ================= READY TO BOOK ================= -->
+  <section class="section ready" id="ready">
+    <div class="container">
+      <div class="ready-card reveal">
+        <div>
+          <span class="eyebrow">Read enough?</span>
+          <h2 class="h2">Ready to book your free assessment?</h2>
+          <p>Fifteen minutes on a video call with a laser surgery coordinator. Free, no obligation, and if you are not suitable we will say so.</p>
+        </div>
+        <div class="ready-actions">
+          <a class="btn btn-lg" href="#book" data-book>Book my free assessment <svg><use href="#i-arrow"/></svg></a>
+          <a class="ready-call" href="tel:0752208990">or call 07 5220 8990</a>
+        </div>
       </div>
     </div>
   </section>

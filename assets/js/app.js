@@ -281,7 +281,9 @@
           </div>
           <div class="booking-actions">
             <button type="button" class="btn btn-ghost btn-block" data-ics>${I.download}<span class="lbl">Add to my calendar</span></button>
+            <a class="btn btn-ghost btn-block" href="assets/docs/EyeHub-laser-vision-guide.pdf" target="_blank" rel="noopener" data-guide>${I.download}<span class="lbl">Download your guide (PDF)</span></a>
           </div>
+          <a class="s-more" href="#procedures">While you wait, read about the five procedures</a>
         </div>
       </div>
 
@@ -831,6 +833,15 @@
     };
   }
 
+  // phones: each procedure card shows its name, who it suits and the price; the rest opens on tap
+  function initOptToggles() {
+    $$('.opt-more').forEach(btn => btn.addEventListener('click', () => {
+      const open = btn.closest('.opt').classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+      $('.lbl', btn).textContent = open ? 'Show less' : 'What it involves';
+    }));
+  }
+
   /* ---------------------------------------------------------
      Tuner: two taps under the hero that set the rest of the page
      --------------------------------------------------------- */
@@ -889,19 +900,40 @@
       if (cond === 'yes') return show('Possibly, with a closer look.', 'An eye condition does not rule you out, but it needs a proper check. Book the free online assessment and mention it, and the coordinator will tell you where you stand.', 'book');
       show('Good news. You are likely to be suitable.', `${RX_TEXT[mrx || rx]} Book your free online assessment and a laser vision coordinator will confirm which one fits your eyes.`, 'book');
     };
-    const reveal = n => { qs.forEach((q, i) => { q.hidden = i >= n; }); };
+    // one question on screen at a time: n is the question to show (1 to 5), 0 hides them all for the result
+    const prog = $$('.tune-prog span', sec), backBtn = $('[data-tune-back]', sec);
+    let cur = 1;
+    const reveal = n => {
+      cur = n;
+      qs.forEach((q, i) => { q.hidden = i !== n - 1; });
+      prog.forEach((d, i) => d.classList.toggle('on', n === 0 || i < n));
+      if (backBtn) backBtn.hidden = n <= 1;
+    };
     const answer = (key, btn) => {
       TUNE[key] = btn.dataset[key]; press(groups[key], btn);
       if (key === 'persona') applyPersona();
       if (key === 'rx') applyRx();
       const n = ['persona', 'rx', 'age', 'stable', 'cond'].indexOf(key);
-      if (n < 4) { reveal(n + 2); res.hidden = true; setTimeout(() => qs[n + 1].scrollIntoView({ block: 'nearest', behavior }), 60); }
-      else result();
+      // a short beat so the tap registers before the next question slides in
+      const next = () => {
+        if (n < 4) {
+          reveal(n + 2); res.hidden = true;
+          // move focus to the new question's label, so keyboard and screen reader users land on it
+          const lab = $('.tune-label', qs[n + 1]);
+          if (lab) { lab.tabIndex = -1; lab.focus({ preventScroll: true }); }
+          setTimeout(() => qs[n + 1].scrollIntoView({ block: 'nearest', behavior }), 60);
+        } else { reveal(0); result(); }
+      };
+      if (REDUCED) next(); else setTimeout(next, 170);
     };
     Object.keys(groups).forEach(key => groups[key].forEach(btn => btn.addEventListener('click', () => {
       if (key !== 'persona' && !TUNE.persona) return;
       answer(key, btn);
     })));
+    if (backBtn) backBtn.addEventListener('click', () => { if (cur > 1) { reveal(cur - 1); res.hidden = true; } });
+    // "Find out if I am suitable" buttons: the check may already be on screen, so nudge it as well as scrolling to it
+    const tcard = $('.tune-card', sec);
+    $$('a[href="#tune"]').forEach(a => a.addEventListener('click', () => { tcard.classList.remove('nudge'); void tcard.offsetWidth; tcard.classList.add('nudge'); }));
     $('[data-tune-reset]', sec).addEventListener('click', () => {
       Object.keys(TUNE).forEach(k => { TUNE[k] = null; });
       Object.values(groups).forEach(g => press(g, null));
@@ -1002,6 +1034,24 @@
     });
   }
 
+  // Doctify's ratings widget sits in a cross-origin frame. It posts its height, and any link it wants opened.
+  function initDoctify() {
+    const frames = $$('iframe.doctify-widget');
+    if (!frames.length) return;
+    addEventListener('message', e => {
+      let host = '';
+      try { host = new URL(e.origin).hostname; } catch (err) { return; }
+      if (host !== 'doctify.com' && !host.endsWith('.doctify.com')) return;
+      const d = e.data || {}, type = String(d.type || '');
+      const f = frames.find(x => type.endsWith('_' + x.id));
+      if (!f) return;
+      if (type.startsWith('iframe-resize_') && /^\d+(\.\d+)?px$/.test(String(d.height))) f.style.height = d.height;
+      if (type.startsWith('external_link_')) {
+        try { const u = new URL(d.url); if (u.protocol === 'https:') window.open(u.href, '_blank', 'noopener'); } catch (err) { /* ignore a bad link */ }
+      }
+    });
+  }
+
   function initPrivacy() {
     const modal = $('#privacy-modal');
     if (!modal) return;
@@ -1027,16 +1077,14 @@
   }
 
   function initStickyBar() {
-    const bar = $('.sticky-bar');
-    const cards = $$('#book, #book-quiz, #book-bottom');
-    if (!bar || !cards.length || !('IntersectionObserver' in window)) return;
-    const vis = {};
+    const bar = $('.sticky-bar'), card = $('#book');
+    if (!bar || !card || !('IntersectionObserver' in window)) return;
+    // the diary sits under the hero: show the bar only once it has been scrolled past, never while it is on screen
     const io = new IntersectionObserver(entries => {
-      // show once the hero booking card has scrolled out of view, hide again while any booking card is on screen
-      entries.forEach(en => { vis[en.target.id] = en.isIntersecting; });
-      bar.classList.toggle('show', vis.book === false && !Object.values(vis).some(Boolean));
-    }, { threshold: 0, rootMargin: '-64px 0px 0px 0px' }); // any part of a booking card on screen (below the header) hides the bar
-    cards.forEach(c => io.observe(c));
+      const en = entries[entries.length - 1];
+      bar.classList.toggle('show', !en.isIntersecting && en.boundingClientRect.top < 0);
+    }, { threshold: 0, rootMargin: '-64px 0px 0px 0px' });
+    io.observe(card);
   }
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -1050,10 +1098,12 @@
     initCalc();
     const pains = initPains(widgets);
     const matcher = initMatcher();
+    initOptToggles();
     initTuner(widgets, pains, matcher);
     initFaq();
     initVideos();
     initReviews();
+    initDoctify();
     initPrivacy();
     initCtas();
     initStickyBar();
